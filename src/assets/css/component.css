@@ -1,0 +1,42 @@
+@layer components {
+    .heading1 {
+        @apply text-[56px] leading-[60px] font-bold;
+    }
+
+	.heading2 {
+        @apply text-[48px] leading-[52px] font-bold;
+    }
+
+	.heading3 {
+        @apply text-[40px] leading-[44px] font-bold;
+    }
+
+	.heading4 {
+        @apply text-[32px] leading-[36px] font-bold;
+    }
+
+	.heading5 {
+        @apply text-[24px] leading-[28px] font-bold;
+    }
+
+	.heading6 {
+        @apply text-[20px] leading-[24px] font-bold;
+    }
+
+	.small-text{
+		@apply text-[14px] leading-[22px];
+	}
+
+	.normal-text{
+		@apply text-[16px] leading-[24px];
+	}
+
+	.medium-text{
+		@apply text-[18px] leading-[26px];
+	}
+
+	.large-text{
+		@apply text-[20px] leading-[28px];
+	}
+
+}
