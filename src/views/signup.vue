@@ -13,7 +13,7 @@
 					<phoneInput v-model="phone"/>
 					<PasswordInput v-model="password" label="Password" place-holder="Create Password" :show-forgot-password="false"/>
 					
-					<div class="ml-[10px] flex flex-col gap-4">
+					<div class="ml-[5px] flex flex-col gap-4">
 						<p class="flex items-center gap-2 text-xs md:text-sm text-[#666666]" :class="{'text-success' : containsOver8}">
 							<span class="w-[8px] h-[8px] rounded-full bg-[#666666]" :class="{'bg-success' : containsOver8}"></span>
 							Use 8 or more characters
