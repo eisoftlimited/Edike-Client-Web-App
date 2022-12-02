@@ -7,7 +7,7 @@
   }
 
 html {
-    /* background: var(--body); */
+    background:#F5F5F5;
     box-sizing: border-box;
     scroll-behavior: smooth;
     scroll-padding: 4rem;

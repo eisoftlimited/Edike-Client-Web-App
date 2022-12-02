@@ -4,8 +4,11 @@ import { createRouter, createWebHistory, useRouter } from 'vue-router'
 const routes = [
 	{
 		path: '/',
-		name: 'Home',
 		component: () => import('../views/home.vue')
+	},
+	{
+		path: '/signup',
+		component: () => import('../views/signup.vue')
 	}
 ]
 const router = createRouter({

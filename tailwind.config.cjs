@@ -8,11 +8,12 @@ const newColors = {
 	stroke: 'var(--stroke)',
 	lightGray: 'var(--light-gray)',
 	darkGray: 'var(--dark-gray)',
-	white: 'var(--white)',
-	black: 'var(--black)',
+	white: 'var(--app-white)',
+	black: 'var(--app-black)',
 	success: 'var(--success)',
 	error: 'var(--error)',
 	warning: 'var(--warning)',
+	boldText: 'var(--bold-text)'
 }
 
 

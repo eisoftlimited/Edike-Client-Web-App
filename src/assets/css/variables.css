@@ -5,10 +5,11 @@
 	--stroke: #E8E9EB;
 	--light-gray: #B2B3B3;
 	--dark-gray: #828282;
-	--white: #F6F6F6;
-	--black: #120A00;
+	--app-white: #F6F6F6;
+	--app-black: #120A00;
 	--success: #00AC45;
     --error: #FF3436;
     --warning: #F4ED48;
+	--bold-text: #17343D;
 }
 
