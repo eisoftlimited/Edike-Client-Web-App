@@ -2,8 +2,8 @@
 	<auth-layout>
 		<div class="flex flex-col gap-8 py-6 md:flex-row md:items-end">
 			<img src="../assets/img/illustrations/signup.svg" class="w-1/2" alt="">
-			<div class="bg-[#FAFAFA] rounded-3xl p-4 flex flex-col gap-8 z-20 md:w/1-2 md:py-[40px] md:px-[60px]">
-				<h4 class="heading4 text-center text-boldText">Create Account</h4>
+			<div class="bg-[#FAFAFA] rounded-[24px] p-4 flex flex-col gap-8 z-20 md:w/1-2 md:py-[40px] md:px-[60px]">
+				<h4 class="heading5 md:heading4 text-center text-boldText">Create Account</h4>
 				<div class="flex flex-col gap-5">
 					<div class="flex gap-2">
 						<textInput class="w-1/2" :if-required="true" label="First Name" place-holder="Enter text here..." input-type="text"/>
@@ -58,6 +58,6 @@ import phoneInput from '../components/utils/phoneInput.vue'
 
 <style scoped>
 input[type=checkbox] {
-  accent-color: theme(colors.primary);
+  accent-color: var(--primary);
 }
 </style>

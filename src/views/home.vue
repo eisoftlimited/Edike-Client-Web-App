@@ -2,7 +2,6 @@
 	<div class="">
 		
 	</div>
-	
 </template>
 
 <script setup lang="ts">
@@ -10,3 +9,5 @@
 	import passwordInput from '../components/utils/passwordInput.vue';
 	import Selector from '../components/utils/selector.vue'
 </script>
+
+
