@@ -17,22 +17,22 @@
 						<p class="flex items-center gap-2 text-xs md:text-sm text-[#666666]" :class="{'text-success' : containsOver8}">
 							<span class="w-[8px] h-[8px] rounded-full bg-[#666666]" :class="{'bg-success' : containsOver8}"></span>
 							Use 8 or more characters
-							<img v-if="containsOver8" :src="checkImgPath" alt="check">
+							<img v-if="containsOver8" src="../assets/img/icons/check.svg" alt="check">
 						</p>
 						<p class="flex items-center gap-2 text-xs md:text-sm text-[#666666]" :class="{'text-success' : upperAndLowerCase}">
 							<span class="w-[8px] h-[8px] rounded-full bg-[#666666]" :class="{'bg-success' : upperAndLowerCase}"></span>
 							Use upper and lower case letters (e.g. Aa)
-							<img v-if="upperAndLowerCase" :src="checkImgPath" alt="check">
+							<img v-if="upperAndLowerCase" src="../assets/img/icons/check.svg" alt="check">
 						</p>
 						<p class="flex items-center gap-2 text-xs md:text-sm text-[#666666]" :class="{'text-success' : containsSymbol}">
 							<span class="w-[8px] h-[8px] rounded-full bg-[#666666]" :class="{'bg-success' : containsSymbol}"></span>
 							Use a symbol (e.g. !@#$)
-							<img v-if="containsSymbol" :src="checkImgPath" alt="check">
+							<img v-if="containsSymbol" src="../assets/img/icons/check.svg" alt="check">
 						</p>
 						<p class="flex items-center gap-2 text-xs md:text-sm text-[#666666]" :class="{'text-success' : containsNumber}">
 							<span class="w-[8px] h-[8px] rounded-full bg-[#666666]" :class="{'bg-success' : containsNumber}"></span>
 							Use a number (e.g. 1234)
-							<img v-if="containsNumber" :src="checkImgPath" alt="check">
+							<img v-if="containsNumber" src="../assets/img/icons/check.svg" alt="check">
 						</p>
 					</div>
 
@@ -54,10 +54,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 import PasswordInput from '../components/utils/passwordInput.vue';
 import textInput from '../components/utils/textInput.vue';
-import phoneInput from '../components/utils/phoneInput.vue';
+import phoneInput from '../components/utils/phoneInput.vue'
 import { computed } from '@vue/reactivity';
 
 const firstName = ref('')
@@ -66,7 +66,7 @@ const email = ref('')
 const phone = ref('')
 const password = ref('')
 const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-const checkImgPath = new URL('../assets/img/icons/check.svg', import.meta.url).href
+
 // computed
 const containsOver8 = computed(() => {
 	return password.value.length >= 8 ? true : false 
