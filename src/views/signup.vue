@@ -4,7 +4,7 @@
 			<img src="../assets/img/illustrations/signup.svg" class="w-1/2" alt="">
 			<div class="bg-[#FAFAFA] rounded-[24px] p-4 flex flex-col gap-8 z-20 md:w/1-2 md:py-[40px] md:px-[60px]">
 				<h4 class="heading5 md:heading4 text-center text-boldText">Create Account</h4>
-				<div class="flex flex-col gap-5">
+				<form class="flex flex-col gap-5">
 					<div class="flex gap-2">
 						<textInput class="w-1/2" v-model="firstName" :if-required="true" label="First Name" place-holder="Enter text here..." input-type="text"/>
 						<textInput class="w-1/2" v-model="lastName" :if-required="true" label="Last Name" place-holder="Enter text here..." input-type="text"/>
@@ -44,7 +44,7 @@
 					</div>
 					
 					<button class="btn-long" disabled>Create Account</button>
-				</div>
+				</form>
 				<p class="small-text text-darkGray text-center">Already have an account?
 					<router-link to="/" class="text-secondary">Sign In</router-link>
 				</p>
