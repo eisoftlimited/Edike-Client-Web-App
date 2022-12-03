@@ -13,7 +13,7 @@
 					<img src="../../assets/img/icons/eye_open.svg" alt="">
 				</span>
 		</div>
-		<div class="flex h-[6px] justify-between" v-if="showPasswordStrentghBar">
+		<div class="flex h-[6px] justify-between" v-if="allowPasswordStrength && showPasswordStrentghBar">
 			<span class="h-full w-[33%] bg-transparent" :class="{'bg-[#E45C5E]': forWeak}"></span>
 			<span class="h-full w-[33%] bg-transparent" :class="{'bg-[#F3C652]': forGood}"></span>
 			<span class="h-full w-[33%] bg-transparent" :class="{'bg-[#68C38C]': forStrong}"></span>
@@ -33,6 +33,7 @@ defineProps<{
 	placeHolder: string
 	showForgotPassword: boolean
 	modelValue: string
+	allowPasswordStrength: boolean
 }>()
 
 const emit = defineEmits(['update:modelValue'])

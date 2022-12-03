@@ -1,8 +1,8 @@
 <template>
 	<auth-layout>
 		<div class="flex flex-col gap-8 py-6 md:flex-row md:items-end">
-			<img src="../assets/img/illustrations/signup.svg" class="w-1/2" alt="">
-			<div class="bg-[#FAFAFA] rounded-[24px] p-4 flex flex-col gap-8 z-20 md:w/1-2 md:py-[40px] md:px-[60px]">
+			<img src="../assets/img/illustrations/signup.svg" class="w-1/2 hidden lg:flex" alt="">
+			<div class="bg-[#FAFAFA] rounded-[24px] p-4 flex flex-col gap-8 z-20 mx-auto md:w/1-2 md:py-[40px] md:px-[60px]">
 				<h4 class="heading5 md:heading4 text-center text-boldText">Create Account</h4>
 				<form class="flex flex-col gap-5">
 					<div class="flex gap-2">
@@ -11,7 +11,7 @@
 					</div>
 					<textInput class="" v-model="email" :if-required="true" label="Email Address" place-holder="johndoe@email.com" input-type="email"/>
 					<phoneInput v-model="phone"/>
-					<PasswordInput v-model="password" label="Password" place-holder="Create Password" :show-forgot-password="false"/>
+					<PasswordInput v-model="password" label="Password" place-holder="Create Password" :allow-password-strength="true" :show-forgot-password="false"/>
 					
 					<div class="ml-[5px] flex flex-col gap-4">
 						<p class="flex items-center gap-2 text-xs md:text-sm text-[#666666]" :class="{'text-success' : containsOver8}">
@@ -37,16 +37,16 @@
 					</div>
 
 					<div class="flex gap-2 items-center">
-						<input type="checkbox" class="bg-green">
+						<input type="checkbox" required class="bg-green">
 						<p class="small-text text-darkGray">I accept 
 							<router-link to="/" class="text-secondary">Terms and Conditions</router-link>
 						</p>
 					</div>
 					
-					<button class="btn-long" disabled>Create Account</button>
+					<button class="btn-long" :disabled="!enableButton">Create Account</button>
 				</form>
 				<p class="small-text text-darkGray text-center">Already have an account?
-					<router-link to="/" class="text-secondary">Sign In</router-link>
+					<router-link to="/signin" class="text-secondary">Sign In</router-link>
 				</p>
 			</div>
 		</div>
@@ -73,12 +73,7 @@ const containsOver8 = computed(() => {
 })
 
 const upperAndLowerCase = computed(() => {
-	// return password.value. >= 8 ? true : false 
-	if(/[A-Z]/.test(password.value) && /[a-z]/.test(password.value)) {
-		return true
-	} else {
-		return false
-	}
+	return /[A-Z]/.test(password.value) && /[a-z]/.test(password.value) ? true : false 
 })
 
 const containsSymbol = computed(() => {
@@ -89,6 +84,9 @@ const containsNumber = computed(() => {
 	return /\d/.test(password.value) ? true : false 
 })
 
+const enableButton = computed(() => {
+	return containsOver8.value && upperAndLowerCase.value && containsSymbol.value && containsNumber.value ? true : false
+})
  
 	
 </script>

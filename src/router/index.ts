@@ -9,6 +9,14 @@ const routes = [
 	{
 		path: '/signup',
 		component: () => import('../views/signup.vue')
+	},
+	{
+		path: '/signin',
+		component: () => import('../views/signin.vue')
+	},
+	{
+		path: '/verification',
+		component: () => import('../views/verify.vue')
 	}
 ]
 const router = createRouter({
