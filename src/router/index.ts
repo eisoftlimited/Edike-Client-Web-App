@@ -4,7 +4,7 @@ import { createRouter, createWebHistory, useRouter } from 'vue-router'
 const routes = [
 	{
 		path: '/',
-		component: () => import('../views/signup.vue')
+		component: () => import('../views/home.vue')
 	},
 	{
 		path: '/signup',
@@ -17,6 +17,18 @@ const routes = [
 	{
 		path: '/verification',
 		component: () => import('../views/verify.vue')
+	},
+	{
+		path: '/forgot',
+		component: () => import('../views/forgot.vue')
+	},
+	{
+		path: '/reset',
+		component: () => import('../views/reset.vue')
+	},
+	{
+		path: '/reset/new-password',
+		component: () => import('../views/newpass.vue')
 	}
 ]
 const router = createRouter({
