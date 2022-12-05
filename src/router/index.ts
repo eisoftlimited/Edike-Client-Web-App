@@ -4,7 +4,7 @@ import { createRouter, createWebHistory, useRouter } from 'vue-router'
 const routes = [
 	{
 		path: '/',
-		component: () => import('../views/home.vue')
+		component: () => import('../views/auth/signup.vue')
 	},
 	{
 		path: '/signup',
