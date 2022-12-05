@@ -5,7 +5,7 @@
 		<div class="flex flex-col gap-2">
 			<div class="flex items-center gap-2 w-fit mx-auto" @click="focusOnInput">
 				<div v-for="index in 6" :key="index"
-					class="w-[40px] h-[40px] md:w-[64px] md:h-[64px] rounded-lg border border-stroke flex items-center justify-center"
+					class="w-[40px] h-[40px] md:w-[64px] md:h-[64px] lg:max-w-[45px] lg:max-h-[45px] rounded-lg border border-stroke flex items-center justify-center"
 					:class="{ 'border-success': code[index - 1] != null, 'border-secondary': code.length > 0 && code.length == index - 1, 'border-error': inCorrectOTP }">
 					<h3 class="heading4 md:heading3 text-[#2D233B]">{{ code[index - 1] }}</h3>
 				</div>

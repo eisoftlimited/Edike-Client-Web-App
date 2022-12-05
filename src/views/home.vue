@@ -6,6 +6,7 @@
 		<router-link to="/forgot">forgot</router-link>
 		<router-link to="/reset">Reset</router-link>
 		<router-link to="/reset/new-password">new password</router-link>
+		<router-link to="/add-beneficiary">Add beneficiry</router-link>
 	</div>
 </template>
 

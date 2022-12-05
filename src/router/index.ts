@@ -8,27 +8,31 @@ const routes = [
 	},
 	{
 		path: '/signup',
-		component: () => import('../views/signup.vue')
+		component: () => import('../views/auth/signup.vue')
 	},
 	{
 		path: '/signin',
-		component: () => import('../views/signin.vue')
+		component: () => import('../views/auth/signin.vue')
 	},
 	{
 		path: '/verification',
-		component: () => import('../views/verify.vue')
+		component: () => import('../views/auth/verify.vue')
 	},
 	{
 		path: '/forgot',
-		component: () => import('../views/forgot.vue')
+		component: () => import('../views/auth/forgot.vue')
 	},
 	{
 		path: '/reset',
-		component: () => import('../views/reset.vue')
+		component: () => import('../views/auth/reset.vue')
 	},
 	{
 		path: '/reset/new-password',
-		component: () => import('../views/newpass.vue')
+		component: () => import('../views/auth/newpass.vue')
+	},
+	{
+		path: '/add-beneficiary',
+		component: () => import('../views/onboarding/addBeneficiary.vue')
 	}
 ]
 const router = createRouter({

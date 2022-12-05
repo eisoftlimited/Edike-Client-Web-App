@@ -1,8 +1,8 @@
 <template>
 	<auth-layout>
 		<div class="flex flex-col gap-8 py-6 md:flex-row md:items-end">
-			<img src="../assets/img/illustrations/signup.svg" class="w-1/2 hidden lg:flex" alt="">
-			<div class="bg-[#FAFAFA] rounded-[24px] p-4 py-8 flex flex-col gap-8 z-20 mx-auto md:w/1-2 md:py-[40px] md:px-[60px]">
+			<img src="@/assets/img/illustrations/signup.svg" class="w-1/2 hidden lg:flex" alt="">
+			<FormCard class="md:mb-[100px]">
 				<h4 class="heading5 md:heading4 text-center text-boldText">Create Account</h4>
 				<form class="flex flex-col gap-5">
 					<div class="flex gap-2">
@@ -48,17 +48,17 @@
 				<p class="small-text text-darkGray text-center">Already have an account?
 					<router-link to="/signin" class="text-secondary">Sign In</router-link>
 				</p>
-			</div>
+			</FormCard>
 		</div>
 	</auth-layout>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import PasswordInput from '../components/utils/passwordInput.vue';
-import textInput from '../components/utils/textInput.vue';
-import phoneInput from '../components/utils/phoneInput.vue'
-import { computed } from '@vue/reactivity';
+import { ref, computed } from 'vue'
+import PasswordInput from '@/components/utils/passwordInput.vue';
+import textInput from '@/components/utils/textInput.vue';
+import phoneInput from '@/components/utils/phoneInput.vue'
+import FormCard from '@/components/utils/formCard.vue';
 
 const firstName = ref('')
 const lastName = ref('')
