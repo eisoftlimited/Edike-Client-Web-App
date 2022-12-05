@@ -1,6 +1,6 @@
 <template>
 	<auth-layout>
-		<div class="flex flex-col gap-8 py-6 md:flex-row md:items-end">
+		<div class="flex flex-col gap-8 py-6 md:flex-row md:items-center">
 			<img src="@/assets/img/illustrations/signup.svg" class="w-1/2 hidden lg:flex" alt="">
 			<FormCard class="md:mb-[100px]">
 				<h4 class="heading5 md:heading4 text-center text-boldText">Create Account</h4>
