@@ -1,5 +1,5 @@
 <template>
-	<div class="flex flex-col lg:flex-row lg:w-fit mx-auto lg:h-[100px] lg:items-center p-4 gap-4 ">
+	<div class="flex flex-row max-w-[600px] mx-auto flex-wrap w-full items-center justify-center p-4 gap-4 ">
 		<router-link to="/signup">Sign up</router-link>
 		<router-link to="/signin">Sign in</router-link>
 		<router-link to="/verification">Verification</router-link>
