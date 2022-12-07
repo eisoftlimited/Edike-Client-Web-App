@@ -1,0 +1,18 @@
+
+.menu_container-enter-from, .menu_container-leave-to{
+	opacity: 0;
+}
+
+.menu_container-enter-active, .menu_container-leave-active{
+	transition: all .5s ease;
+}
+
+
+.main_menu-enter-from, .main_menu-leave-to{
+	transform: translateX(-100%);
+}
+
+.main_menu-enter-active, .main_menu-leave-active{
+	transition: all .5s ease;
+}
+

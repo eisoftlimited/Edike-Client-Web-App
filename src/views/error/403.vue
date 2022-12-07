@@ -1,0 +1,16 @@
+<template>
+	<auth-layout>
+		<div class="flex items-center justify-between gap-6 max-w-[1200px] mx-auto bg-[#FFFFFF] rounded-2xl p-8 md:px-[60px]">
+			<div class="flex flex-col gap-4 max-w-[500px] mx-auto lg:w-full">
+				<p class="small-text text-boldText font-bold">403 Page</p>
+				<h2 class="heading4 text-boldText font-bold">Restricted Access</h2>
+				<p class="small-text text-darkGray max-w-[400px]">You don’t have access the permissions to view this page. Please contact support for more information.</p>
+				<div class="flex flex-wrap gap-6 items-center">
+					<button class="btn-short w-full max-w-fit px-2" >Go to Dashboard</button>
+					<p class="normal-text text-primary w-full max-w-fit font-medium cursor-pointer">Contact Support</p>
+				</div>
+			</div>
+			<img class="lg:flex hidden max-w-1/2"  src="@/assets/img/illustrations/403.svg" alt="">
+		</div>
+	</auth-layout>
+</template>

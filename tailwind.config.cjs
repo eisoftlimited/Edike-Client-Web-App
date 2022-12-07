@@ -13,7 +13,8 @@ const newColors = {
 	success: 'var(--success)',
 	error: 'var(--error)',
 	warning: 'var(--warning)',
-	boldText: 'var(--bold-text)'
+	boldText: 'var(--bold-text)',
+	overlay: 'var(--overlay)'
 }
 
 

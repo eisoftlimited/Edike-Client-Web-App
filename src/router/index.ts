@@ -37,6 +37,34 @@ const routes = [
 	{
 		path: '/add-beneficiary',
 		component: () => import('../views/onboarding/addBeneficiary.vue')
+	},
+	{
+		path: '/dashboard',
+		component: () => import('../views/dashboard.vue'),
+		children: [
+			// {
+            //     path: '',
+            //     redirect: '/index',
+            // },
+            {
+                path: 'home',
+				name: 'Dashboard',
+                component: () => import('../views/dashboard/index.vue')
+            },
+			{
+                path: 'beneficiaries',
+				name: 'Beneficiaries',
+                component: () => import('../views/dashboard/beneficiaries.vue')
+            },
+		]
+	},
+	{
+		path: '/403',
+		component: () => import('../views/error/403.vue')
+	},
+	{
+		path: '/:pathMatch(.*)*',
+		component: () => import('../views/error/404.vue')
 	}
 ]
 const router = createRouter({

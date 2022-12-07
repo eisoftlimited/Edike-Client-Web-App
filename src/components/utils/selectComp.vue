@@ -37,7 +37,7 @@ import searchInput from './searchInput.vue';
 const props = defineProps<{
 	modelValue: string
 	selectType: 'class' | 'school' | 'gender'
-	toSelect: string[]
+	toSelect?: string[]
 	label: 'Class' | 'Name of school' | 'Gender'
 }>()
 
@@ -62,7 +62,7 @@ watch(searchTerm, async (newValue, oldValue) => {
   if(newValue.length > 0) {
 	isFiltered.value = true
 	const regex = new RegExp(newValue, "i");
-	filteredItems.value = props.toSelect.filter(el => {
+	filteredItems.value = props.toSelect?.filter(el => {
 		return regex.test(el)
 	})
   } else {
