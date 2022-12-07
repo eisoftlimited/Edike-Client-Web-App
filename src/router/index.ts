@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory, useRouter } from 'vue-router'
+import { useMenuController } from '../composables/MenuController'
 
+const { closeMenu } = useMenuController()
 
 const routes = [
 	{
@@ -71,9 +73,12 @@ const router = createRouter({
 	history: createWebHistory(),
 	routes,
 	scrollBehavior(to, from, savedPosition) {
-		// always scroll to top
 		return { top: 0 }
 	},
+})
+
+router.afterEach(() => {
+	closeMenu()
 })
 
 

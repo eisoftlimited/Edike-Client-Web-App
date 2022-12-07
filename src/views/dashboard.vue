@@ -1,5 +1,5 @@
 <template>
-	<div class="flex h-screen max-w-[1500px] mx-auto">
+	<div class="flex h-screen ">
 		<Sidebar class="hidden lg:flex"/>
 		<SideMenu/>
 		<div class="w-full">

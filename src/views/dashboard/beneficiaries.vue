@@ -1,5 +1,5 @@
 <template>
-	<div class="page flex flex-col items-center md:flex-row gap-4 pb-[30px] relative">
+	<div class="page flex flex-col md:flex-row gap-4 pb-[30px] relative">
 		<BeneficiaryCard/>
 		<BeneficiaryCard/>
 		<button class="fixed bottom-2 right-2 btn-short md:hidden flex items-center gap-3 justify-center" >

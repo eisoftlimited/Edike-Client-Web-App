@@ -8,7 +8,7 @@
 			<img src="@/assets/img/icons/select_arrow_down.svg" :class="{'rotate-180':readyToSelect}" alt="">
 		</div>
 
-		<div class="flex flex-col h-[250px] overflow-auto px-1 py-2" v-if="readyToSelect">
+		<div class="flex flex-col max-h-[250px] overflow-auto px-1 py-2" v-if="readyToSelect">
 			<searchInput v-model="searchTerm" v-if="selectType != 'gender'"/>
 
 			<p v-if="selectType == 'school'" class="small-text text-[#3F434A] px-2 py-2 h-[40px] my-1 cursor-pointer hover:bg-[#F4F5F5] flex items-center gap-2"  
@@ -25,7 +25,6 @@
 			<p v-if="selectType == 'gender'" class="small-text text-[#3F434A] px-2 py-2 h-[40px] my-1 cursor-pointer hover:bg-[#F4F5F5]"  
 				v-for="item in gender" :key="item" @click="selectItem(item)"
 			>{{item}}</p>
-
 		</div>
 	</div>
 </template>
