@@ -31,8 +31,8 @@ const route = useRoute()
 const links = [
 	{ text: 'Dashboard', route: '/dashboard/home', icon: 'home' },
 	{ text: 'Beneficiaries', route: '/dashboard/beneficiaries', icon: 'beneficiaries' },
-	{ text: 'Loans', route: '/', icon: 'loan' },
-	{ text: 'Profile', route: '/', icon: 'profile' }
+	{ text: 'Loans', route: '/dashboard/home', icon: 'loan' },
+	{ text: 'Profile', route: '/dashboard/home', icon: 'profile' }
 ]
 
 const getImageUrl = (imgName: string) => {
