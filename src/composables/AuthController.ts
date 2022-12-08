@@ -46,16 +46,16 @@ export const useAuth  = () => {
 	}
 
 	const registerUser = () => {
-		// makeFetch('POST', 'auth/register', { 
-		// 	firstname:firstName.value, 
-		// 	lastname:lastName.value,
-		// 	email:email.value,
-		// 	phone:phone.value,
-		// 	password:password.value
-		// }).then(res => res.json())
-		// .then(data => console.log(data))
-		// .catch(err => console.log(err))
-		router.push('/dashboard/home')
+		makeFetch('POST', 'auth/register', { 
+			firstname:firstName.value, 
+			lastname:lastName.value,
+			email:email.value,
+			phone:phone.value,
+			password:password.value
+		}).then(res => res.json())
+		.then(data => console.log(data))
+		.catch(err => console.log(err))
+		// router.push('/dashboard/home')
 	}
 
 	const loginUser = () => {

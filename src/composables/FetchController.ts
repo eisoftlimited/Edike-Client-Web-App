@@ -1,7 +1,7 @@
 import { useToken } from './TokenController'
 
 const { authToken } = useToken()
-let baseUrl = 'api.eduloan.com/'
+let baseUrl = 'http://54.157.198.209:9191/edike/api/v1/'
 
 
 export const useFetch = () => {
