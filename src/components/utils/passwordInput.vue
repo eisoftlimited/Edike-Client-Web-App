@@ -19,7 +19,7 @@
 			<span class="h-full w-[33%] bg-transparent" :class="{'bg-[#68C38C]': forStrong}"></span>
 		</div>
 		<p v-if="showForgotPassword" class="text-right text-[10px] text-black">Forgot Password? 
-			<router-link to="/" class="text-secondary">Click Here</router-link>
+			<router-link to="/forgot" class="text-secondary">Click Here</router-link>
 		</p>
 	</div>
 </template>
