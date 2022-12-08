@@ -15,7 +15,7 @@
 				</router-link>
 			</div>
 		</div>
-		<button class="px-6 py-3 flex items-center justify-between normal-text text-error">
+		<button class="px-6 py-3 flex items-center justify-between normal-text text-error" @click="logOut">
 			Logout
 			<img src="../../assets/img/icons/dashboard/logout.svg" alt="">
 		</button>
@@ -25,7 +25,9 @@
 
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
+import { useAuth } from '../../composables/AuthController';
 
+const { logOut } = useAuth()
 const route = useRoute()
 const links = [
 	{ text: 'Dashboard', route: '/dashboard/home', icon: 'home' },

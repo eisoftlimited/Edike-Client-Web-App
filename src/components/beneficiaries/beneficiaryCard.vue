@@ -21,7 +21,11 @@
 			</div>
 		</div>
 		<div class="absolute right-6 top-14 flex flex-col gap-4 p-4 rounded-lg bg-[#FAFAFA] w-[130px]" v-if="modifyCard">
-			<button class="flex items-center gap-4 small-text text-darkGray" @click="editBeneficiary">
+			<button class="flex md:hidden items-center gap-4 small-text text-darkGray" @click="editBeneficiarySmallScreen">
+				<img src="../../assets/img/icons/edit.svg" alt="">
+				Edit
+			</button>
+			<button class="hidden md:flex items-center gap-4 small-text text-darkGray" @click="editBeneficiary">
 				<img src="../../assets/img/icons/edit.svg" alt="">
 				Edit
 			</button>
@@ -37,12 +41,20 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useBeneficiaries } from '../../composables/Beneficiaries';
+import { useGlobalModal } from '../../composables/GlobalModal';
+import smallBeneficiaryForm from './smallBeneficiaryForm.vue';
 
 const modifyCard = ref(false)
-const { openEditBeneficiaries } = useBeneficiaries()
+const { openBeneficiaryModal } = useBeneficiaries()
+const { openModal } = useGlobalModal()
 
 const editBeneficiary = () => {
-	openEditBeneficiaries()
+	openBeneficiaryModal('edit')
+	modifyCard.value = false
+}
+
+const editBeneficiarySmallScreen = () => {
+	openModal(smallBeneficiaryForm, 'Edit Beneficiary')
 	modifyCard.value = false
 }
 </script>

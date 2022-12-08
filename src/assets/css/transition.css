@@ -16,3 +16,23 @@
 	transition: all .5s ease;
 }
 
+
+
+
+
+.modal_overlay-enter-from, .modal_overlay-leave-to{
+	opacity: 0;
+}
+
+.modal_overlay-enter-active, .modal_overlay-leave-active{
+	transition: all 1s ease;
+}
+
+.main_modal-enter-from, .main_modal-leave-to{
+	opacity: 0;
+	transform: translateY(100px);
+}
+
+.main_modal-enter-active, .main_modal-leave-active{
+	transition: all .5s ease;
+}

@@ -1,24 +1,17 @@
 import { ref } from 'vue'
 
-const addBeneficiaryStatus = ref(false)
-const editBeneficiaryStatus = ref(false)
+const beneficiaryModal = ref(false)
+const beneficiaryModalType = ref<'add' | 'edit'>('add')
 
 export const useBeneficiaries  = () => {
-	const openAddBeneficiaries = () => {
-		addBeneficiaryStatus.value = true
+	const openBeneficiaryModal = (str: 'add' | 'edit') => {
+		beneficiaryModalType.value = str
+		beneficiaryModal.value = true
 	}
 
-	const closeAddBeneficiaries =  () => {
-		addBeneficiaryStatus.value = false
+	const closeBeneficiaryModal =  () => {
+		beneficiaryModal.value = false
 	}
 
-	const openEditBeneficiaries = () => {
-		editBeneficiaryStatus.value = true
-	}
-
-	const closeEditBeneficiaries =  () => {
-		editBeneficiaryStatus.value = false
-	}
-	return { addBeneficiaryStatus, openAddBeneficiaries, closeAddBeneficiaries, editBeneficiaryStatus, openEditBeneficiaries, 
-			closeEditBeneficiaries }
+	return { beneficiaryModal, beneficiaryModalType, openBeneficiaryModal, closeBeneficiaryModal }
 }

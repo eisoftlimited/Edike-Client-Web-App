@@ -4,7 +4,7 @@
 			<img src="@/assets/img/illustrations/signup.svg" class="w-1/2 hidden lg:flex" alt="">
 			<FormCard class="md:mb-[100px]">
 				<h4 class="heading5 md:heading4 text-center text-boldText">Create Account</h4>
-				<form class="flex flex-col gap-5">
+				<form class="flex flex-col gap-5" @submit.prevent="registerUser">
 					<div class="flex gap-2">
 						<textInput class="w-1/2" v-model="firstName" :if-required="true" label="First Name" place-holder="Enter text here..." input-type="text"/>
 						<textInput class="w-1/2" v-model="lastName" :if-required="true" label="Last Name" place-holder="Enter text here..." input-type="text"/>
@@ -43,7 +43,7 @@
 						</p>
 					</div>
 					
-					<button class="btn-long" :disabled="!enableButton">Create Account</button>
+					<button class="btn-long" :disabled="!enableSignupButton">Create Account</button>
 				</form>
 				<p class="small-text text-darkGray text-center">Already have an account?
 					<router-link to="/signin" class="text-secondary">Sign In</router-link>
@@ -54,39 +54,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
 import PasswordInput from '@/components/utils/passwordInput.vue';
 import textInput from '@/components/utils/textInput.vue';
-import phoneInput from '@/components/utils/phoneInput.vue'
+import phoneInput from '@/components/utils/phoneInput.vue';
 import FormCard from '@/components/utils/formCard.vue';
+import { useAuth } from '../../composables/AuthController';
 
-const firstName = ref('')
-const lastName = ref('')
-const email = ref('')
-const phone = ref('')
-const password = ref('')
-const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
+const { firstName, lastName, phone, password, email, containsNumber, containsOver8, containsSymbol, 
+		upperAndLowerCase, enableSignupButton, registerUser } = useAuth()
 // computed
-const containsOver8 = computed(() => {
-	return password.value.length >= 8 ? true : false 
-})
 
-const upperAndLowerCase = computed(() => {
-	return /[A-Z]/.test(password.value) && /[a-z]/.test(password.value) ? true : false 
-})
-
-const containsSymbol = computed(() => {
-	return specialChars.test(password.value) ? true : false 
-})
-
-const containsNumber = computed(() => {
-	return /\d/.test(password.value) ? true : false 
-})
-
-const enableButton = computed(() => {
-	return containsOver8.value && upperAndLowerCase.value && containsSymbol.value && containsNumber.value ? true : false
-})
  
 	
 </script>

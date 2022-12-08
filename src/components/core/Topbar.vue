@@ -19,7 +19,7 @@
 		</div>
 		<div class="flex gap-2 md:gap-4 py-2 items-center flex-col md:flex-row h-[60px]" v-if="route.name == 'Beneficiaries'">
 			<searchInput :model-value="searchTerm"/>
-			<button class="btn-medium w-full max-w-fit px-2 items-center gap-3 hidden md:flex" @click="openAddBeneficiaries">
+			<button class="btn-medium w-full max-w-fit px-2 items-center gap-3 hidden md:flex" @click="openBeneficiaryModal('add')">
 				<img src="../../assets/img/icons/dashboard/plus_white.svg" alt="">
 				Add Beneficiary
 			</button>
@@ -36,7 +36,7 @@ import { useBeneficiaries } from '../../composables/Beneficiaries';
 
 
 const route = useRoute()
-const { openAddBeneficiaries } = useBeneficiaries()
+const { openBeneficiaryModal } = useBeneficiaries()
 const { openMenu } = useMenuController()
 const searchTerm = ref('')
 </script>

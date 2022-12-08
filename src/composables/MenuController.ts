@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 
 const menuStatus = ref(false)
+const showMenu = ref(false)
 export const useMenuController  = () => {
 
 	const openMenu = () => {
@@ -8,8 +9,13 @@ export const useMenuController  = () => {
 	}
 
 	const closeMenu = () => {
-		menuStatus.value = false
+		showMenu.value = false
 	}
 
-	return { menuStatus, openMenu, closeMenu}
+	const closeMenuContainer = () => {
+		menuStatus.value = false
+		showMenu.value = false
+	}
+
+	return { menuStatus, showMenu, openMenu, closeMenu, closeMenuContainer}
 }

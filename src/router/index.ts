@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory, useRouter } from 'vue-router'
 import { useMenuController } from '../composables/MenuController'
+import { useGlobalModal } from '../composables/GlobalModal'
 
-const { closeMenu } = useMenuController()
+const { closeMenu, menuStatus } = useMenuController()
+const { closeModal } = useGlobalModal()
 
 const routes = [
 	{
@@ -44,10 +46,10 @@ const routes = [
 		path: '/dashboard',
 		component: () => import('../views/dashboard.vue'),
 		children: [
-			// {
-            //     path: '',
-            //     redirect: '/index',
-            // },
+			{
+                path: '',
+                redirect: '/dashboard/home',
+            },
             {
                 path: 'home',
 				name: 'Dashboard',
@@ -77,8 +79,9 @@ const router = createRouter({
 	},
 })
 
-router.afterEach(() => {
-	closeMenu()
+router.beforeEach(() => {
+	if(menuStatus) closeMenu()
+	closeModal()
 })
 
 
