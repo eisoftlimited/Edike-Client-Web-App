@@ -1,5 +1,5 @@
 <template>
-	<div class="p-6 overflow-auto h-full bg-white w-full max-w-[500px] flex flex-col gap-[40px]">
+	<div class="py-2 px-1 overflow-auto h-full bg-white w-full max-w-[500px] flex flex-col gap-[40px]">
 		<div class="flex flex-col gap-2">
 			<p class="small-text text-[#404040]">Please add a beneficiary. This would be the details of your ward for
 				which you would like us to make the fees payment</p>
