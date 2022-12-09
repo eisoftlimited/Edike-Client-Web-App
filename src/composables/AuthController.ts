@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import router from '../router';
 import { useFetch } from './FetchController';
 
-const { makeFetch } = useFetch()
+const { makeFetch, makeFetchWithAuth } = useFetch()
 
 const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 const firstName = ref('')
@@ -12,6 +12,7 @@ const email = ref('')
 const phone = ref('')
 const password = ref('')
 const oldPass = ref('')
+const otp = ref('')
 
 
 const containsOver8 = computed(() => {
@@ -47,19 +48,6 @@ export const useAuth  = () => {
 	}
 
 	const registerUser = () => {
-		makeFetch('POST', 'auth/register', { 
-			firstname:firstName.value, 
-			lastname:lastName.value,
-			email:email.value,
-			phone:phone.value,
-			password:password.value
-		}).then(res => res.json())
-		.then(data => console.log(data))
-		.catch(err => console.log(err))
-		// router.push('/dashboard/home')
-	}
-
-	const loginUser = () => {
 		// makeFetch('POST', 'auth/register', { 
 		// 	firstname:firstName.value, 
 		// 	lastname:lastName.value,
@@ -70,6 +58,51 @@ export const useAuth  = () => {
 		// .then(data => console.log(data))
 		// .catch(err => console.log(err))
 		router.push('/dashboard/home')
+	}
+
+	const loginUser = () => {
+		// makeFetch('POST', 'auth/login', {
+		// 	email:email.value,
+		// 	password:password.value
+		// }).then(res => res.json())
+		// .then(data => console.log(data))
+		// .catch(err => console.log(err))
+		router.push('/dashboard/home')
+	}
+
+	const forgotPassword = () => {
+		// makeFetch('POST', 'auth/forgot-password', {
+			// 	email:email.value,
+			// }).then(res => res.json())
+			// .then(data => console.log(data))
+			// .catch(err => console.log(err))
+		// }
+	}
+
+	const forgetPasswordOTP = () => {
+		// makeFetch('POST', 'auth/reset', {
+			// 	otp:otp.value,
+			// }).then(res => res.json())
+			// .then(data => console.log(data))
+			// .catch(err => console.log(err))
+		// }
+	}
+
+	const resetPassword = () => {
+		// makeFetch('POST', 'auth/reset-password', {
+			// 	email:email.value,
+			// 	password:password.value
+			// }).then(res => res.json())
+			// .then(data => console.log(data))
+			// .catch(err => console.log(err))
+		// }
+	}
+
+	const getUser = () => {
+		// makeFetchWithAuth('GET', 'auth/user')
+		// .then(res => res.json())
+		// .then(data => console.log(data))
+		// .catch(err => console.log(err))
 	}
 
 	const logOut = () => {
