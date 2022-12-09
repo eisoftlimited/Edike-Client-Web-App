@@ -14,15 +14,15 @@ const studentClass = ref('')
 export const useBeneficiary  = () => {
 	
 	const addBeneficiary = () => {
-		makeFetchWithAuthAndBody('POST', 'auth/register', { 
-			firstname:firstName.value, 
-			lastname:lastName.value,
-			email:email.value,
-			phone:phone.value,
-			password:password.value
-		}).then(res => res.json())
-		.then(data => console.log(data))
-		.catch(err => console.log(err))
+		// makeFetchWithAuthAndBody('POST', 'auth/register', { 
+		// 	firstname:firstName.value, 
+		// 	lastname:lastName.value,
+		// 	email:email.value,
+		// 	phone:phone.value,
+		// 	password:password.value
+		// }).then(res => res.json())
+		// .then(data => console.log(data))
+		// .catch(err => console.log(err))
 	}
 
 	return { }
