@@ -1,6 +1,6 @@
 <template>
-	<div class="flex items-center justify-between gap-6">
-		<div class="flex flex-col gap-6 w-full max-w-[500px] mx-auto lg:w-1/2">
+	<div class="flex items-start justify-center gap-6 w-full">
+		<div class="flex flex-col gap-6 w-full max-w-[500px] mx-auto lg:w-1/2 ">
 			<div class="flex flex-col gap-1">
 				<h3 class="text-[22px] font-medium">Personal Details</h3>
 				<p class="small-text text-[#5F6165]">Update your photo and personal details here.</p>
@@ -13,7 +13,7 @@
 				<button class="btn-long">Update Profile</button>
 			</form>
 		</div>
-		<img src="../../../assets/img/illustrations/profile/details.svg" class="w-1/2 hidden lg:flex" alt="">
+		<img src="../../../assets/img/illustrations/profile/details.svg" class="w-1/2 hidden lg:flex " alt="">
 	</div>
 </template>
 

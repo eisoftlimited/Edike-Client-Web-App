@@ -1,6 +1,6 @@
 <template>
 	<div class="profile overflow-auto ">
-		<div class="bg-[#FFFFFF] rounded-xl py-10 px-5 flex flex-col gap-10">
+		<div class="bg-[#FFFFFF] rounded-xl py-10 px-5 flex flex-col gap-10 transition-all">
 			<div class="flex items-center flex-wrap gap-4 md:gap-8">
 				<button v-for="tab in tabs" :key="tab.text" class="btn-long px-3 w-fit bg-transparent text-lightGray"
 					:class="{'bg-primary text-[#F6F6F6] font-semibold': tab.id == currentTab}" @click="currentTab = tab.id"
@@ -8,7 +8,7 @@
 			</div>
 
 			<transition appear name="tabs_transition" mode="out-in">
-				<component :is="tabs[currentTab].comp"></component>
+				<component :is="tabs[currentTab].comp" class="max-w-[1500px]"></component>
 			</transition>
 		</div>
 	</div>

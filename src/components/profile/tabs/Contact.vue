@@ -1,5 +1,5 @@
 <template>
-	<div class="flex items-center justify-between gap-6">
+	<div class="flex items-start  w-full justify-center gap-6">
 		<div class="flex flex-col gap-[48px] w-full max-w-[500px] mx-auto lg:w-1/2">
 			<div class="flex flex-col gap-4">
 				<h3 class="text-[22px] font-medium">Get in touch with us</h3>

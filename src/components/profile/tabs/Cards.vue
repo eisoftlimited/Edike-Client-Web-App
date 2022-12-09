@@ -1,5 +1,5 @@
 <template>
-	<div class="flex flex-col gap-6">
+	<div class="flex flex-col gap-6  w-full">
 		<h3 class="text-[22px] font-medium">My Cards</h3>
 		<CardInfo/>
 		<button class="add btn-long max-w-[300px] flex items-center justify-center gap-2 text-primary font-medium">
