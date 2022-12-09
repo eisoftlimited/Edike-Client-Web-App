@@ -32,7 +32,7 @@ const links = [
 	{ text: 'Dashboard', route: '/dashboard/home', icon: 'home' },
 	{ text: 'Beneficiaries', route: '/dashboard/beneficiaries', icon: 'beneficiaries' },
 	{ text: 'Loans', route: '/dashboard/home', icon: 'loan' },
-	{ text: 'Profile', route: '/dashboard/home', icon: 'profile' }
+	{ text: 'Profile', route: '/dashboard/profile', icon: 'profile' }
 ]
 
 const getImageUrl = (imgName: string) => {

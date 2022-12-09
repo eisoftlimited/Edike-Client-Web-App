@@ -60,6 +60,11 @@ const routes = [
 				name: 'Beneficiaries',
                 component: () => import('../views/dashboard/beneficiaries.vue')
             },
+			{
+                path: 'profile',
+				name: 'Profile',
+                component: () => import('../views/dashboard/profile.vue')
+            },
 		]
 	},
 	{

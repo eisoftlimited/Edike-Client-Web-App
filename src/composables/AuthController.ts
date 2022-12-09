@@ -11,6 +11,7 @@ const lastName = ref('')
 const email = ref('')
 const phone = ref('')
 const password = ref('')
+const oldPass = ref('')
 
 
 const containsOver8 = computed(() => {
@@ -75,6 +76,6 @@ export const useAuth  = () => {
 		router.push('/signin')
 	}
 
-	return { firstName, lastName, email, password, phone, containsOver8, upperAndLowerCase, containsSymbol, 
+	return { firstName, lastName, email, password, phone, oldPass, containsOver8, upperAndLowerCase, containsSymbol, 
 			containsNumber, enableLoginButton, enableSignupButton, registerUser, loginUser , logOut }
 }

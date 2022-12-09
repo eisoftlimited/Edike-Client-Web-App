@@ -36,3 +36,17 @@
 .main_modal-enter-active, .main_modal-leave-active{
 	transition: all .5s ease;
 }
+
+
+
+
+
+
+.tabs_transition-enter-from, .tabs_transition-leave-to{
+	opacity: 0;
+	transform: translateY(50px);
+}
+
+.tabs_transition-enter-active, .tabs_transition-leave-active{
+	transition: all .5s ease-in-out;
+}

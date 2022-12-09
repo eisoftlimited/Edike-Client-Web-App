@@ -2,9 +2,9 @@
 	<div class="w-full flex flex-col gap-2">
 		<p class="small-text text-darkGray">{{ label }}</p>
 		<div class="w-full h-fit relative">
-			<input required :type="passwordVisible ? 'text' : 'password'" :placeholder="placeHolder" :value="modelValue"
+			<input required ref="pass" :type="passwordVisible ? 'text' : 'password'" :placeholder="placeHolder" :value="modelValue"
 				@input="updateValue"
-				class="pass w-full caret-secondary bg-transparent rounded-xl border border-lightGray focus:outline-0 h-[40px] px-4 py-2 small-text focus:border-secondary transition-all" 
+				class="w-full caret-secondary bg-transparent rounded-xl border border-lightGray focus:outline-0 h-[40px] px-4 py-2 small-text focus:border-secondary transition-all" 
 			/>
 				<span v-if="!passwordVisible" @click="toggleVisibility" class="cursor-pointer absolute top-1/2 -translate-y-1/2 right-4">
 					<img src="../../assets/img/icons/eye_closed.svg" alt="">
@@ -36,13 +36,15 @@ defineProps<{
 	allowPasswordStrength: boolean
 }>()
 
+const pass = ref<HTMLInputElement>()
 const emit = defineEmits(['update:modelValue'])
 
 const updateValue = (e: Event) => {
-	let pass:HTMLInputElement = document.querySelector('input.pass')!
-  	pass.value.length > 0? showPasswordStrentghBar.value = true : showPasswordStrentghBar.value = false
+	// let pass:HTMLInputElement = document.querySelector('input.pass')!
+  	pass.value!.value.length > 0? showPasswordStrentghBar.value = true : showPasswordStrentghBar.value = false
   	emit('update:modelValue', (e.target as HTMLInputElement).value)
-	passWordStrengthChecker(pass.value)
+	passWordStrengthChecker(pass.value!.value)
+	// alert(pass.value!.value)
 };
 
 const passwordVisible = ref(false)
