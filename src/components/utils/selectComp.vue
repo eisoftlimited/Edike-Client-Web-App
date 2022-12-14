@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import searchInput from './searchInput.vue';
 
 const props = defineProps<{
@@ -69,6 +69,14 @@ watch(searchTerm, async (newValue, oldValue) => {
 	filteredItems.value = props.toSelect
   }
 })
+
+onMounted(() => {
+	if(props.modelValue) {
+		itemSelected.value = true
+		selectedItem.value = props.modelValue
+	}
+})
+
 
 
 </script>

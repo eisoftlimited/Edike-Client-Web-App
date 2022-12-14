@@ -1,23 +1,27 @@
 <template>
-	<div class="bene_card bg-[#FAFAFA] rounded-[12px] p-6 flex flex-col gap-5 relative h-fit w-fit">
+	<div class="bene_card bg-[#FAFAFA] rounded-[12px] p-6 flex flex-col gap-5 relative h-fit w-fit max-w-[300px]">
 		<div class="flex w-full justify-end">
 			<button class="w-fit py-2" @click="modifyCard = !modifyCard">
 				<img src="@/assets/img/icons/dots.svg" alt="">
 			</button>
 		</div>
 		<img src="@/assets/img/illustrations/female_avatar.svg" alt="">
-		<div class="flex gap-3 w-fit mx-auto">
-			<div class="flex flex-col gap-3">
-				<p class="small-text font-medium text-[#3F434A]">Name</p>
-				<p class="small-text font-medium text-[#3F434A]">Date of Birth</p>
-				<p class="small-text font-medium text-[#3F434A]">School</p>
-				<p class="small-text font-medium text-[#3F434A]">Class</p>
+		<div class="flex flex-col gap-3 w-fit mx-auto">
+			<div class="flex items-start gap-3">
+				<p class="small-text font-medium text-[#3F434A] min-w-[100px]">Name</p>
+				<p class="small-text text-[#8A9099] w-full">{{data.firstname}} {{data.lastname}}</p>
 			</div>
-			<div class="flex flex-col gap-3">
-				<p class="small-text text-[#8A9099]">Tiaraoluwa Ogunjobi</p>
-				<p class="small-text text-[#8A9099]">1 March 2002</p>
-				<p class="small-text text-[#8A9099]">Elbethel School</p>
-				<p class="small-text text-[#8A9099]">Basic 2</p>
+			<div class="flex  items-start gap-3">
+				<p class="small-text font-medium text-[#3F434A] min-w-[100px]">Date of Birth</p>
+				<p class="small-text text-[#8A9099] w-full">{{data.dob}}</p>
+			</div>
+			<div class="flex items-start gap-3">
+				<p class="small-text font-medium text-[#3F434A] min-w-[100px]">School</p>
+				<p class="small-text text-[#8A9099] w-full">{{data.school}}</p>
+			</div>
+			<div class="flex items-start gap-3">
+				<p class="small-text font-medium text-[#3F434A] min-w-[100px]">Class</p>
+				<p class="small-text text-[#8A9099] w-full">{{data.studentClass}}</p>
 			</div>
 		</div>
 		<div class="absolute right-6 top-14 flex flex-col gap-4 p-4 rounded-lg bg-[#FAFAFA] w-[130px]" v-if="modifyCard">
@@ -30,7 +34,7 @@
 				Edit
 			</button>
 			<hr class="border border-[#E8E9EB]"/>
-			<button class="flex items-center gap-4 small-text text-error">
+			<button class="flex items-center gap-4 small-text text-error" @click="deleteBeneficiaries(data._id)">
 				<img src="../../assets/img/icons/delete.svg" alt="">
 				Delete
 			</button>
@@ -43,12 +47,17 @@ import { ref } from 'vue'
 import { useBeneficiaries } from '../../composables/Beneficiaries';
 import { useGlobalModal } from '../../composables/GlobalModal';
 import smallBeneficiaryForm from './smallBeneficiaryForm.vue';
+import Bene from '../../interface/typeBeneficiaries';
 
+const props = defineProps<{
+	data: Bene
+}>()
 const modifyCard = ref(false)
-const { openBeneficiaryModal } = useBeneficiaries()
+const { openBeneficiaryModal, toFetchId, deleteBeneficiaries } = useBeneficiaries()
 const { openModal } = useGlobalModal()
 
 const editBeneficiary = () => {
+	toFetchId.value = props.data._id
 	openBeneficiaryModal('edit')
 	modifyCard.value = false
 }

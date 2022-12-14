@@ -9,7 +9,7 @@
 						before you start you will have to activate it. We have sent a verification code to the email you
 						provided during registration. Please input the six digit code to verify your account.</p>
 				</div>
-				<OTP/>
+				<OTP type="verify"/>
 				<p class="small-text text-darkGray text-center">Remember you login details?
 					<router-link to="/signin" class="text-secondary">Sign In</router-link>
 				</p>

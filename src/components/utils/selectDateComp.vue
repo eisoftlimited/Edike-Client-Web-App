@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const props = defineProps<{
 	modelValue: string
@@ -47,6 +47,14 @@ const selectItem = (str:string) => {
 }
 
 
-
+onMounted(() => {
+	setTimeout(() => {
+		if(props.modelValue) {
+			console.log(props.modelValue) 
+			itemSelected.value = true
+			selectedItem.value = props.modelValue
+		}
+	}, 500);
+})
 
 </script>

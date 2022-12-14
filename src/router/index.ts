@@ -30,14 +30,14 @@ const routes = [
 		path: '/forgot',
 		component: () => import('../views/auth/forgot.vue')
 	},
-	{
-		path: '/reset',
-		component: () => import('../views/auth/reset.vue')
-	},
-	{
-		path: '/reset/new-password',
-		component: () => import('../views/auth/newpass.vue')
-	},
+	// {
+	// 	path: '/reset',
+	// 	component: () => import('../views/auth/reset')
+	// },
+	// {
+	// 	path: '/reset/new-password',
+	// 	component: () => import('../views/auth/newpass')
+	// },
 	{
 		path: '/add-beneficiary',
 		component: () => import('../views/onboarding/addBeneficiary.vue')
