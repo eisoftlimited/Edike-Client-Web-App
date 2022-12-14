@@ -3,10 +3,12 @@ import { ref } from 'vue'
 import router from '../router';
 import { useFetch } from './FetchController';
 import { useToken } from './TokenController';
+import { useUser } from './UserController';
+const { clearUser } = useUser()
 
-
-const { saveTokenToLS } = useToken()
+const { saveTokenToLS, deleteDataFromLS } = useToken()
 const { makeFetch, makeFetchWithAuth } = useFetch()
+
 
 
 const firstName = ref('')
@@ -83,6 +85,7 @@ export const useAuth  = () => {
 	}
 
 	const loginUser = () => {
+		// const { getUser } = useUser()
 		makeFetch('POST', 'auth/login', {
 			email:email.value,
 			password:password.value
@@ -92,6 +95,7 @@ export const useAuth  = () => {
 			if(data.token) {
 				alert('login successful')
 				saveTokenToLS(data.token)
+				// getUser()
 				router.push('/dashboard')
 				resetVariables()
 			} else {
@@ -179,7 +183,9 @@ export const useAuth  = () => {
 	// }
 
 	const logOut = () => {
+		deleteDataFromLS()
 		router.push('/signin')
+		clearUser()
 	}
 
 	return { firstName, lastName, email, password, phone, oldPass, otp, registerUser, loginUser , logOut, verifyEmail,

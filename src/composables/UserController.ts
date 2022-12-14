@@ -9,7 +9,13 @@ const phone = ref<number>()
 const email = ref('')
 
 export const useUser  = () => {
-	
+	const clearUser = () => {
+		firstName.value = ''
+		lastName.value = ''
+		phone.value = undefined
+		email.value = ''
+	}
+
 	const getUser = () => {
 		makeFetchWithAuth('GET', 'auth/user')
 		.then(res => res.json())
@@ -27,7 +33,15 @@ export const useUser  = () => {
 		.catch(err => console.log(err))
 	}
 
+	
+
+	return { getUser, firstName, lastName, phone, email, clearUser}
+}
+
+export const getUserAutomatically = () => {
+	const { getUser } = useUser()
+
 	if(firstName.value == '' || email.value == '') getUser()
 
-	return { getUser, firstName, lastName, phone, email}
+	return { firstName, lastName, phone, email}
 }

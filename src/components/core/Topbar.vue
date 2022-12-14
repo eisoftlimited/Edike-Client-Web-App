@@ -33,12 +33,12 @@ import { useMenuController } from '../../composables/MenuController';
 import searchInput from '../utils/searchInput.vue';
 import { useRoute } from 'vue-router';
 import { useBeneficiaries } from '../../composables/Beneficiaries';
-import { useUser } from '../../composables/UserController';
+import { getUserAutomatically } from '../../composables/UserController';
 
 
 const route = useRoute()
 const { openBeneficiaryModal, beneficiaryModal } = useBeneficiaries()
 const { openMenu } = useMenuController()
-const { firstName, lastName } = useUser()
+const { firstName, lastName } = getUserAutomatically()
 const searchTerm = ref('')
 </script>
