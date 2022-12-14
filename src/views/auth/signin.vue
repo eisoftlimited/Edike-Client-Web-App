@@ -23,8 +23,10 @@ import PasswordInput from '@/components/utils/passwordInput.vue';
 import textInput from '@/components/utils/textInput.vue';
 import FormCard from '@/components/utils/formCard.vue';
 import { useAuth } from '../../composables/AuthController';
+import { usePassword } from '../../composables/PasswordController';
 
-const { enableLoginButton, email, password, loginUser } = useAuth()
+const { email, password, loginUser } = useAuth()
+const { enableLoginButton } = usePassword()
 
 
  

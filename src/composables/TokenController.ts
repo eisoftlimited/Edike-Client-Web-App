@@ -1,16 +1,17 @@
 
+const LSName = 'eduloanEdikeUserAuthToken';
 
 export const useToken  = () => {
-	const saveTokenToLS = (token:string, id:string, created:number) => {
-        localStorage.setItem("eduloanEdikeUserAuthToken", JSON.stringify({tokenValue: `Bearer ${token}`, userId: id, created: created}));
+	const saveTokenToLS = (token:string) => {
+        localStorage.setItem(LSName, JSON.stringify({tokenValue: `Bearer ${token}`}));
     }
 
     const deleteDataFromLS = () => {
-        localStorage.removeItem("eduloanEdikeUserAuthToken")
+        localStorage.removeItem(LSName)
     }
 
     const getDataFromLS = () => {
-        const LS = localStorage.getItem("eduloanEdikeUserAuthToken")
+        const LS = localStorage.getItem(LSName)
         if(LS) {
             return JSON.parse(LS)
         } else {

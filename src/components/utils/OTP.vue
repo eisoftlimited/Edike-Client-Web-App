@@ -1,13 +1,13 @@
 <template>
-	<form class="flex flex-col gap-4 relative overflow-hidden">
+	<form class="flex flex-col gap-4 relative overflow-hidden" @submit.prevent="submitOtp" >
 		<!-- could not set the input to hidden cos i couldnt focus on it when it hidden so i just hid it by making it absolute -->
-		<input type="number" @input="getCode" class="code absolute -top-[200px]">
+		<input type="number" @input="getCode"  class="code absolute  -top-[200px]" v-model="otpNum">
 		<div class="flex flex-col gap-2">
 			<div class="flex items-center gap-2 w-fit mx-auto" @click="focusOnInput">
 				<div v-for="index in 6" :key="index"
 					class="w-[40px] h-[40px] md:w-[64px] md:h-[64px] lg:max-w-[45px] lg:max-h-[45px] rounded-lg border border-stroke flex items-center justify-center"
-					:class="{ 'border-success': code[index - 1] != null, 'border-secondary': code.length > 0 && code.length == index - 1, 'border-error': inCorrectOTP }">
-					<h3 class="heading4 md:heading3 text-[#2D233B]">{{ code[index - 1] }}</h3>
+					:class="{ 'border-success': otp[index - 1] != null, 'border-secondary': otp.length > 0 && otp.length == index - 1, 'border-error': inCorrectOTP }">
+					<h3 class="heading4 md:heading3 text-[#2D233B]">{{ otp[index - 1] }}</h3>
 				</div>
 			</div>
 			<p v-if="inCorrectOTP"
@@ -33,15 +33,27 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
+import { useAuth } from '../../composables/AuthController';
 
-const code = ref('')
-const inCorrectOTP = ref(false)
-const expiredOTP = ref(false)
+const props = defineProps<{
+		type: 'verify' | 'reset'
+}>()
+const { otp, verifyEmail, inCorrectOTP, expiredOTP, forgetPasswordOTP } = useAuth()
+const otpNum = ref<number>()
 
+const submitOtp = () => {
+	if(props.type ==  'verify') {
+		verifyEmail()
+	} else if(props.type == 'reset') {	
+		forgetPasswordOTP()
+	}
+}
 
 const getCode = () => {
-	let inputs: HTMLFormElement = document.querySelector('input.code')!
-	code.value = String(inputs.value)
+	if(String(otpNum.value).length > 6) {
+		otpNum.value = Number(String(otpNum.value).slice(0,-1))
+	}
+	otp.value = String(otpNum.value)
 }
 
 const focusOnInput = () => {
@@ -51,7 +63,7 @@ const focusOnInput = () => {
 
 // computed
 const enableButton = computed(() => {
-	return code.value.length == 6 ? true : false
+	return otp.value.length == 6 ? true : false
 })
 
 onMounted(() => {

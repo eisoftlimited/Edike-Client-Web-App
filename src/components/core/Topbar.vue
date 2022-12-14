@@ -9,7 +9,7 @@
 					<div class="bg-[#FFD240] h-[40px] w-[40px] rounded-full flex items-end justify-center">
 						<img src="@/assets/img/illustrations/user_avatar.svg" alt="">
 					</div>
-					<p class="normal-text">Abiola Ogunjobi</p>
+					<p class="normal-text">{{firstName}} {{lastName}}</p>
 					<img src="@/assets/img/icons/arrow_down_filled.svg" alt="">
 				</div>
 			</div>
@@ -19,7 +19,7 @@
 		</div>
 		<div class="flex gap-2 md:gap-4 py-2 items-center flex-col md:flex-row h-[60px]" v-if="route.name == 'Beneficiaries'">
 			<searchInput :model-value="searchTerm"/>
-			<button class="btn-medium w-full max-w-fit px-2 items-center gap-3 hidden md:flex" @click="openBeneficiaryModal('add')">
+			<button :disabled="beneficiaryModal" class="btn-medium w-full max-w-fit px-2 items-center gap-3 hidden md:flex" @click="openBeneficiaryModal('add')">
 				<img src="../../assets/img/icons/dashboard/plus_white.svg" alt="">
 				Add Beneficiary
 			</button>
@@ -33,10 +33,12 @@ import { useMenuController } from '../../composables/MenuController';
 import searchInput from '../utils/searchInput.vue';
 import { useRoute } from 'vue-router';
 import { useBeneficiaries } from '../../composables/Beneficiaries';
+import { useUser } from '../../composables/UserController';
 
 
 const route = useRoute()
-const { openBeneficiaryModal } = useBeneficiaries()
+const { openBeneficiaryModal, beneficiaryModal } = useBeneficiaries()
 const { openMenu } = useMenuController()
+const { firstName, lastName } = useUser()
 const searchTerm = ref('')
 </script>

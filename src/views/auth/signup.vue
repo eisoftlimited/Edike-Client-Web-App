@@ -6,12 +6,12 @@
 				<h4 class="heading5 md:heading4 text-center text-boldText">Create Account</h4>
 				<form class="flex flex-col gap-5" @submit.prevent="registerUser">
 					<div class="flex gap-2">
-						<textInput class="w-1/2" v-model="firstName" :if-required="true" label="First Name" place-holder="Enter text here..." input-type="text"/>
-						<textInput class="w-1/2" v-model="lastName" :if-required="true" label="Last Name" place-holder="Enter text here..." input-type="text"/>
+						<textInput class="w-1/2" v-model.trim="firstName" :if-required="true" label="First Name" place-holder="Enter text here..." input-type="text"/>
+						<textInput class="w-1/2" v-model.trim="lastName" :if-required="true" label="Last Name" place-holder="Enter text here..." input-type="text"/>
 					</div>
 					<textInput class="" v-model="email" :if-required="true" label="Email Address" place-holder="johndoe@email.com" input-type="email"/>
-					<phoneInput v-model="phone"/>
-					<PasswordInput v-model="password" label="Password" place-holder="Create Password" :allow-password-strength="true" :show-forgot-password="false"/>
+					<phoneInput v-model.trim="phone"/>
+					<PasswordInput v-model.trim="password" label="Password" place-holder="Create Password" :allow-password-strength="true" :show-forgot-password="false"/>
 					
 					<div class="ml-[5px] flex flex-col gap-4">
 						<p class="flex items-center gap-2 text-xs md:text-sm text-[#666666]" :class="{'text-success' : containsOver8}">
@@ -59,11 +59,12 @@ import textInput from '@/components/utils/textInput.vue';
 import phoneInput from '@/components/utils/phoneInput.vue';
 import FormCard from '@/components/utils/formCard.vue';
 import { useAuth } from '../../composables/AuthController';
+import { usePassword } from '../../composables/PasswordController';
 
 
-const { firstName, lastName, phone, password, email, containsNumber, containsOver8, containsSymbol, 
-		upperAndLowerCase, enableSignupButton, registerUser } = useAuth()
-// computed
+const { firstName, lastName, phone, password, email, registerUser } = useAuth()
+const { containsNumber, containsOver8, containsSymbol, upperAndLowerCase, enableSignupButton, } = usePassword()
+
 
  
 	
