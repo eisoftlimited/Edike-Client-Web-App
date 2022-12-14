@@ -53,7 +53,9 @@
 import passwordInput from '../../utils/passwordInput.vue';
 import { ref } from 'vue';
 import { useAuth } from '../../../composables/AuthController';
+import { usePassword } from '../../../composables/PasswordController';
 
-const { oldPass, password, containsNumber, containsSymbol, containsOver8, upperAndLowerCase } = useAuth()
+const { oldPass, password } = useAuth()
+const { containsNumber, containsSymbol, containsOver8, upperAndLowerCase  } = usePassword()
 
 </script>

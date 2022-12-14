@@ -2,7 +2,7 @@
 	<onboarding-layout>
 		<div class="flex flex-col gap-8 py-6 md:flex-row md:items-center">
 			<img src="@/assets/img/illustrations/add_beneficiary.svg" class="w-1/2 hidden lg:flex" alt="" />
-			<FormCard v-if="true">
+			<!-- <FormCard v-if="true">
 				<div class="flex flex-col gap-2">
 					<h4 class="heading5 md:heading4 text-center text-boldText">One Last Step</h4>
 					<p class="small-text text-[#404040] text-center">Please add a beneficiary. This would be the details
@@ -62,7 +62,7 @@
 					<p class="normal-text text-primary w-full max-w-fit font-medium">Cancel</p>
 					<button class="btn-short" >Save</button>
 				</div>
-			</FormCard>
+			</FormCard> -->
 		</div>
 	</onboarding-layout>
 </template>
