@@ -4,11 +4,11 @@ import router from '../router';
 import { useFetch } from './FetchController';
 import { useToken } from './TokenController';
 import { useUser } from './UserController';
-const { clearUser } = useUser()
 
+
+const { clearUser } = useUser()
 const { saveTokenToLS, deleteDataFromLS } = useToken()
 const { makeFetch, makeFetchWithAuth } = useFetch()
-
 
 
 const firstName = ref('')
@@ -18,6 +18,7 @@ const phone = ref('')
 const password = ref('')
 const oldPass = ref('')
 const otp = ref('')
+const otpNum = ref<number>()
 
 
 const inCorrectOTP = ref(false)
@@ -35,6 +36,7 @@ export const useAuth  = () => {
 		password.value = ''
 		oldPass.value = ''
 		otp.value = ''
+		otpNum.value = undefined
 	}
 
 	const registerUser = () => {
@@ -70,8 +72,8 @@ export const useAuth  = () => {
 			console.log(data)
 			if(data.status == 'valid') {
 				saveTokenToLS(data.token)
-				router.push('/dashboard')
 				resetVariables()
+				router.push('/dashboard')
 			} else {
 				alert('error')
 				resetVariables()
@@ -79,7 +81,7 @@ export const useAuth  = () => {
 		})
 		.catch(err => {
 			console.log(err)
-			alert('error')
+			alert('otp error')
 			resetVariables()
 		})
 	}
@@ -140,6 +142,7 @@ export const useAuth  = () => {
 				enterNewPassComp.value = true
 			} else {
 				alert(data.msg)
+				otpNum.value = undefined
 				otp.value = ''
 			}
 		})
@@ -188,6 +191,6 @@ export const useAuth  = () => {
 		clearUser()
 	}
 
-	return { firstName, lastName, email, password, phone, oldPass, otp, registerUser, loginUser , logOut, verifyEmail,
+	return { firstName, lastName, email, password, phone, oldPass, otp, registerUser, loginUser , logOut, verifyEmail, otpNum,
 			inCorrectOTP, expiredOTP, forgotPassword, forgetPasswordOTP, resetPassOtpComp, enterNewPassComp, changePassword }
 }

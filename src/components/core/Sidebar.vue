@@ -31,7 +31,7 @@ const route = useRoute()
 const links = [
 	{ text: 'Dashboard', route: '/dashboard/home', icon: 'home' },
 	{ text: 'Beneficiaries', route: '/dashboard/beneficiaries', icon: 'beneficiaries' },
-	{ text: 'Loans', route: '/dashboard/home', icon: 'loan' },
+	{ text: 'Loans', route: '/dashboard/loan', icon: 'loan' },
 	{ text: 'Profile', route: '/dashboard/profile', icon: 'profile' }
 ]
 

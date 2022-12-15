@@ -7,9 +7,9 @@
 		</div>
 		<form class="flex flex-col gap-5" @submit.prevent="submitForm">
 			<div class="flex gap-2">
-				<textInput class="w-1/2" v-model="firstName" :if-required="true" label="First Name"
+				<textInput class="w-1/2" v-model.trim="firstName" :if-required="true" label="First Name"
 					place-holder="Enter text here..." input-type="text" />
-				<textInput class="w-1/2" v-model="lastName" :if-required="true" label="Last Name"
+				<textInput class="w-1/2" v-model.trim="lastName" :if-required="true" label="Last Name"
 					place-holder="Enter text here..." input-type="text" />
 			</div>
 			<SelectComp :isSchool="true" v-model="school" :toSelect="schools" label="Name of school" selectType="school" />

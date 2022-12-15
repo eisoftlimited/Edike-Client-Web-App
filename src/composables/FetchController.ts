@@ -24,7 +24,7 @@ export const useFetch = () => {
             headers: {
                 Accept: 'application/json', 
                 'Content-Type': 'application/json',
-                Authorization: authToken()
+                'x-auth-token': authToken()
             }
         };
         return fetch(`${baseUrl}${endpoint}`, options)
@@ -36,7 +36,7 @@ export const useFetch = () => {
             headers: {
                 Accept: 'application/json', 
                 'Content-Type': 'application/json',
-                Authorization: authToken()
+                'x-auth-token': authToken()
             },
             body: JSON.stringify(params)
         };

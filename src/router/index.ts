@@ -65,6 +65,11 @@ const routes = [
 				name: 'Profile',
                 component: () => import('../views/dashboard/profile.vue')
             },
+			{
+                path: 'loan',
+				name: 'Loan',
+                component: () => import('../views/dashboard/loan.vue')
+            },
 		]
 	},
 	{

@@ -38,8 +38,7 @@ import { useAuth } from '../../composables/AuthController';
 const props = defineProps<{
 		type: 'verify' | 'reset'
 }>()
-const { otp, verifyEmail, inCorrectOTP, expiredOTP, forgetPasswordOTP } = useAuth()
-const otpNum = ref<number>()
+const { otp, verifyEmail, inCorrectOTP, expiredOTP, forgetPasswordOTP, otpNum } = useAuth()
 
 const submitOtp = () => {
 	if(props.type ==  'verify') {

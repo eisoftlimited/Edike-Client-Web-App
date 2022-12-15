@@ -1,5 +1,5 @@
 <template>
-	<div class="page  pb-[30px] relative ">
+	<div class="page pb-[30px] relative ">
 		
 		<div class="flex flex-col md:flex-row gap-4 items-center lg:items-start flex-wrap" v-if="beneficiaries.length">
 			<BeneficiaryCard v-for="item in beneficiaries" :key="item._id" :data="item"/>

@@ -3,7 +3,7 @@ const LSName = 'eduloanEdikeUserAuthToken';
 
 export const useToken  = () => {
 	const saveTokenToLS = (token:string) => {
-        localStorage.setItem(LSName, JSON.stringify({tokenValue: `Bearer ${token}`}));
+        localStorage.setItem(LSName, JSON.stringify({tokenValue: `${token}`}));
     }
 
     const deleteDataFromLS = () => {

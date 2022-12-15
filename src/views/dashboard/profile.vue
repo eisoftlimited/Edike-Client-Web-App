@@ -1,6 +1,6 @@
 <template>
-	<div class="profile overflow-auto ">
-		<div class="bg-[#FFFFFF] rounded-xl py-10 px-5 flex flex-col gap-10 transition-all">
+	<div class="profile ">
+		<div class="bg-[#FFFFFF] rounded-xl py-10 px-5 flex flex-col gap-10 transition-all h-full overflow-auto">
 			<div class="flex items-center flex-wrap gap-4 md:gap-8">
 				<button v-for="tab in tabs" :key="tab.text" class="btn-long px-3 w-fit bg-transparent text-lightGray"
 					:class="{'bg-primary text-[#F6F6F6] font-semibold': tab.id == currentTab}" @click="currentTab = tab.id"
@@ -33,6 +33,5 @@
 <style scoped>
 .profile{
 	height: calc(100% - 80px);
-	overflow: auto;
 }
 </style>

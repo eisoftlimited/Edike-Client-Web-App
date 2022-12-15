@@ -9,7 +9,7 @@
 						<textInput class="w-1/2" v-model.trim="firstName" :if-required="true" label="First Name" place-holder="Enter text here..." input-type="text"/>
 						<textInput class="w-1/2" v-model.trim="lastName" :if-required="true" label="Last Name" place-holder="Enter text here..." input-type="text"/>
 					</div>
-					<textInput class="" v-model="email" :if-required="true" label="Email Address" place-holder="johndoe@email.com" input-type="email"/>
+					<textInput class="" v-model.trim="email" :if-required="true" label="Email Address" place-holder="johndoe@email.com" input-type="email"/>
 					<phoneInput v-model.trim="phone"/>
 					<PasswordInput v-model.trim="password" label="Password" place-holder="Create Password" :allow-password-strength="true" :show-forgot-password="false"/>
 					
