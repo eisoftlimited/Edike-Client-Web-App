@@ -8,7 +8,7 @@ import { useUser } from './UserController';
 
 const { clearUser } = useUser()
 const { saveTokenToLS, deleteDataFromLS } = useToken()
-const { makeFetch, makeFetchWithAuth } = useFetch()
+const { makeFetch } = useFetch()
 
 
 const firstName = ref('')
@@ -40,28 +40,34 @@ export const useAuth  = () => {
 	}
 
 	const registerUser = () => {
-		makeFetch('POST', 'auth/register', { 
-			firstname:firstName.value, 
-			lastname:lastName.value,
-			email:email.value,
-			phone:phone.value,
-			password:password.value
-		}).then(res => res.json())
-		.then(data => {
-			console.log(data)
-			if(data.status == 'valid') {
-				router.push('/verification')
+		if(phone.value.length >= 10) {
+			makeFetch('POST', 'auth/register', {
+				firstname:firstName.value, 
+				lastname:lastName.value,
+				email:email.value,
+				phone:phone.value,
+				password:password.value
+			}).then(res => res.json())
+			.then(data => {
+				console.log(data)
+				if(data.status == 'valid') {
+					router.push('/verification')
+					resetVariables()
+				} else {
+					alert(data.msg)
+				}
+			})
+			.catch(err => {
+				console.log(err)
+				alert('error !!!')
 				resetVariables()
-			} else {
-				alert(data.msg)
-			}
-		})
-		.catch(err => {
-			console.log(err)
-			alert('error !!!')
-			resetVariables()
-		})
-		// router.push('/dashboard/home')
+			})
+		} else if(phone.value.length > 11) {
+			alert('Phone number incorrect')
+		} else {
+			alert('Phone number incomplete')
+		}
+		
 	}
 
 	const verifyEmail = () => {
@@ -75,7 +81,7 @@ export const useAuth  = () => {
 				resetVariables()
 				router.push('/dashboard')
 			} else {
-				alert('error')
+				alert(data.msg)
 				resetVariables()
 			}
 		})
@@ -176,6 +182,8 @@ export const useAuth  = () => {
 			resetVariables()
 		})
 	}
+
+	
 
 	// const getUser = () => {
 	// 	alert('get user')

@@ -4,43 +4,58 @@
 			<p class="small-text text-[#404040]">Please add a beneficiary. This would be the details of your ward for
 				which you would like us to make the fees payment</p>
 		</div>
-		<form class="flex flex-col gap-5">
+		<form class="flex flex-col gap-5" @submit.prevent="submitForm">
 			<div class="flex gap-2">
 				<textInput class="w-1/2" v-model.trim="firstName" :if-required="true" label="First Name"
 					place-holder="Enter text here..." input-type="text" />
 				<textInput class="w-1/2" v-model.trim="lastName" :if-required="true" label="Last Name"
 					place-holder="Enter text here..." input-type="text" />
 			</div>
-			<SelectComp :isSchool="true" v-model="schoolName" :toSelect="schools" label="Name of school"
+			<SelectComp :isSchool="true" v-model="school" :toSelect="schools" label="Name of school"
 				selectType="school" />
-			<SelectComp v-model="classLevel" :toSelect="classes" label="Class" selectType="class" />
+			<SelectComp v-model="studentClass" :toSelect="classes" label="Class" selectType="class" />
 			<SelectComp v-model="gender" label="Gender" selectType="gender" />
-			<DateComp />
+			<DateComp v-model="dob" />
+			<button type="submit" class="hide hidden">submit</button>
 		</form>
 		<div class="flex gap-4 items-center justify-between">
 			<button class="btn-short bg-transparent text-primary" @click="closeModal">Cancel</button>
-			<button class="btn-short">Save</button>
+			<button class="btn-short" @click="invokeSubmit" :disabled="!enableSaveButton">Save</button>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import textInput from '@/components/utils/textInput.vue';
 import SelectComp from '@/components/utils/selectComp.vue';
 import DateComp from '@/components/utils/dateComp.vue';
 import { useDemos } from '../../composables/Demos';
 import { useGlobalModal } from '../../composables/GlobalModal';
+import { useBeneficiaries } from '../../composables/Beneficiaries';
 
-defineProps<{
-	type: 'add' | 'edit'
-}>()
+// defineProps<{
+// 	type: 'add' | 'edit'
+// }>()
 
-const { closeModal } = useGlobalModal()
+const { closeModal, globalModalProps } = useGlobalModal()
 const { classes, schools } = useDemos()
-const firstName = ref('')
-const lastName = ref('')
-const schoolName = ref('')
-const classLevel = ref('')
-const gender = ref('')
+const { firstName, lastName, gender, dob, school, studentClass, addBeneficiaries, smallFormUpdateBeneficiaries, enableSaveButton } = useBeneficiaries()
+
+
+const submitForm = () => {
+	if (globalModalProps.value == undefined) {
+		addBeneficiaries()
+	} else {
+		smallFormUpdateBeneficiaries(globalModalProps.value)
+	}
+}
+
+
+
+const invokeSubmit = () => {
+	let btn:HTMLButtonElement = document.querySelector('.hide')!
+	btn.click()
+}
+
 </script>

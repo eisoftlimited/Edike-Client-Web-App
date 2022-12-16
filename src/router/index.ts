@@ -1,9 +1,17 @@
 import { createRouter, createWebHistory, useRouter } from 'vue-router'
 import { useMenuController } from '../composables/MenuController'
 import { useGlobalModal } from '../composables/GlobalModal'
+import { useToken } from '../composables/TokenController'
 
 const { closeMenu, menuStatus } = useMenuController()
 const { closeModal } = useGlobalModal()
+const { isAuthenticated } = useToken()
+
+const checkIfAuthenticated = () => {
+	if (isAuthenticated()) {
+		return { path: '/dashboard' }
+	}
+}
 
 const routes = [
 	{
@@ -11,33 +19,27 @@ const routes = [
 		component: () => import('../views/auth/signup.vue')
 	},
 	{
-		path: '/home',
-		component: () => import('../views/home.vue')
-	},
-	{
 		path: '/signup',
-		component: () => import('../views/auth/signup.vue')
+		name: 'Signup',
+		component: () => import('../views/auth/signup.vue'),
+		beforeEnter: () => checkIfAuthenticated()
 	},
 	{
 		path: '/signin',
-		component: () => import('../views/auth/signin.vue')
+		name: 'Signin',
+		component: () => import('../views/auth/signin.vue'),
+		beforeEnter: () => checkIfAuthenticated()
 	},
 	{
 		path: '/verification',
-		component: () => import('../views/auth/verify.vue')
+		component: () => import('../views/auth/verify.vue'),
+		beforeEnter: () => checkIfAuthenticated()
 	},
 	{
 		path: '/forgot',
-		component: () => import('../views/auth/forgot.vue')
+		component: () => import('../views/auth/forgot.vue'),
+		beforeEnter: () => checkIfAuthenticated()
 	},
-	// {
-	// 	path: '/reset',
-	// 	component: () => import('../views/auth/reset')
-	// },
-	// {
-	// 	path: '/reset/new-password',
-	// 	component: () => import('../views/auth/newpass')
-	// },
 	{
 		path: '/add-beneficiary',
 		component: () => import('../views/onboarding/addBeneficiary.vue')
@@ -45,6 +47,7 @@ const routes = [
 	{
 		path: '/dashboard',
 		component: () => import('../views/dashboard.vue'),
+		meta: { requiresAuth: true },
 		children: [
 			{
                 path: '',
@@ -67,7 +70,7 @@ const routes = [
             },
 			{
                 path: 'loan',
-				name: 'Loan',
+				name: 'Loans',
                 component: () => import('../views/dashboard/loan.vue')
             },
 		]
@@ -89,9 +92,12 @@ const router = createRouter({
 	},
 })
 
-router.beforeEach(() => {
+router.beforeEach((to) => {
 	if(menuStatus) closeMenu()
 	closeModal()
+	if (!isAuthenticated() && to.meta.requiresAuth) {
+		return { name: 'Signin' }
+	}
 })
 
 

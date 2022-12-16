@@ -8,7 +8,10 @@
 						<h3 class="text-2xl text-bodyText font-bold text-center pb-2 w-full border-b">{{globalModalHeader}}
 						</h3>
 						<div class="overflow-auto w-full">
-							<component :is="globalModalContent" :compProps="globalModalProps"></component>
+							<div v-if="globalModalLoader" class="min-h-[300px] w-full flex items-center justify-center text-red-600">
+								<spinner/>
+							</div>
+							<component v-else :is="globalModalContent" :compProps="globalModalProps"></component>
 						</div>
 					</div>
 				</transition>
@@ -20,8 +23,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useGlobalModal } from '../../composables/GlobalModal'
+import spinner from './spinner.vue';
 
-const { globalModalContent, globalModalStatus, closeModal, globalModalHeader, globalModalProps, showMainModal } = useGlobalModal()
+const { globalModalContent, globalModalStatus, closeModal, globalModalHeader, globalModalProps, showMainModal, globalModalLoader } = useGlobalModal()
 
 
 

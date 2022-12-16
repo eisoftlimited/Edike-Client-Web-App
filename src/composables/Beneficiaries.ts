@@ -1,9 +1,11 @@
 import { computed, ref } from 'vue'
 import { useFetch } from './FetchController'
 import Bene from '../interface/typeBeneficiaries'
+import { useGlobalModal } from './GlobalModal'
 
 
 const { makeFetchWithAuth, makeFetchWithAuthAndBody } = useFetch()
+const { closeModal, globalModalLoader } = useGlobalModal()
 
 
 const beneficiaryModal = ref(false)
@@ -63,6 +65,7 @@ export const useBeneficiaries  = () => {
 			if(data.beneficiary._id) {
 				alert('beneficiariary added successfully')
 				closeBeneficiaryModal()
+				closeModal()
 				fetchAllBeneficiaries()
 			} else {
 				alert(data.msg)
@@ -94,13 +97,44 @@ export const useBeneficiaries  = () => {
 		.then(res => res.json())
 		.then((data:Bene) => {
 			console.log(data)
-			firstName.value = data.firstname
-			lastName.value = data.lastname
-			gender.value = data.gender
-			dob.value = data.dob
-			studentClass.value = data.studentClass
-			school.value = data.school
-			beneficiaryModal.value = true
+			if(data.firstname) {
+				firstName.value = data.firstname
+				lastName.value = data.lastname
+				gender.value = data.gender
+				dob.value = data.dob
+				studentClass.value = data.studentClass
+				school.value = data.school
+				beneficiaryModal.value = true
+			} else {
+				alert('couldnt get beneficiary')
+				closeBeneficiaryModal()
+			}
+			
+		})
+		.catch(err => {
+			console.log(err)
+			alert(err)
+		})
+	}
+
+	const fetchBeneficiary = (id:string) => {
+		makeFetchWithAuth('GET', `beneficiary/get/${id}`)
+		.then(res => res.json())
+		.then((data:Bene) => {
+			console.log(data)
+			if(data.firstname) {
+				firstName.value = data.firstname
+				lastName.value = data.lastname
+				gender.value = data.gender
+				dob.value = data.dob
+				studentClass.value = data.studentClass
+				school.value = data.school
+				globalModalLoader.value = false
+			} else {
+				alert('couldnt fetch beneficiary')
+				closeModal()
+			}
+			
 		})
 		.catch(err => {
 			console.log(err)
@@ -122,6 +156,33 @@ export const useBeneficiaries  = () => {
 			if(data._id) {
 				alert('beneficiariary updated successfully')
 				closeBeneficiaryModal()
+				closeModal()
+				fetchAllBeneficiaries()
+			} else {
+				alert(data.msg)
+			}
+		})
+		.catch(err => {
+			console.log(err)
+			alert('error')
+		})
+	}
+
+	const smallFormUpdateBeneficiaries = (id:string) => {
+		makeFetchWithAuthAndBody('PATCH', `beneficiary/update/${id}`, {
+			firstname:firstName.value, 
+			lastname:lastName.value,
+			gender:gender.value,
+			dob:dob.value,
+			school:school.value,
+			studentClass: studentClass.value
+		}).then(res => res.json())
+		.then((data) => {
+			console.log(data)
+			if(data._id) {
+				alert('Beneficiariary updated successfully')
+				closeBeneficiaryModal()
+				closeModal()
 				fetchAllBeneficiaries()
 			} else {
 				alert(data.msg)
@@ -152,9 +213,9 @@ export const useBeneficiaries  = () => {
 	}
 	
 
-	return { beneficiaryModal, beneficiaryModalType, openBeneficiaryModal, closeBeneficiaryModal, enableSaveButton,
+	return { beneficiaries ,beneficiaryModal, beneficiaryModalType, openBeneficiaryModal, closeBeneficiaryModal, enableSaveButton,
 		firstName, lastName, gender, dob, school, studentClass, addBeneficiaries, fetchAllBeneficiaries, toFetchId,
-		updateBeneficiaries, deleteBeneficiaries }
+		updateBeneficiaries, deleteBeneficiaries, fetchBeneficiary, smallFormUpdateBeneficiaries }
 }
 
 export const useBackendBeneficiaries = () => {

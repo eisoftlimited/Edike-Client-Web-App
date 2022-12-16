@@ -23,9 +23,13 @@ export const useToken  = () => {
         return getDataFromLS() ? getDataFromLS().tokenValue : null
     }
 
-    const userID = () => {
-        return getDataFromLS() ? getDataFromLS().userId : null
-    }
+	const isAuthenticated = () => {
+		return authToken() ? true : false
+	}
 
-	return { saveTokenToLS, deleteDataFromLS, authToken, userID }
+    // const userID = () => {
+    //     return getDataFromLS() ? getDataFromLS().userId : null
+    // }
+
+	return { saveTokenToLS, deleteDataFromLS, authToken, isAuthenticated }
 }

@@ -40,24 +40,24 @@
 	}
 
 	.btn-long{
-		@apply w-full h-[40px] bg-primary rounded-[10px] text-center text-white disabled:opacity-40
+		@apply w-full h-[40px] bg-primary rounded-[10px] text-center text-white disabled:opacity-40 disabled:cursor-not-allowed
 	}
 	.btn-long-outline{
-		@apply w-full h-[40px] border border-primary rounded-[10px] text-center text-primary disabled:opacity-40
+		@apply w-full h-[40px] border border-primary rounded-[10px] text-center text-primary disabled:opacity-40 disabled:cursor-not-allowed
 	}
 
 	.btn-medium{
-		@apply w-full w-[282px] h-[40px] bg-primary rounded-[10px] text-center text-white disabled:opacity-40
+		@apply  w-[282px] h-[40px] bg-primary rounded-[10px] text-center text-white disabled:opacity-40 disabled:cursor-not-allowed
 	}
 	.btn-medium-outline{
-		@apply w-full w-[282px] h-[40px] border border-primary rounded-[10px] text-center text-primary disabled:opacity-40
+		@apply  w-[282px] h-[40px] border border-primary rounded-[10px] text-center text-primary disabled:opacity-40 disabled:cursor-not-allowed
 	}
 
 	.btn-short{
-		@apply w-full w-[134px] h-[40px] bg-primary rounded-[10px] text-center text-white disabled:opacity-40
+		@apply  w-[134px] h-[40px] bg-primary rounded-[10px] text-center text-white disabled:opacity-40 disabled:cursor-not-allowed
 	}
 	.btn-short-outline{
-		@apply w-full w-[134px] h-[40px] border border-primary rounded-[10px] text-center text-primary disabled:opacity-40
+		@apply w-[134px] h-[40px] border border-primary rounded-[10px] text-center text-primary disabled:opacity-40 disabled:cursor-not-allowed
 	}
 
 }

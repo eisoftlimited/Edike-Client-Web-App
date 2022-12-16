@@ -5,7 +5,8 @@
 				<img src="@/assets/img/icons/dots.svg" alt="">
 			</button>
 		</div>
-		<img src="@/assets/img/illustrations/female_avatar.svg" alt="">
+		<img v-if="data.gender == 'Female'" src="@/assets/img/illustrations/female_avatar.svg" alt=""/>
+		<img v-if="data.gender == 'Male'" src="@/assets/img/illustrations/male_avatar.svg" alt=""/>
 		<div class="flex flex-col gap-3 w-fit mx-auto">
 			<div class="flex items-start gap-3">
 				<p class="small-text font-medium text-[#3F434A] min-w-[100px]">Name</p>
@@ -53,7 +54,7 @@ const props = defineProps<{
 	data: Bene
 }>()
 const modifyCard = ref(false)
-const { openBeneficiaryModal, toFetchId, deleteBeneficiaries } = useBeneficiaries()
+const { openBeneficiaryModal, toFetchId, deleteBeneficiaries, fetchBeneficiary } = useBeneficiaries()
 const { openModal } = useGlobalModal()
 
 const editBeneficiary = () => {
@@ -63,7 +64,8 @@ const editBeneficiary = () => {
 }
 
 const editBeneficiarySmallScreen = () => {
-	openModal(smallBeneficiaryForm, 'Edit Beneficiary')
+	openModal(smallBeneficiaryForm, 'Edit Beneficiary', props.data._id, true)
+	fetchBeneficiary(props.data._id)
 	modifyCard.value = false
 }
 </script>
