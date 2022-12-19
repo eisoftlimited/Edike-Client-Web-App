@@ -16,7 +16,8 @@ const checkIfAuthenticated = () => {
 const routes = [
 	{
 		path: '/',
-		component: () => import('../views/auth/signup.vue')
+		component: () => import('../views/auth/signup.vue'),
+		beforeEnter: () => checkIfAuthenticated()
 	},
 	{
 		path: '/signup',
@@ -42,7 +43,12 @@ const routes = [
 	},
 	{
 		path: '/add-beneficiary',
-		component: () => import('../views/onboarding/addBeneficiary.vue')
+		component: () => import('../views/onboarding/addBeneficiary.vue'),
+		meta: { requiresAuth: true },
+	},
+	{
+		path: '/privacy-policy',
+		component: () => import('../views/legal/privacy_policy.vue')
 	},
 	{
 		path: '/dashboard',

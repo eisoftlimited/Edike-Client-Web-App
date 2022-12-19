@@ -1,5 +1,5 @@
 <template>
-	<form class=" flex flex-col gap-[50px] w-full max-w-[400px] mx-auto">
+	<form class=" flex flex-col gap-[50px] w-full max-w-[400px] mx-auto lg:mx-0">
 		<div class="flex flex-col gap-2">
 			<h5 class="heading5">Request Loan</h5>
 			<p class="small-text text-[#404040]">Please fill out the form below to request for your loan.</p>
@@ -8,6 +8,13 @@
 		<div class="flex flex-col gap-4">
 			<SelectBeneficiary v-model="bene"/>
 			<AmountInput v-model="amount"/>
+			<DurationInput v-model="duration"/>
+			<Upload/>
+		</div>
+
+		<div class="flex gap-4 items-center justify-between">
+			<button type="button" class="btn-short bg-transparent text-primary">Cancel</button>
+			<button type="submit" class="btn-short">Submit</button>
 		</div>
 	</form>
 </template>
@@ -16,8 +23,11 @@
 import {ref } from 'vue'
 import SelectBeneficiary from '../utils/selectBeneficiary.vue';
 import AmountInput from '../utils/amountInput.vue';
+import DurationInput from '../utils/durationInput.vue';
+import Upload from '../utils/upload.vue'
 
 
 const bene = ref('')
 const amount = ref('')
+const duration = ref('')
 </script>

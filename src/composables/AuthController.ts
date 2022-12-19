@@ -79,7 +79,7 @@ export const useAuth  = () => {
 			if(data.status == 'valid') {
 				saveTokenToLS(data.token)
 				resetVariables()
-				router.push('/dashboard')
+				router.push('/add-beneficiary')
 			} else {
 				alert(data.msg)
 				resetVariables()

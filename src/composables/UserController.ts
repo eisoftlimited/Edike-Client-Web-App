@@ -60,6 +60,11 @@ export const getUserAutomatically = () => {
 
 export const refreshToken = () => {
 	console.log('refreshtoken')
+	let path:string;
+	router.beforeEach((to, from) => {
+		path = to.path
+	})
+	
 	if (authToken != null) {
 		makeFetchWithAuth('GET', 'auth/user')
 			.then(res => res.json())
@@ -70,7 +75,8 @@ export const refreshToken = () => {
 					lastName.value = data.lastname
 					phone.value = String(data.phone).slice(3)
 					email.value = data.email
-					router.push('/dashboard')
+					// console.log('i am going to ', path)
+					router.push(path)
 				} else {
 					deleteDataFromLS()
 					router.push('/signin')
