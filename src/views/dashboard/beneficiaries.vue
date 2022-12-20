@@ -10,13 +10,12 @@
 			<img src="../../assets/img/icons/dashboard/plus_white.svg" alt=""/>
 			Add
 		</button>
-		<beneficiaryOverlay/>
+		<!-- <beneficiaryOverlay/> -->
 	</div>
 </template>
 
 <script setup lang="ts">
 import BeneficiaryCard from '../../components/beneficiaries/beneficiaryCard.vue';
-import beneficiaryOverlay from '../../components/beneficiaries/beneficiaryOverlay.vue';
 import smallBeneficiaryForm from '../../components/beneficiaries/smallBeneficiaryForm.vue';
 import { useGlobalModal } from '../../composables/GlobalModal';
 import { useBackendBeneficiaries } from '../../composables/Beneficiaries';

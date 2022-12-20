@@ -3,9 +3,13 @@ import { ref } from 'vue'
 import router from '../router';
 import { useFetch } from './FetchController';
 import { useToken } from './TokenController';
+import { useLoader } from './LoaderController';
+import Swal from 'sweetalert2'
+
 
 const { makeFetchWithAuth } = useFetch()
 const { authToken, deleteDataFromLS } = useToken()
+const { openSubLoader, closeSubLoader } = useLoader()
 
 
 const firstName = ref('')
@@ -24,11 +28,12 @@ const clearUser = () => {
 
 export const useUser = () => {
 	
-
 	const getUser = () => {
+		openSubLoader()
 		makeFetchWithAuth('GET', 'auth/user')
 			.then(res => res.json())
 			.then(data => {
+				closeSubLoader()
 				console.log(data)
 				if (data) {
 					firstName.value = data.firstname
@@ -37,9 +42,13 @@ export const useUser = () => {
 					email.value = data.email
 				} else {
 					alert('Couldn\'t fetch user\'s data')
+					Swal.fire({ title: 'Error!', text: 'Could not fetch uses\'s data', icon: 'error'})
 				}
 			})
-			.catch(err => console.log(err))
+			.catch(err => {
+				console.log(err)
+				Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
+			})
 	}
 
 	const updateUser = () => {

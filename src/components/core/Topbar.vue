@@ -19,7 +19,7 @@
 		</div>
 		<div class="flex gap-2 md:gap-4 py-2 items-center flex-col md:flex-row h-[60px]" v-if="route.name == 'Beneficiaries'">
 			<searchInput :model-value="searchTerm"/>
-			<button :disabled="beneficiaryModal" class="btn-medium w-full max-w-fit px-2 items-center gap-3 hidden md:flex" @click="openBeneficiaryModal('add')">
+			<button :disabled="beneficiaryModal" class="btn-medium w-full max-w-fit px-2 items-center gap-3 hidden md:flex" @click="openSideModal(beneficiaryForm)">
 				<img src="../../assets/img/icons/dashboard/plus_white.svg" alt="">
 				Add Beneficiary
 			</button>
@@ -34,10 +34,13 @@ import searchInput from '../utils/searchInput.vue';
 import { useRoute } from 'vue-router';
 import { useBeneficiaries } from '../../composables/Beneficiaries';
 import { getUserAutomatically } from '../../composables/UserController';
+import { useSideModal } from '../../composables/SideModal';
+import beneficiaryForm from '../beneficiaries/beneficiaryForm.vue';
 
 
 const route = useRoute()
 const { openBeneficiaryModal, beneficiaryModal } = useBeneficiaries()
+const { openSideModal } = useSideModal()
 const { openMenu } = useMenuController()
 const { firstName, lastName } = getUserAutomatically()
 const searchTerm = ref('')

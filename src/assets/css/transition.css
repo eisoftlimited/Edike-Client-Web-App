@@ -38,6 +38,16 @@
 }
 
 
+.main_side_modal-enter-from, .main_side_modal-leave-to{
+	/* opacity: 0.5; */
+	transform: translateX(100%);
+}
+
+.main_side_modal-enter-active, .main_side_modal-leave-active{
+	transition: all .5s ease;
+}
+
+
 
 
 

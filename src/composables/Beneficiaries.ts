@@ -2,10 +2,15 @@ import { computed, ref } from 'vue'
 import { useFetch } from './FetchController'
 import Bene from '../interface/typeBeneficiaries'
 import { useGlobalModal } from './GlobalModal'
+import { useLoader } from './LoaderController'
+import {useSideModal} from './SideModal'
+import Swal from 'sweetalert2'
 
 
 const { makeFetchWithAuth, makeFetchWithAuthAndBody } = useFetch()
 const { closeModal, globalModalLoader } = useGlobalModal()
+const { openSubLoader, closeSubLoader } = useLoader()
+const { sideModalLoader, closeSideModal } = useSideModal()
 
 
 const beneficiaryModal = ref(false)
@@ -18,7 +23,6 @@ const gender = ref('')
 const dob = ref('')
 const school = ref('')
 const studentClass = ref('')
-const toFetchId = ref('')
 
 const enableSaveButton = computed(() => {
 	return firstName.value && lastName.value && gender.value && dob.value && school.value && studentClass.value ? true : false
@@ -36,22 +40,10 @@ const resetVariables = () => {
 
 
 export const useBeneficiaries  = () => {
-	const openBeneficiaryModal = (str: 'add' | 'edit') => {
-		beneficiaryModalType.value = str
-		if(str == 'edit') {
-			fetchSingleBeneficiaries()
-		} else {
-			beneficiaryModal.value = true
-		}
-		
-	}
-
-	const closeBeneficiaryModal =  () => {
-		resetVariables()
-		beneficiaryModal.value = false
-	}
+	
 
 	const addBeneficiaries = () => {
+		openSubLoader()
 		makeFetchWithAuthAndBody('POST', 'beneficiary/create', {
 			firstname:firstName.value, 
 			lastname:lastName.value,
@@ -61,27 +53,32 @@ export const useBeneficiaries  = () => {
 			studentClass: studentClass.value
 		}).then(res => res.json())
 		.then(data => {
+			closeSubLoader()
 			console.log(data)
 			if(data.beneficiary._id) {
-				alert('beneficiariary added successfully')
-				closeBeneficiaryModal()
+				Swal.fire({ title: 'Success', text: 'Beneficiary added successfully', icon: 'success'})
 				closeModal()
+				closeSideModal()
 				fetchAllBeneficiaries()
+				resetVariables()
 			} else {
-				alert(data.msg)
+				Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
 			}
 			
 		})
 		.catch(err => {
+			closeSubLoader()
 			console.log(err)
+			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 		})
 	} 
 	
 	const fetchAllBeneficiaries = () => {
-		console.log('fetcing beneficiareis')
+		openSubLoader()
 		makeFetchWithAuth('GET', 'beneficiary/all')
 		.then(res => res.json())
 		.then(data => {
+			closeSubLoader()
 			console.log(data)
 			if(data.length) {
 				beneficiaries.value = data.beneficiary
@@ -89,31 +86,10 @@ export const useBeneficiaries  = () => {
 				beneficiaries.value = []
 			}
 		})
-		.catch(err => console.log(err))
-	}
-
-	const fetchSingleBeneficiaries = () => {
-		makeFetchWithAuth('GET', `beneficiary/get/${toFetchId.value}`)
-		.then(res => res.json())
-		.then((data:Bene) => {
-			console.log(data)
-			if(data.firstname) {
-				firstName.value = data.firstname
-				lastName.value = data.lastname
-				gender.value = data.gender
-				dob.value = data.dob
-				studentClass.value = data.studentClass
-				school.value = data.school
-				beneficiaryModal.value = true
-			} else {
-				alert('couldnt get beneficiary')
-				closeBeneficiaryModal()
-			}
-			
-		})
 		.catch(err => {
+			closeSubLoader()
 			console.log(err)
-			alert(err)
+			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 		})
 	}
 
@@ -130,45 +106,23 @@ export const useBeneficiaries  = () => {
 				studentClass.value = data.studentClass
 				school.value = data.school
 				globalModalLoader.value = false
+				sideModalLoader.value = false
 			} else {
-				alert('couldnt fetch beneficiary')
+				// alert('couldnt fetch beneficiary')
+				Swal.fire({ title: 'Error!', text: 'Could not fetch beneficiary', icon: 'error'})
 				closeModal()
+				closeSideModal()
 			}
 			
 		})
 		.catch(err => {
 			console.log(err)
-			alert(err)
+			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 		})
 	}
 
-	const updateBeneficiaries = () => {
-		makeFetchWithAuthAndBody('PATCH', `beneficiary/update/${toFetchId.value}`, {
-			firstname:firstName.value, 
-			lastname:lastName.value,
-			gender:gender.value,
-			dob:dob.value,
-			school:school.value,
-			studentClass: studentClass.value
-		}).then(res => res.json())
-		.then((data) => {
-			console.log(data)
-			if(data._id) {
-				alert('beneficiariary updated successfully')
-				closeBeneficiaryModal()
-				closeModal()
-				fetchAllBeneficiaries()
-			} else {
-				alert(data.msg)
-			}
-		})
-		.catch(err => {
-			console.log(err)
-			alert('error')
-		})
-	}
-
-	const smallFormUpdateBeneficiaries = (id:string) => {
+	const updateBeneficiaries = (id:string) => {
+		openSubLoader()
 		makeFetchWithAuthAndBody('PATCH', `beneficiary/update/${id}`, {
 			firstname:firstName.value, 
 			lastname:lastName.value,
@@ -178,44 +132,52 @@ export const useBeneficiaries  = () => {
 			studentClass: studentClass.value
 		}).then(res => res.json())
 		.then((data) => {
+			closeSubLoader()
 			console.log(data)
 			if(data._id) {
-				alert('Beneficiariary updated successfully')
-				closeBeneficiaryModal()
+				Swal.fire({ title: 'Success!', text: 'Beneficiary updated successfully', icon: 'success'})
+				// alert('Beneficiariary updated successfully')
+				// closeBeneficiaryModal()
 				closeModal()
+				closeSideModal()
 				fetchAllBeneficiaries()
+				resetVariables()
 			} else {
-				alert(data.msg)
+				Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
+				// alert(data.msg)
 			}
 		})
 		.catch(err => {
+			closeSubLoader()
 			console.log(err)
-			alert('error')
+			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 		})
 	}
 
 	const deleteBeneficiaries = (id:string) => {
+		openSubLoader()
 		makeFetchWithAuth('DELETE', `beneficiary/delete/${id}`)
 		.then(res => res.json())
 		.then(data => {
+			closeSubLoader()
 			console.log(data)
 			if(data.status == 'valid') {
-				alert(data.msg)
+				Swal.fire({ title: 'Success!', text: data.msg, icon: 'success'})
 				fetchAllBeneficiaries()
 			} else {
-				alert(data.msg)
+				Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
+				fetchAllBeneficiaries()
 			}
 		})
 		.catch(err => {
+			closeSubLoader()
 			console.log(err)
-			alert('error')
+			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 		})
 	}
 	
 
-	return { beneficiaries ,beneficiaryModal, beneficiaryModalType, openBeneficiaryModal, closeBeneficiaryModal, enableSaveButton,
-		firstName, lastName, gender, dob, school, studentClass, addBeneficiaries, fetchAllBeneficiaries, toFetchId,
-		updateBeneficiaries, deleteBeneficiaries, fetchBeneficiary, smallFormUpdateBeneficiaries }
+	return { beneficiaries ,beneficiaryModal, beneficiaryModalType, enableSaveButton, firstName, lastName, gender, dob, school, studentClass, addBeneficiaries, fetchAllBeneficiaries, deleteBeneficiaries, fetchBeneficiary, updateBeneficiaries }
 }
 
 export const useBackendBeneficiaries = () => {
@@ -225,3 +187,4 @@ export const useBackendBeneficiaries = () => {
 
 	return { beneficiaries }
 }
+

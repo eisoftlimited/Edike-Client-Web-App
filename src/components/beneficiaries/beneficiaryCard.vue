@@ -48,18 +48,22 @@ import { ref } from 'vue'
 import { useBeneficiaries } from '../../composables/Beneficiaries';
 import { useGlobalModal } from '../../composables/GlobalModal';
 import smallBeneficiaryForm from './smallBeneficiaryForm.vue';
+import beneficiaryForm from './beneficiaryForm.vue'
 import Bene from '../../interface/typeBeneficiaries';
+import { useSideModal } from '../../composables/SideModal'
 
 const props = defineProps<{
 	data: Bene
 }>()
 const modifyCard = ref(false)
-const { openBeneficiaryModal, toFetchId, deleteBeneficiaries, fetchBeneficiary } = useBeneficiaries()
+const { deleteBeneficiaries, fetchBeneficiary } = useBeneficiaries()
 const { openModal } = useGlobalModal()
+const { openSideModal } = useSideModal()
 
 const editBeneficiary = () => {
-	toFetchId.value = props.data._id
-	openBeneficiaryModal('edit')
+	// toFetchId.value = props.data._id
+	openSideModal(beneficiaryForm, props.data._id, true)
+	fetchBeneficiary(props.data._id)
 	modifyCard.value = false
 }
 

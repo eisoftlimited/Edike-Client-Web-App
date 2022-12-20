@@ -34,20 +34,17 @@ import { useDemos } from '../../composables/Demos';
 import { useGlobalModal } from '../../composables/GlobalModal';
 import { useBeneficiaries } from '../../composables/Beneficiaries';
 
-// defineProps<{
-// 	type: 'add' | 'edit'
-// }>()
 
 const { closeModal, globalModalProps } = useGlobalModal()
 const { classes, schools } = useDemos()
-const { firstName, lastName, gender, dob, school, studentClass, addBeneficiaries, smallFormUpdateBeneficiaries, enableSaveButton } = useBeneficiaries()
+const { firstName, lastName, gender, dob, school, studentClass, addBeneficiaries, updateBeneficiaries, enableSaveButton } = useBeneficiaries()
 
 
 const submitForm = () => {
 	if (globalModalProps.value == undefined) {
 		addBeneficiaries()
 	} else {
-		smallFormUpdateBeneficiaries(globalModalProps.value)
+		updateBeneficiaries(globalModalProps.value)
 	}
 }
 
