@@ -58,7 +58,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useSideModal } from '../../composables/SideModal'
-import { useBvn } from '../../composables/bvnController'
+import { useBvn } from '../../composables/BvnController'
 import Camera from "simple-vue-camera";
 
 

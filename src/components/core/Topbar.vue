@@ -39,7 +39,7 @@ import beneficiaryForm from '../beneficiaries/beneficiaryForm.vue';
 
 
 const route = useRoute()
-const { openBeneficiaryModal, beneficiaryModal } = useBeneficiaries()
+const { beneficiaryModal } = useBeneficiaries()
 const { openSideModal } = useSideModal()
 const { openMenu } = useMenuController()
 const { firstName, lastName } = getUserAutomatically()
