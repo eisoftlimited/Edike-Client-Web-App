@@ -21,7 +21,7 @@ import { useSideModal } from '../../composables/SideModal'
 const { closeSideModal, sideModalContent, sideModalStatus, showMainSideModal, sideModalLoader, sideModalProps } = useSideModal()
 </script>
 
-<style>
+<style scoped>
 .side_modal{
 	height: calc(100% - 80px)
 }

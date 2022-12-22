@@ -1,21 +1,19 @@
 <template>
 	<transition name="modal_overlay" @enter="showMainModal = true">
-		<div class="globalModal w-full h-full fixed top-0 left-0 flex items-center justify-center z-20"
+		<div class="globalModal w-full h-full fixed top-0 left-0 flex items-center justify-center z-20 "
 			v-if="globalModalStatus">
 				<transition name="main_modal" @leave="globalModalStatus = false">
-					<div v-if="showMainModal"
-						class="modalContent flex flex-col gap-2 justify-between items-center max-h-[70%] w-[90%] max-w-[500px] bg-white rounded-xl z-40 p-4">
-						<h3 class="text-2xl text-bodyText font-bold text-center pb-2 w-full border-b">{{globalModalHeader}}
-						</h3>
+					<div v-if="showMainModal" class="modalContent flex flex-col gap-2 justify-between items-center max-h-[70%] w-[90%] max-w-[500px] bg-white rounded-xl z-40 p-4">
+						<h3 v-if="globalModalHeader.length" class="text-2xl text-bodyText font-bold text-center pb-2 w-full border-b">{{globalModalHeader}}</h3>
 						<div class="overflow-auto w-full">
-							<div v-if="globalModalLoader" class="min-h-[300px] w-full flex items-center justify-center text-red-600">
+							<div v-if="globalModalLoader" class="min-h-[300px] w-full flex items-center justify-center">
 								<spinner/>
 							</div>
 							<component v-else :is="globalModalContent" :compProps="globalModalProps"></component>
 						</div>
 					</div>
 				</transition>
-			<div class="overlay fixed w-full h-full top-0 left-0 bg-overlay z-30" @click="closeModal"></div>
+			<div class="absolute w-full h-full top-0 left-0 bg-overlay z-30" @click="closeModal"></div>
 		</div>
 	</transition>
 </template>

@@ -1,7 +1,8 @@
 import { useToken } from './TokenController'
 
 const { authToken } = useToken()
-let baseUrl = 'https://edike.onrender.com/edike/api/v1/'
+// let baseUrl = 'https://edike.onrender.com/edike/api/v1/'
+let baseUrl = 'http://34.197.20.78:9347/edike/api/v1/'
 
 
 export const useFetch = () => {

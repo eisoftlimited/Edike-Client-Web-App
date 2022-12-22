@@ -12,7 +12,7 @@
 			</div>
 		</div>
 		<div class="flex flex-col gap-5 lg:flex-row">
-			<div class="flex flex-col gap-3">
+			<div class="flex flex-col gap-3 ">
 				<OnboardingTask/>
 				<RecentTransaction/>
 			</div>
@@ -34,4 +34,6 @@ const { firstName, lastName } = useUser()
 .page{
 	height: calc(100% - 80px);
 }
+
+
 </style>
