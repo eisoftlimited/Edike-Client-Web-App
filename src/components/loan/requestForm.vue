@@ -9,7 +9,7 @@
 			<SelectBeneficiary v-model="bene"/>
 			<AmountInput v-model="amount"/>
 			<DurationInput v-model="duration"/>
-			<Upload/>
+			<Upload title="Upload Bill" accept="Accepted file type include Docx, Pdf, Jpg, JPEG" info="please upload the bill provided by the school"/>
 		</div>
 
 		<div class="flex gap-4 items-center justify-between">

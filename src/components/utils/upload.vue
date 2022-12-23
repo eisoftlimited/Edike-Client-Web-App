@@ -1,6 +1,6 @@
 <template>
 	<div class="w-full flex flex-col gap-2">
-		<p class="small-text text-darkGray">Upload Bill <span class="text-[10px] text-lightGray">(please upload the bill provided by the school)</span></p>
+		<p class="small-text text-darkGray">{{title}} <span class="text-[10px] text-lightGray">({{ info }})</span></p>
 		
 		<div class="border border-dashed flex flex-col gap-4 items-center p-4 rounded-xl">
 			<img src="../../assets/img/icons/upload.svg" alt="">
@@ -8,13 +8,15 @@
 		</div>
 		<div class="flex items-center gap-2">
 			<img src="../../assets/img/icons/info.svg" alt="">
-			<p class="text-[10px] text-lightGray">Accepted file type include Docx, Pdf, Jpg, JPEG</p>
+			<p class="text-[10px] text-lightGray">{{ accept }}</p>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-	// defineProps<{
-	// 	modelValue: string
-	// }>()
+	defineProps<{
+		title: string
+		info: string
+		accept: string
+	}>()
 </script>

@@ -16,7 +16,7 @@ export const useNin  = () => {
 	const addNin = () => {
 		console.log(imageFile.value)
 		makeFetchWithAuthAndBody('POST', 'auth/verify/nin', 
-		{ nin:String(ninNumber.value), image: imageFile.value})
+		{ nin:String(ninNumber.value), file: imageFile.value})
 		.then(res => res.json())
 		.then(data => {
 			console.log(data)

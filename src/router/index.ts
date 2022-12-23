@@ -2,10 +2,12 @@ import { createRouter, createWebHistory, useRouter } from 'vue-router'
 import { useMenuController } from '../composables/MenuController'
 import { useGlobalModal } from '../composables/GlobalModal'
 import { useToken } from '../composables/TokenController'
+import { useSideModal } from '../composables/SideModal'
 
 const { closeMenu, menuStatus } = useMenuController()
 const { closeModal } = useGlobalModal()
 const { isAuthenticated } = useToken()
+const { closeSideModal } = useSideModal()
 
 const checkIfAuthenticated = () => {
 	if (isAuthenticated()) {
@@ -101,6 +103,7 @@ const router = createRouter({
 router.beforeEach((to) => {
 	if(menuStatus) closeMenu()
 	closeModal()
+	closeSideModal()
 	if (!isAuthenticated() && to.meta.requiresAuth) {
 		return { name: 'Signin' }
 	}

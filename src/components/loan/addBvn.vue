@@ -96,4 +96,10 @@ const submitForm = () => {
 	let btn:HTMLButtonElement = document.querySelector('.hide')!
 	btn.click()
 }
+
+// const getImage = () => {
+// 	let x:HTMLInputElement = document.querySelector('input.file')!
+// 	console.log(x.files[0])
+// 	imageFile.value = x.files[0]
+// }
 </script>

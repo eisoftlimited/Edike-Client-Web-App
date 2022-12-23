@@ -26,7 +26,7 @@
 				<img v-else src="../../assets/img/icons/dashboard/unchecked.svg" alt="">
 			</button>
 
-			<button class="min-h-[40px] rounded-lg bg-[#F8F8F8] px-4 py-2 flex items-center justify-between">
+			<button class="min-h-[40px] rounded-lg bg-[#F8F8F8] px-4 py-2 flex items-center justify-between" @click="openModal(AddBankStatement)">
 				<p class="small-text text-left text-black font-semibold max-w-[85%]">Get your spending limit <span
 						class="text-[12px] font-normal">(Submit your 3 months bank statement)</span></p>
 				<img v-if="false" src="../../assets/img/icons/dashboard/checked.svg" alt="" />
@@ -57,7 +57,7 @@
 				<img v-else src="../../assets/img/icons/dashboard/unchecked.svg" alt="">
 			</button>
 
-			<button class="min-h-[40px] rounded-lg bg-[#F8F8F8] px-4 py-2 flex items-center justify-between">
+			<button class="min-h-[40px] rounded-lg bg-[#F8F8F8] px-4 py-2 flex items-center justify-between" @click="openSideModal(AddBankStatement)">
 				<p class="small-text text-left text-black font-semibold max-w-[85%]">Get your spending limit <span
 						class="text-[12px] font-normal">(Submit your 3 months bank statement)</span></p>
 				<img v-if="false" src="../../assets/img/icons/dashboard/checked.svg" alt="" />
@@ -77,6 +77,7 @@
 <script setup lang="ts">
 import AddBvn from '../loan/addBvn.vue';
 import AddNin from '../loan/addNin.vue'
+import AddBankStatement from '../loan/addBankStatement.vue';
 import { useSideModal } from '../../composables/SideModal';
 import { useGlobalModal } from '../../composables/GlobalModal';
 

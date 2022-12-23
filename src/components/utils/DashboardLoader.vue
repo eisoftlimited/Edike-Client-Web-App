@@ -1,5 +1,5 @@
 <template>
-	<div class="loader absolute bottom-0 left-0 w-full h-full  flex items-center justify-center z-20" v-if="subLoaderStatus">
+	<div class="loader absolute bottom-0 left-0 w-full h-full  flex items-center justify-center z-30" v-if="subLoaderStatus">
 		<div class="w-fit flex items-end">
 			<img v-for="item in img" :key="item.img" :src="getImageUrl(item.type, item.img)" class="w-[30px] md:w-auto" alt="">
 		</div>

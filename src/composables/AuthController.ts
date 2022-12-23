@@ -87,7 +87,7 @@ export const useAuth = () => {
 				if (data.status == 'valid') {
 					saveTokenToLS(data.token)
 					resetVariables()
-					router.push('/add-beneficiary')
+					router.push('/dashboard')
 				} else {
 					Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
 					// alert(data.msg)
