@@ -9,7 +9,7 @@ import Swal from 'sweetalert2'
 
 
 const { openMainLoader, closeMainLoader } = useLoader()
-const { clearUser } = useUser()
+const { clearUser, updateUser } = useUser()
 const { saveTokenToLS, deleteDataFromLS } = useToken()
 const { makeFetch } = useFetch()
 
@@ -113,12 +113,10 @@ export const useAuth = () => {
 				console.log(data)
 				if (data.token) {
 					saveTokenToLS(data.token)
+					updateUser(data.useful[0])
 					router.push('/dashboard')
 					resetVariables()
-				} else {
-					Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
-					// alert(data.msg)
-				}
+				} else {Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})}
 			})
 			.catch(err => {
 				closeMainLoader()
@@ -126,7 +124,6 @@ export const useAuth = () => {
 				Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 				resetVariables()
 			})
-		// router.push('/dashboard/home')
 	}
 
 	const forgotPassword = () => {

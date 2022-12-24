@@ -4,14 +4,15 @@ import router from '../router';
 import { useFetch } from './FetchController';
 import { useToken } from './TokenController';
 import { useLoader } from './LoaderController';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import User from '../interface/typeUser';
 
 
 const { makeFetchWithAuth } = useFetch()
 const { authToken, deleteDataFromLS } = useToken()
 const { openSubLoader, closeSubLoader } = useLoader()
 
-
+const userData  = ref<User>()
 const firstName = ref('')
 const lastName = ref('')
 const phone = ref('')
@@ -35,11 +36,12 @@ export const useUser = () => {
 			.then(data => {
 				closeSubLoader()
 				console.log(data)
-				if (data) {
-					firstName.value = data.firstname
-					lastName.value = data.lastname
-					phone.value = String(data.phone).slice(3)
-					email.value = data.email
+				if (data.firstname) {
+					// firstName.value = data.firstname
+					// lastName.value = data.lastname
+					// phone.value = String(data.phone).slice(3)
+					// email.value = data.email
+					userData.value = data
 				} else {
 					alert('Couldn\'t fetch user\'s data')
 					Swal.fire({ title: 'Error!', text: 'Could not fetch uses\'s data', icon: 'error'})
@@ -51,12 +53,12 @@ export const useUser = () => {
 			})
 	}
 
-	const updateUser = () => {
-		alert('updating user')
+	const updateUser = (data:User) => {
+		userData.value = data
 	}
 
 
-	return { getUser, firstName, lastName, phone, email, clearUser, updateUser }
+	return { getUser, firstName, lastName, phone, email, clearUser, updateUser, userData }
 }
 
 export const getUserAutomatically = () => {
@@ -80,10 +82,11 @@ export const refreshToken = () => {
 			.then(data => {
 				console.log(data)
 				if (data.firstname) {
-					firstName.value = data.firstname
-					lastName.value = data.lastname
-					phone.value = String(data.phone).slice(3)
-					email.value = data.email
+					// firstName.value = data.firstname
+					// lastName.value = data.lastname
+					// phone.value = String(data.phone).slice(3)
+					// email.value = data.email
+					userData.value = data
 					// console.log('i am going to ', path)
 					router.push(path)
 				} else {

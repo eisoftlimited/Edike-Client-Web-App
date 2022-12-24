@@ -1,8 +1,8 @@
 import { useToken } from './TokenController'
 
 const { authToken } = useToken()
-let baseUrl = 'https://edike.onrender.com/edike/api/v1/'
-// let baseUrl = 'http://34.197.20.78:9347/edike/api/v1/'
+// let baseUrl = 'https://edike.onrender.com/edike/api/v1/'
+let baseUrl = 'http://34.197.20.78:9347/edike/api/v1/'
 
 
 export const useFetch = () => {
@@ -44,5 +44,20 @@ export const useFetch = () => {
         return fetch(`${baseUrl}${endpoint}`, options)
     }
 
-    return { makeFetch, makeFetchWithAuth, makeFetchWithAuthAndBody }
+	const makeFetchWithBodyAndFile = (method:string, endpoint:string, params:object, file:File) => {
+		const formData = new FormData()
+		formData.append
+        const options = {
+            method: method,
+            headers: {
+                Accept: 'application/json', 
+                'Content-Type': 'application/json',
+                'x-auth-token': authToken()
+            },
+            body: JSON.stringify(params)
+        };
+        return fetch(`${baseUrl}${endpoint}`, options)
+    }
+
+    return { makeFetch, makeFetchWithAuth, makeFetchWithAuthAndBody, baseUrl }
 }

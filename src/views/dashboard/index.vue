@@ -1,6 +1,6 @@
 <template>
 	<div class="page flex flex-col gap-4 overflow-auto">
-		<p class="text-[28px] font-medium leading-[36px]">Hello {{ firstName }}</p>
+		<p class="text-[28px] font-medium leading-[36px]">Hello {{ firstName }} {{ userData?.lastname }}</p>
 		<div class="bg-primary rounded-xl p-4 md:px-8 lg:px-[50px] md:py-0 flex items-end gap-8">
 			<img src="../../assets/img/illustrations/dashboard/banner.svg" class="h-[90%] hidden md:flex" alt="">
 			<div class="h-full flex items-center justify-center">
@@ -27,7 +27,7 @@ import OnboardingTask from '../../components/dashboard/onboardingTask.vue';
 import RecentTransaction from '../../components/dashboard/recentTransaction.vue';
 import WalletCard from '../../components/dashboard/walletCard.vue'
 
-const { firstName, lastName } = useUser()
+const { firstName, userData } = useUser()
 </script>
 
 <style scoped>
