@@ -57,8 +57,12 @@ export const useUser = () => {
 		userData.value = data
 	}
 
+	const updateUserData = () => {
+		alert('updating')
+	}
 
-	return { getUser, firstName, lastName, phone, email, clearUser, updateUser, userData }
+
+	return { getUser, firstName, lastName, phone, email, clearUser, updateUser, userData, updateUserData }
 }
 
 export const getUserAutomatically = () => {
