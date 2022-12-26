@@ -95,7 +95,7 @@ export const useLoan  = () => {
 		.then(data => {
 			console.log(data)
 			closeSubLoader()
-			if(data.status = 'false') {
+			if(data.length > 0) {
 				currentLoan.value = data.loan
 			} else {
 				currentLoan.value = []

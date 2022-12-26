@@ -45,7 +45,7 @@ const submitForm = () => {
 	if(sideModalProps.value == undefined) {
 		addBeneficiaries()
 	} else {
-		updateBeneficiaries(sideModalProps.value)
+		updateBeneficiaries(sideModalProps.value as string)
 	}
 }
 
