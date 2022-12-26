@@ -1,6 +1,6 @@
 <template>
 	<div class="page flex flex-col gap-4 overflow-auto">
-		<p class="text-[28px] font-medium leading-[36px]">Hello {{ firstName }} {{ userData?.lastname }}</p>
+		<p class="text-[28px] font-medium leading-[36px]">Hello {{ userData?.lastname }}</p>
 		<div class="bg-primary rounded-xl p-4 md:px-8 lg:px-[50px] md:py-0 flex items-end gap-8">
 			<img src="../../assets/img/illustrations/dashboard/banner.svg" class="h-[90%] hidden md:flex" alt="">
 			<div class="h-full flex items-center justify-center">
@@ -11,8 +11,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="flex flex-col gap-5 lg:flex-row">
-			<div class="flex flex-col gap-3 ">
+		<div class="flex flex-col gap-5 lg:flex-row w-full">
+			<div class="flex flex-col gap-3 lg:w-[calc(100%-358px)]">
 				<OnboardingTask/>
 				<RecentTransaction/>
 			</div>
@@ -27,7 +27,7 @@ import OnboardingTask from '../../components/dashboard/onboardingTask.vue';
 import RecentTransaction from '../../components/dashboard/recentTransaction.vue';
 import WalletCard from '../../components/dashboard/walletCard.vue'
 
-const { firstName, userData } = useUser()
+const { userData } = useUser()
 </script>
 
 <style scoped>

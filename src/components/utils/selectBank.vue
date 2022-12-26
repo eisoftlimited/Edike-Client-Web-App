@@ -1,6 +1,6 @@
 <template>
 	<div class="flex flex-col gap-2">
-		<p class="small-text text-darkGray">Select Beneficiary</p>
+		<p class="small-text text-darkGray">Bank name</p>
 		<div class="bg-transparent rounded-xl border focus:outline-0 h-[40px] px-4 py-2 small-text focus:border-secondary transition-all flex items-center justify-between" @click="(readyToSelect = !readyToSelect)"
 			:class="{ 'border-secondary': readyToSelect, 'border-lightGray': !readyToSelect}"
 		>
@@ -9,33 +9,41 @@
 		</div>
 
 		<div class="flex flex-col max-h-[250px] overflow-auto px-1 py-2" v-if="readyToSelect">
-			<searchInput v-model="searchTerm"/>
+			<searchInput v-model="searchTerm" />
+
 			<p class="small-text text-[#3F434A] px-2 py-2 h-[40px] my-1 cursor-pointer hover:bg-[#F4F5F5]"  
-				v-for="item in filteredItems" :key="item._id" @click="selectItem(`${item.lastname} ${item.firstname}`, item._id)"
-			>{{item.lastname}} {{item.firstname}}</p>
+				v-for="item in filteredItems" :key="`${item}`" @click="selectItem(item.option, item.value)"
+			>
+				{{item.option}}
+			</p>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, onUpdated } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import searchInput from './searchInput.vue';
-import { useBackendBeneficiaries } from '../../composables/Beneficiaries';
+import {useDemos} from '../../composables/Demos'
 
+const { banks } = useDemos()
 const props = defineProps<{
 	modelValue: string
+	// selectType: 'class' | 'school' | 'gender'
+	// toSelect?: string[]
+	// label: 'Class' | 'Name of school' | 'Gender'
 }>()
-const { beneficiaries } = useBackendBeneficiaries()
+
 const selectedItem = ref('Please select')
 const searchTerm = ref('')
 const itemSelected = ref(false)
 const readyToSelect = ref(false)
 const isFiltered = ref(false)
-const filteredItems = ref(beneficiaries.value)
+const filteredItems = ref(banks.value)
 const emit = defineEmits(['update:modelValue'])
+const gender = ref(['Male', 'Female'])
 
-const selectItem = (str:string, id:string) => {
-	emit('update:modelValue', id)
+const selectItem = (str:string, value:string) => {
+	emit('update:modelValue', value)
 	selectedItem.value = str
 	itemSelected.value = true
 	readyToSelect.value = false
@@ -46,25 +54,21 @@ watch(searchTerm, async (newValue, oldValue) => {
   if(newValue.length > 0) {
 	isFiltered.value = true
 	const regex = new RegExp(newValue, "i");
-	filteredItems.value = beneficiaries.value.filter(el => {
-		return regex.test(el.lastname) || regex.test(el.firstname)
+	filteredItems.value = banks.value?.filter((el) => {
+		return regex.test(el.option)
 	})
   } else {
 	isFiltered.value = false
-	filteredItems.value = beneficiaries.value
+	filteredItems.value = banks.value
   }
 })
 
-onUpdated(() => {
-	filteredItems.value = beneficiaries.value
-})
-
-onMounted(() => {
-	if(props.modelValue) {
-		itemSelected.value = true
-		selectedItem.value = props.modelValue
-	}
-})
+// onMounted(() => {
+// 	if(props.modelValue) {
+// 		itemSelected.value = true
+// 		selectedItem.value = props.modelValue
+// 	}
+// })
 
 
 

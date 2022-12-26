@@ -25,7 +25,7 @@
 		<p class="small-text text-darkGray text-center">The verification code will be expire in <span
 				class="text-secondary">01:23</span></p>
 		<div class="flex gap-4 items-center justify-between">
-			<p class="normal-text text-primary w-full max-w-fit font-medium">Resend Code</p>
+			<p @click="resend" class="normal-text text-primary w-full max-w-fit font-medium">Resend Code</p>
 			<button class="btn-long" :disabled="!enableButton">Submit</button>
 		</div>
 	</form>
@@ -38,13 +38,21 @@ import { useAuth } from '../../composables/AuthController';
 const props = defineProps<{
 		type: 'verify' | 'reset'
 }>()
-const { otp, verifyEmail, inCorrectOTP, expiredOTP, forgetPasswordOTP, otpNum } = useAuth()
+const { otp, verifyEmail, inCorrectOTP, expiredOTP, forgetPasswordOTP, otpNum, resendResetOtp, resendVerifyOtp } = useAuth()
 
 const submitOtp = () => {
 	if(props.type ==  'verify') {
 		verifyEmail()
 	} else if(props.type == 'reset') {	
 		forgetPasswordOTP()
+	}
+}
+
+const resend = () => {
+	if(props.type ==  'verify') {
+		resendVerifyOtp()
+	} else if(props.type == 'reset') {	
+		resendResetOtp()
 	}
 }
 

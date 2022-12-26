@@ -39,7 +39,7 @@
 		</div>
 
 		<div class="flex gap-4 items-center justify-between">
-			<button type="button" class="btn-short bg-transparent text-primary" @click="closeSideModal">Cancel</button>
+			<button type="button" class="btn-short bg-transparent text-primary" @click="closeModals">Cancel</button>
 			<button type="submit" :disabled="!bvnButtonEnabled" @click="submitForm" class="btn-short">Submit</button>
 		</div>
 	</div>
@@ -49,7 +49,7 @@
 			<img src="../../assets/img/illustrations/successful.svg" class="mx-auto" alt="">
 			<div class="flex flex-col gap-1 text-center">
 				<h5 class="heading5 font-bold">Successful!!!</h5>
-				<p class="small-text text-[#404040] text-center">NIN has been added to your account successfully.</p>
+				<p class="small-text text-[#404040] text-center">BVN has been added to your account successfully.</p>
 			</div>
 		</div>
 	</div>
@@ -60,9 +60,11 @@ import { ref } from 'vue'
 import { useSideModal } from '../../composables/SideModal'
 import { useBvn } from '../../composables/BvnController'
 import Camera from "simple-vue-camera";
+import { useGlobalModal } from '../../composables/GlobalModal';
 
 
 const { closeSideModal } = useSideModal()
+const { closeModal } = useGlobalModal()
 const { bvnSuccessful, bvnButtonEnabled, bvnNumber, addBvn, imageFile } = useBvn()
 
 
@@ -97,6 +99,10 @@ const submitForm = () => {
 	btn.click()
 }
 
+const closeModals = () => {
+	closeModal()
+	closeSideModal()
+}
 // const getImage = () => {
 // 	let x:HTMLInputElement = document.querySelector('input.file')!
 // 	console.log(x.files[0])

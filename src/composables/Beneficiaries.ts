@@ -9,14 +9,13 @@ import Swal from 'sweetalert2'
 
 const { makeFetchWithAuth, makeFetchWithAuthAndBody } = useFetch()
 const { closeModal, globalModalLoader } = useGlobalModal()
-const { openSubLoader, closeSubLoader } = useLoader()
+const { openSubLoader, closeSubLoader, openMainLoader, closeMainLoader} = useLoader()
 const { sideModalLoader, closeSideModal } = useSideModal()
 
 
-const beneficiaryModal = ref(false)
-const beneficiaryModalType = ref<'add' | 'edit'>('add')
+// const beneficiaryModal = ref(false)
+// const beneficiaryModalType = ref<'add' | 'edit'>('add')
 const beneficiaries = ref<Bene[]>([])
-
 const firstName = ref('')
 const lastName = ref('')
 const gender = ref('')
@@ -41,6 +40,36 @@ const resetVariables = () => {
 
 export const useBeneficiaries  = () => {
 	
+	const onboardAddBeneficiaries = () => {
+		openMainLoader()
+		makeFetchWithAuthAndBody('POST', 'beneficiary/create', {
+			firstname:firstName.value, 
+			lastname:lastName.value,
+			gender:gender.value,
+			dob:dob.value,
+			school:school.value,
+			studentClass: studentClass.value
+		}).then(res => res.json())
+		.then(data => {
+			closeMainLoader()
+			console.log(data)
+			if(data.beneficiary._id) {
+				Swal.fire({ title: 'Success', text: 'Beneficiary added successfully', icon: 'success'})
+				closeModal()
+				closeSideModal()
+				fetchAllBeneficiaries()
+				resetVariables()
+			} else {
+				Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
+			}
+			
+		})
+		.catch(err => {
+			closeMainLoader()
+			console.log(err)
+			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
+		})
+	} 
 
 	const addBeneficiaries = () => {
 		openSubLoader()
@@ -177,7 +206,7 @@ export const useBeneficiaries  = () => {
 	}
 	
 
-	return { beneficiaries ,beneficiaryModal, beneficiaryModalType, enableSaveButton, firstName, lastName, gender, dob, school, studentClass, addBeneficiaries, fetchAllBeneficiaries, deleteBeneficiaries, fetchBeneficiary, updateBeneficiaries }
+	return { beneficiaries, enableSaveButton, firstName, lastName, gender, dob, school, studentClass, addBeneficiaries, onboardAddBeneficiaries, fetchAllBeneficiaries, deleteBeneficiaries, fetchBeneficiary, updateBeneficiaries }
 }
 
 export const useBackendBeneficiaries = () => {

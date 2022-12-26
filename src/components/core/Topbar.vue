@@ -9,7 +9,7 @@
 					<div class="bg-[#FFD240] h-[40px] w-[40px] rounded-full flex items-end justify-center">
 						<img src="@/assets/img/illustrations/user_avatar.svg" alt="">
 					</div>
-					<p class="normal-text">{{firstName}} {{lastName}}</p>
+					<p class="normal-text">{{userData?.firstname}} {{userData?.lastname}}</p>
 					<img src="@/assets/img/icons/arrow_down_filled.svg" alt="">
 				</div>
 			</div>
@@ -42,6 +42,6 @@ const route = useRoute()
 const { beneficiaryModal } = useBeneficiaries()
 const { openSideModal } = useSideModal()
 const { openMenu } = useMenuController()
-const { firstName, lastName } = getUserAutomatically()
+const { userData } = getUserAutomatically()
 const searchTerm = ref('')
 </script>

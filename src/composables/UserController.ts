@@ -13,17 +13,10 @@ const { authToken, deleteDataFromLS } = useToken()
 const { openSubLoader, closeSubLoader } = useLoader()
 
 const userData  = ref<User>()
-const firstName = ref('')
-const lastName = ref('')
-const phone = ref('')
-const email = ref('')
 
 
 const clearUser = () => {
-	firstName.value = ''
-	lastName.value = ''
-	phone.value = ''
-	email.value = ''
+	userData.value = undefined
 }
 
 
@@ -37,10 +30,6 @@ export const useUser = () => {
 				closeSubLoader()
 				console.log(data)
 				if (data.firstname) {
-					// firstName.value = data.firstname
-					// lastName.value = data.lastname
-					// phone.value = String(data.phone).slice(3)
-					// email.value = data.email
 					userData.value = data
 				} else {
 					alert('Couldn\'t fetch user\'s data')
@@ -62,15 +51,15 @@ export const useUser = () => {
 	}
 
 
-	return { getUser, firstName, lastName, phone, email, clearUser, updateUser, userData, updateUserData }
+	return { getUser, clearUser, updateUser, userData, updateUserData }
 }
 
 export const getUserAutomatically = () => {
-	const { getUser } = useUser()
+	const { getUser, updateUserData } = useUser()
 
-	if (firstName.value == '' || email.value == '') getUser()
+	if (userData.value == undefined) getUser()
 
-	return { firstName, lastName, phone, email }
+	return { userData, updateUserData }
 }
 
 export const refreshToken = () => {
@@ -78,6 +67,11 @@ export const refreshToken = () => {
 	let path:string;
 	router.beforeEach((to, from) => {
 		path = to.path
+		// console.log(path)
+		if(path == '/add-beneficiary') {
+			router.push('/dashboard')
+			return;
+		}
 	})
 	
 	if (authToken != null) {
@@ -85,13 +79,8 @@ export const refreshToken = () => {
 			.then(res => res.json())
 			.then(data => {
 				console.log(data)
-				if (data.firstname) {
-					// firstName.value = data.firstname
-					// lastName.value = data.lastname
-					// phone.value = String(data.phone).slice(3)
-					// email.value = data.email
+				if (data != null || data != undefined) {
 					userData.value = data
-					// console.log('i am going to ', path)
 					router.push(path)
 				} else {
 					deleteDataFromLS()

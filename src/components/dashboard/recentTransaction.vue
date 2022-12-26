@@ -7,7 +7,7 @@
 			</p>
 		</div>
 		<div class="w-full overflow-x-auto">
-			<div class="min-w-[700px]">
+			<div class="min-w-[600px]">
 				<div class="w-full flex gap-8 items-center justify-between">
 					<p class="small-text font-bold text-[#929EAE] min-w-[150px]">DESCRIPTION</p>
 					<p class="small-text font-bold text-[#929EAE] min-w-[100px]">TYPE</p>

@@ -6,7 +6,7 @@
 				<p class="small-text text-[#5F6165]">Change your password using the form below</p>
 			</div>
 			<form class="flex flex-col gap-6">
-				<passwordInput label="Enter New Password" place-holder="Create Password" :show-forgot-password="false"
+				<passwordInput label="Enter Old Password" place-holder="Create Password" :show-forgot-password="false"
 					:allow-password-strength="false" v-model="oldPass" />
 				<passwordInput label="Enter New Password" place-holder="Create Password" :show-forgot-password="false"
 					:allow-password-strength="true" v-model="password" />

@@ -2,7 +2,7 @@
 	<div class="w-full flex flex-col gap-2">
 		<p class="small-text text-darkGray">Phone</p>
 		<div class="relative">
-			<input required type="number" placeholder="XXX XXX XXXX"
+			<input required type="number" placeholder="080 1234 5678"
 				:value="modelValue" @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
 				class="w-full caret-secondary bg-transparent rounded-xl border border-lightGray focus:outline-0 h-[40px] pl-[70px] py-2 small-text focus:border-secondary transition-all"
 			/>

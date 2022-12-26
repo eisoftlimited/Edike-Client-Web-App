@@ -44,20 +44,16 @@ export const useFetch = () => {
         return fetch(`${baseUrl}${endpoint}`, options)
     }
 
-	const makeFetchWithBodyAndFile = (method:string, endpoint:string, params:object, file:File) => {
-		const formData = new FormData()
-		formData.append
-        const options = {
+	const makeFetchWithFormData = (method:string, endpoint:string, formData:FormData) => {
+		const options = {
             method: method,
             headers: {
-                Accept: 'application/json', 
-                'Content-Type': 'application/json',
                 'x-auth-token': authToken()
             },
-            body: JSON.stringify(params)
-        };
+            body: formData
+        }
         return fetch(`${baseUrl}${endpoint}`, options)
     }
 
-    return { makeFetch, makeFetchWithAuth, makeFetchWithAuthAndBody, baseUrl }
+    return { makeFetch, makeFetchWithAuth, makeFetchWithAuthAndBody, baseUrl, makeFetchWithFormData }
 }

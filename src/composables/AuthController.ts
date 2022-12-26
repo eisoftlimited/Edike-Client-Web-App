@@ -40,6 +40,7 @@ export const useAuth = () => {
 		oldPass.value = ''
 		otp.value = ''
 		otpNum.value = undefined
+		inCorrectOTP.value = false
 	}
 
 	const registerUser = () => {
@@ -83,15 +84,18 @@ export const useAuth = () => {
 			.then(res => res.json())
 			.then(data => {
 				console.log(data)
-				closeMainLoader()
+				
 				if (data.status == 'valid') {
 					saveTokenToLS(data.token)
 					resetVariables()
-					router.push('/dashboard')
+					router.push('/add-beneficiary')
+					closeMainLoader()
 				} else {
+					closeMainLoader()
 					Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
 					// alert(data.msg)
 					resetVariables()
+					inCorrectOTP.value = true
 				}
 			})
 			.catch(err => {
@@ -100,6 +104,28 @@ export const useAuth = () => {
 				Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 				resetVariables()
 			})
+	}
+
+	const resendVerifyOtp = () => {
+		openMainLoader()
+		makeFetch('POST', 'auth/resend/otp', {
+			email: email.value
+		})
+		.then(res => res.json())
+		.then(data => {
+			console.log(data)
+			closeMainLoader()
+			if(data.status == 'valid') {
+				Swal.fire({ title: 'Success!', text: `A new OTP has been send to ${email.value}`, icon: 'success'})
+			} else {
+				Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
+			}
+		})
+		.catch(err => {
+			closeMainLoader()
+			console.log(err)
+			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
+		})
 	}
 
 	const loginUser = () => {
@@ -163,6 +189,7 @@ export const useAuth = () => {
 				} else {
 					// alert(data.msg)
 					Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
+					inCorrectOTP.value = true
 					otpNum.value = undefined
 					otp.value = ''
 				}
@@ -174,6 +201,28 @@ export const useAuth = () => {
 				Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 				resetVariables()
 			})
+	}
+
+	const resendResetOtp = () => {
+		openMainLoader()
+		makeFetch('POST', 'auth/resend/resetpass/otp', {
+			email: email.value
+		})
+		.then(res => res.json())
+		.then(data => {
+			console.log(data)
+			closeMainLoader()
+			if(data.status == 'valid') {
+				Swal.fire({ title: 'Success!', text: `A new OTP has been send to ${email.value}`, icon: 'success'})
+			} else {
+				Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
+			}
+		})
+		.catch(err => {
+			closeMainLoader()
+			console.log(err)
+			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
+		})
 	}
 
 	const changePassword = () => {
@@ -221,6 +270,7 @@ export const useAuth = () => {
 
 	return {
 		firstName, lastName, email, password, phone, oldPass, otp, registerUser, loginUser, logOut, verifyEmail, otpNum,
-		inCorrectOTP, expiredOTP, forgotPassword, forgetPasswordOTP, resetPassOtpComp, enterNewPassComp, changePassword
+		inCorrectOTP, expiredOTP, forgotPassword, forgetPasswordOTP, resetPassOtpComp, enterNewPassComp, changePassword, 
+		resendResetOtp, resendVerifyOtp
 	}
 }

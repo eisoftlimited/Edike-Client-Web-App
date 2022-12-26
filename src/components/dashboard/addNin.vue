@@ -39,7 +39,7 @@
 		</div>
 
 		<div class="flex gap-4 items-center justify-between">
-			<button type="button" class="btn-short bg-transparent text-primary" @click="closeSideModal">Cancel</button>
+			<button type="button" class="btn-short bg-transparent text-primary" @click="closeModals">Cancel</button>
 			<button type="submit" :disabled="!ninButtonEnabled" @click="submitForm" class="btn-short">Submit</button>
 		</div>
 	</div>
@@ -60,9 +60,10 @@ import { ref } from 'vue'
 import { useSideModal } from '../../composables/SideModal'
 import { useNin } from '../../composables/NinController'
 import Camera from "simple-vue-camera";
-
+import { useGlobalModal } from '../../composables/GlobalModal';
 
 const { closeSideModal } = useSideModal()
+const { closeModal } = useGlobalModal()
 const { ninSuccessful, ninButtonEnabled, ninNumber, addNin, imageFile } = useNin()
 
 
@@ -95,5 +96,10 @@ const startCamera = async () => {
 const submitForm = () => {
 	let btn:HTMLButtonElement = document.querySelector('.hide')!
 	btn.click()
+}
+
+const closeModals = () => {
+	closeModal()
+	closeSideModal()
 }
 </script>

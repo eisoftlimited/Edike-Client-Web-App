@@ -1,9 +1,14 @@
 import { computed, ref } from 'vue'
 import { useFetch } from './FetchController'
 import { useToken } from './TokenController'
+import { useLoader } from './LoaderController'
+import {useUser} from './UserController'
+import Swal from 'sweetalert2'
 
-const { makeFetchWithAuthAndBody, baseUrl } = useFetch()
-const { authToken } = useToken()
+const { makeFetchWithFormData, baseUrl } = useFetch()
+// const { authToken } = useToken()
+const { openSubLoader, closeSubLoader } = useLoader()
+const { getUser } = useUser()
 
 const bvnSuccessful = ref(false)
 const bvnNumber = ref<number>()
@@ -15,39 +20,41 @@ const bvnButtonEnabled = computed(() => {
 
 export const useBvn  = () => {
 
-	// const addBvn = () => {
-	// 	console.log(imageFile.value)
-	// 	makeFetchWithAuthAndBody('POST', 'auth/verify/bvn', 
-	// 	{ bvn:String(bvnNumber.value), image: imageFile.value})
-	// 	.then(res => res.json())
-	// 	.then(data => {
-	// 		console.log(data)
-	// 	})
-	// 	.catch(err => {
-	// 		console.log(err)
-	// 	})
-	// }
-
 	const addBvn = () => {
-		console.log(imageFile.value)
+		openSubLoader()
+		// console.log(imageFile.value)
 		const formData = new FormData()
 		formData.append('bvn', String(bvnNumber.value))
 		formData.append('img', imageFile.value)
-        const options = {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json', 
-				'Content-Type': 'multipart/form-data',
-                // 'Content-Type': 'application/json',
-                'x-auth-token': authToken()
-            },
-            body: formData
-        };
-		fetch(`${baseUrl}auth/verify/bvn`, options)
+        
+		makeFetchWithFormData('POST', 'auth/verify/bvn', formData)
 		.then(res => res.json())
-		.then(data => console.log(data))
-		.catch(err => console.log(err))
+		.then(data => {
+			console.log(data)
+			closeSubLoader()
+			if(data.status = 'valid') {
+				bvnSuccessful.value = true
+				Swal.fire({ title: 'Success!', text: 'Bvn added successfully', icon: 'success'})
+				getUser()
+			} else {
+				Swal.fire({ title: 'Error!', text: 'Bvn was not added successfully', icon: 'error'})
+			}
+		})
+		.catch(err => {
+			console.log(err)
+			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
+		})
 	}
 
 	return { bvnSuccessful, bvnNumber, bvnButtonEnabled, addBvn, imageFile }
 }
+
+
+// const options = {
+//     method: 'POST',
+//     headers: {
+//         'x-auth-token': authToken()
+//     },
+//     body: formData
+// };
+// fetch(`${baseUrl}auth/verify/bvn`, options)

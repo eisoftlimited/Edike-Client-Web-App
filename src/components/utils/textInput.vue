@@ -10,10 +10,10 @@
 
 <script setup lang="ts">
 	defineProps<{
-		inputType: 'text' | 'email'
+		inputType: 'text' | 'email' | 'number'
 		ifRequired: boolean
 		label: string
 		placeHolder: string
-		modelValue: string
+		modelValue: string | number
 	}>()
 </script>
