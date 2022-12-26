@@ -59,6 +59,7 @@ import { ref } from 'vue';
 		let x:HTMLInputElement = document.querySelector('.filehide')!
 		console.log(x.files![0])
 		emit('update:modelValue', x.files![0])
+		file_dropped.value = true
 	}
 
 	
