@@ -32,18 +32,16 @@ import Loan from '../../interface/typeLoan';
 import { useSideModal } from '../../composables/SideModal';
 import { useGlobalModal } from '../../composables/GlobalModal';
 import LoanPreview from '../../components/loan/loanPreview.vue'
+import { useUtils } from '../../composables/Utils';
 
 const { openModal, closeModal } = useGlobalModal()
 const { openSideModal, closeSideModal } = useSideModal()
-
-
+const { getSize } =  useUtils()
 const props = defineProps<{
 	data: Loan
 }>()
 
-const getSize = () => {
-	return window.innerWidth
-}
+
 const showMore = () => {
 	if(getSize() > 1024) {
 		openSideModal(LoanPreview, props.data)
