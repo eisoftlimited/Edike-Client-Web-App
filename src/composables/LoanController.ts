@@ -72,7 +72,7 @@ export const useLoan  = () => {
 				if(data.status = 'valid') {
 					Swal.fire({ title: 'Success!', text: 'Loan request made successfully', icon: 'success'})
 					fetchLoans()
-					requestLoanStatus.value = false
+					closeLoanRequest()
 				} else {
 					Swal.fire({ title: 'Error!', text: 'Loan request was unsuccesful', icon: 'error'})
 				}
@@ -107,7 +107,12 @@ export const useLoan  = () => {
 		})
 	}
 
-	return { bene_id, amount, duration, billImage, requestLoan, selectedBeneficiary, enableLoanButton, fetchLoans, currentLoan, requestLoanStatus }
+	const closeLoanRequest = () => {
+		requestLoanStatus.value = false
+		clearVariables()
+	}
+
+	return { bene_id, amount, duration, billImage, requestLoan, selectedBeneficiary, enableLoanButton, fetchLoans, currentLoan, requestLoanStatus, closeLoanRequest }
 }
 
 export const autoFetchLoan = () => {

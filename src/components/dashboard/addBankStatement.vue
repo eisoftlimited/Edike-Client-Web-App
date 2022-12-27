@@ -11,7 +11,7 @@
 			<div class="flex flex-col gap-5">
 				<SelectBank v-model="bankName" />
 				<SelectAnalysisType v-model="analysisType"/>
-				<Upload v-model="(bankStatementPdf as File)" title="Upload Bank Statement" accept="Accepted file is Pdf" info="please upload the bank statement generated" accept-type="application/pdf" :drop-type="['application/pdf']"/>
+				<Upload v-model="bankStatementPdf" title="Upload Bank Statement" accept="Accepted file is Pdf" info="please upload the bank statement generated" accept-type="application/pdf" :drop-type="['application/pdf']"/>
 			</div>
 			
 		</div>

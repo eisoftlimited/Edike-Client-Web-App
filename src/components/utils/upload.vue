@@ -27,7 +27,7 @@ import { ref } from 'vue';
 		accept: string
 		acceptType?: string
 		dropType?: string[]
-		modelValue: File
+		modelValue: any
 	}>()
 	const emit = defineEmits(['update:modelValue'])
 	const file_dropped = ref(false)
@@ -44,7 +44,7 @@ import { ref } from 'vue';
 		x.click()
 	}
 	const onDrop = (e:any) => {
-		let file:File = e.dataTransfer.files[0]
+		let file:any = e.dataTransfer.files[0]
 		if(props.dropType?.includes(file.type)) {
 			emit('update:modelValue', file)
 			file_dropped.value = true

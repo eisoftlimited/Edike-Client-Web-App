@@ -9,11 +9,11 @@
 			<SelectBeneficiary v-model="bene_id"/>
 			<AmountInput v-model="amount"/>
 			<DurationInput v-model="duration"/>
-			<Upload v-model="(billImage as File)"  title="Upload Bill" accept="Accepted file type include Doc, docx" info="please upload the bill provided by the school" accept-type="application/msword" :drop-type="['application/msword']"/>
+			<Upload v-model="billImage"  title="Upload Bill" accept="Accepted file type include Doc, docx" info="please upload the bill provided by the school" accept-type="application/msword" :drop-type="['application/msword']"/>
 		</div>
 		
 		<div class="flex gap-4 items-center justify-between">
-			<button type="button" @click="requestLoanStatus = false"  class="btn-short bg-transparent text-primary">Cancel</button>
+			<button type="button" @click="closeLoanRequest"  class="btn-short bg-transparent text-primary">Cancel</button>
 			<button type="submit" :disabled="!enableLoanButton" class="btn-short">Submit</button>
 		</div>
 	</form>
@@ -27,5 +27,5 @@ import DurationInput from '../utils/durationInput.vue';
 import Upload from '../utils/upload.vue'
 import { useLoan } from '../../composables/LoanController';
 
-const { bene_id, amount, duration, billImage, enableLoanButton, requestLoan, requestLoanStatus } = useLoan()
+const { bene_id, amount, duration, billImage, enableLoanButton, requestLoan, closeLoanRequest } = useLoan()
 </script>
