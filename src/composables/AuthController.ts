@@ -142,6 +142,9 @@ export const useAuth = () => {
 					updateUser(data.useful[0])
 					router.push('/dashboard')
 					resetVariables()
+				} else if (data.msg == 'Kindly Verify your Account, Check Your Mail') {
+					Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
+					router.push('/verification')
 				} else {Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})}
 			})
 			.catch(err => {
@@ -251,16 +254,6 @@ export const useAuth = () => {
 				resetVariables()
 			})
 	}
-
-
-
-	// const getUser = () => {
-	// 	alert('get user')
-	// 	// makeFetchWithAuth('GET', 'auth/user')
-	// 	// .then(res => res.json())
-	// 	// .then(data => console.log(data))
-	// 	// .catch(err => console.log(err))
-	// }
 
 	const logOut = () => {
 		deleteDataFromLS()
