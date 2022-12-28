@@ -20,19 +20,7 @@
 						</div>
 					</div>
 
-					<div class="flex flex-col gap-2">
-						<p class="small-text text-darkGray">Capture Selfie Image</p>
-						<!-- <input class="file" type="file" accept="image/*" @change="getImage"> -->
-						<img src="../../assets/img/icons/camera.svg" class="w-[70px] cursor-pointer" alt=""
-							@click="openCamera = true" v-if="!openCamera">
-						<div class="w-full max-w-[300px] mx-auto h-auto  flex flex-col gap-4" v-else>
-							<camera @paused="reCapture = true" @resumed="reCapture = false" :resolution="{ width: 200, height: 200 }" ref="cam" autoplay></camera>
-							<button v-if="!reCapture" class="btn-short mx-auto" type="button"
-								@click="snapshot">Click</button>
-							<button v-else class="btn-short mx-auto" type="button" @click="startCamera">Recapture</button>
-						</div>
-
-					</div>
+					<Camera v-model="imageFile"/>
 				</div>
 				<button type="submit" class="hide hidden">submit</button>
 			</form>
@@ -59,8 +47,8 @@
 import { ref } from 'vue'
 import { useSideModal } from '../../composables/SideModal'
 import { useBvn } from '../../composables/BvnController'
-import Camera from "simple-vue-camera";
 import { useGlobalModal } from '../../composables/GlobalModal';
+import Camera from '../../components/utils/Camera.vue'
 
 
 const { closeSideModal } = useSideModal()
@@ -68,31 +56,8 @@ const { closeModal } = useGlobalModal()
 const { bvnSuccessful, bvnButtonEnabled, bvnNumber, addBvn, imageFile } = useBvn()
 
 
-const cam = ref();
-const openCamera = ref(false)
-const reCapture = ref(false)
 
-const snapshot = async () => {
-	await cam.value?.pause();
-	const blob = await cam.value?.snapshot();
-	reCapture.value = true
-	const blobToFile = (theBlob: Blob, fileName: string): File => {
-		return new File(
-			[theBlob as any], // cast as any
-			fileName,
-			{
-				lastModified: new Date().getTime(),
-				type: theBlob.type
-			}
-		)
-	}
-	imageFile.value = blobToFile(blob, `img_${new Date().getTime()}`)
-}
 
-const startCamera = async () => {
-	imageFile.value = undefined
-	await cam.value?.resume();
-}
 
 const submitForm = () => {
 	let btn:HTMLButtonElement = document.querySelector('.hide')!

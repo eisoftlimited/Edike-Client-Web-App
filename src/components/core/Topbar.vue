@@ -3,14 +3,15 @@
 		<div class="flex items-center justify-between py-4 h-[80px]">
 			<h3 class="text-[22px]">{{route.name}}</h3>
 			<div class="gap-4 hidden lg:flex">
-				<img src="@/assets/img/icons/bell.svg" alt="">
-				<span class="border border-l border-[#E8E9EB]"></span>
+				<!-- <img src="@/assets/img/icons/bell.svg" alt=""> -->
+				<!-- <span class="border border-l border-[#E8E9EB]"></span> -->
 				<div class="flex gap-2 items-center">
 					<div class="bg-[#FFD240] h-[40px] w-[40px] rounded-full flex items-end justify-center">
-						<img src="@/assets/img/illustrations/user_avatar.svg" alt="">
+						<img v-if="userData?.profileImage" class="rounded-full" :src="userData.profileImage" alt="">
+						<img v-else src="@/assets/img/illustrations/user_avatar.svg" alt="">
 					</div>
 					<p class="normal-text">{{userData?.firstname}} {{userData?.lastname}}</p>
-					<img src="@/assets/img/icons/arrow_down_filled.svg" alt="">
+					<!-- <img src="@/assets/img/icons/arrow_down_filled.svg" alt=""> -->
 				</div>
 			</div>
 			<button class="flex lg:hidden items-center justify-center" @click="openMenu">

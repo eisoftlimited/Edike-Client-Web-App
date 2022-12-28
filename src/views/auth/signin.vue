@@ -6,7 +6,7 @@
 				<h4 class="heading5 md:heading4 text-center text-boldText">Sign In to your Account</h4>
 				<form class="flex flex-col gap-5" @submit.prevent="loginUser">
 					<textInput class="" v-model="email" :if-required="true" label="Email Address" place-holder="johndoe@email.com" input-type="email"/>
-					<PasswordInput v-model="password" label="Password" place-holder="Create Password" :allow-password-strength="false" :show-forgot-password="true"/>
+					<PasswordInput v-model="password" label="Password" place-holder="Enter Password" :allow-password-strength="false" :show-forgot-password="true"/>
 					
 					<button class="btn-long" :disabled="!enableLoginButton">Login</button>
 				</form>

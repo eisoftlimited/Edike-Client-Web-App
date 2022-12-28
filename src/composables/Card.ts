@@ -14,17 +14,18 @@ const addCardSuccessful = ref(false)
 const cardNumber = ref('')
 const cvc = ref('')
 const card_holder = ref('')
-const expires_in = ref('')
+const expire_month = ref('')
+const expire_year = ref('')
+// const expires_in = ref('')
 
 const cardButtonEnabled = computed(() => {
-	return cardNumber.value && String(cvc.value).length == 3 && card_holder.value && String(expires_in.value).length == 4 ? true : false
+	return cardNumber.value && cvc.value.length == 3 && card_holder.value && expire_month.value.length == 2 && expire_year.value.length == 2 ? true : false
 })
 
 export const useCard  = () => {
 
 	const addCard = () => {
-		let str = String(expires_in.value)
-		let formattedStr = `${str[0]}${str[1]}/${str[2]}${str[3]}`
+		let formattedStr = `${expire_month.value}/${expire_year.value}`
 		// console.log(card_holder.value, formattedStr)
 		openSubLoader()
 		makeFetchWithAuthAndBody('POST', 'card/add/debit_card', {
@@ -70,7 +71,7 @@ export const useCard  = () => {
 		})
 	}
 
-	return { addCard, addCardSuccessful, cardButtonEnabled, cardNumber, cvc, card_holder, expires_in, addedCard, getCard }
+	return { addCard, addCardSuccessful, cardButtonEnabled, cardNumber, cvc, card_holder, expire_month, expire_year, addedCard, getCard }
 }
 
 export const fetchCard = () => {

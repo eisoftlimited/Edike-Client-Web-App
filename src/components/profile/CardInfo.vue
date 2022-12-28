@@ -10,7 +10,7 @@
 				<div class="flex flex-col">
 					<p class=" small-text font-medium">{{ data.card_holder }}</p>
 					<div class="flex items-center gap-2 opacity-80">
-						<p class="relative bottom-[5px]">....</p>
+						<p class="text-[12px]">{{String(data.card_number).slice(0,4)}}</p>
 						<p class="relative bottom-[5px]">....</p>
 						<p class="relative bottom-[5px]">....</p>
 						<p class="text-[12px]">{{String(data.card_number).slice(-4)}}</p>

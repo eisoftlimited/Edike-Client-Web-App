@@ -9,13 +9,13 @@
 					<h4 class="heading4">No Loans Running</h4>
 					<p class="small-text text-center">Lorem ipsum is placeholder text commonly used in the graphic,
 						print, and publishing industries for previewing layouts and visual mockups.</p>
-					<button class="btn-medium" @click="requestLoanStatus = true">Request Loan</button>
+					<button class="btn-medium" @click="requestLoanForm">Request Loan</button>
 				</div>
 			</div>
 
 			<div class="flex flex-col gap-4 items-center w-full max-w-[500px] mx-auto md:mx-0" v-if="currentLoan.length && !requestLoanStatus">
 				<CurrentLoanCard v-for="item in currentLoan" :key="item._id" :data="item"/>
-				<button class="btn-medium" @click="requestLoanStatus = true">Request Loan</button>
+				<button class="btn-medium" @click="requestLoanForm">Request Loan</button>
 			</div>
 
 			<div class="flex items-center gap-[20px] justify-between" v-if="requestLoanStatus">
@@ -42,7 +42,7 @@ import { autoFetchLoan } from '../../composables/LoanController';
 import previewBeneficiary from '../../components/beneficiaries/previewBeneficiary.vue';
 import CurrentLoanCard from '../../components/loan/currentLoanCard.vue';
 
-const { bene_id, selectedBeneficiary, currentLoan, requestLoanStatus } = autoFetchLoan()
+const { bene_id, selectedBeneficiary, currentLoan, requestLoanStatus, requestLoanForm } = autoFetchLoan()
 requestLoanStatus.value = false
 </script>
 

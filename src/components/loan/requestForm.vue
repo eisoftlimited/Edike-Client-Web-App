@@ -9,7 +9,7 @@
 			<SelectBeneficiary v-model="bene_id"/>
 			<AmountInput v-model="amount"/>
 			<DurationInput v-model="duration"/>
-			<Upload v-model="billImage"  title="Upload Bill" accept="Accepted file type include Doc, docx" info="please upload the bill provided by the school" accept-type="application/msword" :drop-type="['application/msword']"/>
+			<Upload v-model="billImage"  title="Upload Bill" accept="Accepted file type is image" info="please upload the bill provided by the school" accept-type="image/x-png,image/jpeg" :drop-type="['image/x-png','image/jpeg']"/>
 		</div>
 		
 		<div class="flex gap-4 items-center justify-between">

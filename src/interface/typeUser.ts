@@ -10,10 +10,12 @@ interface User {
     iscardadded: string;
 	isloaned: string;
     isnin: string;
+	isidcard: string;
     lastname: string;
     phone: number;
     role: string;
     updatedAt: string;
+	profileImage: string;
 }
 
 export default User

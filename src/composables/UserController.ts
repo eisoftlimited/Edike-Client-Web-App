@@ -23,13 +23,14 @@ const clearUser = () => {
 export const useUser = () => {
 	
 	const getUser = () => {
+		userData.value = undefined
 		openSubLoader()
 		makeFetchWithAuth('GET', 'auth/user')
 			.then(res => res.json())
 			.then(data => {
 				closeSubLoader()
 				console.log(data)
-				if (data.firstname) {
+				if (data != null || data != undefined) {
 					userData.value = data
 				} else {
 					alert('Couldn\'t fetch user\'s data')
@@ -64,15 +65,15 @@ export const getUserAutomatically = () => {
 
 export const refreshToken = () => {
 	console.log('refreshtoken')
-	let path:string;
-	router.beforeEach((to, from) => {
-		path = to.path
-		// console.log(path)
-		if(path == '/add-beneficiary') {
-			router.push('/dashboard')
-			return;
-		}
-	})
+	// let path:string;
+	// router.beforeEach((to, from) => {
+	// 	path = to.path
+	// 	// console.log(path)
+	// 	// if(path == '/add-beneficiary') {
+	// 	// 	router.push('/dashboard')
+	// 	// 	return;
+	// 	// }
+	// })
 	
 	if (authToken != null) {
 		makeFetchWithAuth('GET', 'auth/user')
@@ -81,7 +82,7 @@ export const refreshToken = () => {
 				console.log(data)
 				if (data != null || data != undefined) {
 					userData.value = data
-					router.push(path)
+					// router.push(path)
 				} else {
 					deleteDataFromLS()
 					router.push('/signin')

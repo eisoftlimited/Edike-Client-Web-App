@@ -45,47 +45,53 @@ const clearVariables = () => {
 	billImage.value = undefined
 }
 
+const requestLoanForm = () => {
+	if((userData.value?.isnin == 'approved' || userData.value?.isbvn == 'approved') && userData.value?.isbankstatementadded == 'approved' && userData.value?.iscardadded == 'approved' && userData.value?.isidcard == 'approved') {
+		requestLoanStatus.value = true
+	} else {
+		Swal.fire({ title: 'Verification Incomplete!', text: 'Kindly visit the dashboard to complete verification', icon: 'error'})
+		// clearVariables()
+		// requestLoanStatus.value = false
+	}
+}
+
 export const useLoan  = () => {
 
+	
+
 	const requestLoan = () => {
-		if((userData.value?.isnin == 'approved' || userData.value?.isbvn == 'approved') && userData.value.isbankstatementadded == 'approved' && userData.value.iscardadded == 'approved') {
-			openSubLoader()
-			// console.log(billImage.value)
-			const formData = new FormData()
-			formData.append('beneficiary_amount', amount.value)
-			formData.append('beneficiary_duration', duration.value)
-			formData.append('beneficiary_file', billImage.value)
-			
-			// makeFetchWithFormData('POST', 'auth/bank/bank-statement', formData)
-			const options = {
-				method: 'POST',
-				headers: {
-					'x-auth-token': authToken()
-				},
-				body: formData
-			}
-			fetch(`${baseUrl}loan/apply/beneficiary_loan/${bene_id.value}`, options)
-			.then(res => res.json())
-			.then(data => {
-				console.log(data)
-				closeSubLoader()
-				if(data.status = 'valid') {
-					Swal.fire({ title: 'Success!', text: 'Loan request made successfully', icon: 'success'})
-					fetchLoans()
-					closeLoanRequest()
-				} else {
-					Swal.fire({ title: 'Error!', text: 'Loan request was unsuccesful', icon: 'error'})
-				}
-			})
-			.catch(err => {
-				console.log(err)
-				Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
-			})
-		} else {
-			Swal.fire({ title: 'Verification Incomplete!', text: 'Kindly visit the dashboard to complete verification', icon: 'error'})
-			clearVariables()
-			requestLoanStatus.value = false
+		openSubLoader()
+		// console.log(billImage.value)
+		const formData = new FormData()
+		formData.append('beneficiary_amount', amount.value)
+		formData.append('beneficiary_duration', duration.value)
+		formData.append('beneficiary_file', billImage.value)
+		
+		// makeFetchWithFormData('POST', 'auth/bank/bank-statement', formData)
+		const options = {
+			method: 'POST',
+			headers: {
+				'x-auth-token': authToken()
+			},
+			body: formData
 		}
+		fetch(`${baseUrl}loan/apply/beneficiary_loan/${bene_id.value}`, options)
+		.then(res => res.json())
+		.then(data => {
+			console.log(data)
+			closeSubLoader()
+			if(data.status = 'valid') {
+				Swal.fire({ title: 'Success!', text: 'Loan request made successfully', icon: 'success'})
+				fetchLoans()
+				closeLoanRequest()
+			} else {
+				Swal.fire({ title: 'Error!', text: 'Loan request was unsuccesful', icon: 'error'})
+			}
+		})
+		.catch(err => {
+			console.log(err)
+			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
+		})
 	}
 
 	const fetchLoans = () => {
@@ -112,12 +118,12 @@ export const useLoan  = () => {
 		clearVariables()
 	}
 
-	return { bene_id, amount, duration, billImage, requestLoan, selectedBeneficiary, enableLoanButton, fetchLoans, currentLoan, requestLoanStatus, closeLoanRequest }
+	return { bene_id, amount, duration, billImage, requestLoan, selectedBeneficiary, enableLoanButton, fetchLoans, currentLoan, requestLoanStatus, closeLoanRequest, requestLoanForm }
 }
 
 export const autoFetchLoan = () => {
 	const { fetchLoans, requestLoan } = useLoan()
 
 	if(currentLoan.value.length < 1) fetchLoans()
-	return { bene_id, amount, duration, billImage, requestLoan, selectedBeneficiary, enableLoanButton, fetchLoans, currentLoan, requestLoanStatus }
+	return { bene_id, amount, duration, billImage, requestLoan, selectedBeneficiary, enableLoanButton, fetchLoans, currentLoan, requestLoanStatus, requestLoanForm }
 }

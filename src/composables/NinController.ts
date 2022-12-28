@@ -30,7 +30,7 @@ export const useNin  = () => {
 		.then(data => {
 			console.log(data)
 			closeSubLoader()
-			if(data.status = 'valid') {
+			if(data.status == 'valid') {
 				ninSuccessful.value = true
 				Swal.fire({ title: 'Success!', text: 'Nin added successfully', icon: 'success'})
 				getUser()

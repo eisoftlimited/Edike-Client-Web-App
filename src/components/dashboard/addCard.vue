@@ -50,7 +50,7 @@ import { useGlobalModal } from '../../composables/GlobalModal';
 
 const { closeSideModal } = useSideModal()
 const { closeModal } = useGlobalModal()
-const { cardButtonEnabled, cardNumber, card_holder, addCard, addCardSuccessful, expires_in, cvc } = useCard()
+const { cardButtonEnabled, cardNumber, card_holder, addCard, addCardSuccessful } = useCard()
 
 const closeModals = () => {
 	closeModal()

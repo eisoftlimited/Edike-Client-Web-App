@@ -23,7 +23,7 @@
 		</div>
 
 		<p class="small-text text-darkGray text-center">The verification code will be expire in <span
-				class="text-secondary">01:23</span></p>
+				class="text-secondary">{{ `0${Math.floor(timer/60)}:${timer%60 < 10 ? '0' : ''}${timer%60}` }}</span></p>
 		<div class="flex gap-4 items-center justify-between">
 			<p @click="resend" class="normal-text text-primary w-full max-w-fit font-medium cursor-pointer">Resend Code</p>
 			<button class="btn-long" :disabled="!enableButton">Submit</button>
@@ -32,10 +32,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, onBeforeUnmount, watch } from 'vue';
 import { useAuth } from '../../composables/AuthController';
 import Swal from 'sweetalert2';
 
+const timer = ref(120)
+let interval:any;
 const props = defineProps<{
 		type: 'verify' | 'reset'
 }>()
@@ -44,7 +46,7 @@ const { otp, verifyEmail, inCorrectOTP, expiredOTP, forgetPasswordOTP, otpNum, r
 const submitOtp = () => {
 	if(props.type ==  'verify') {
 		verifyEmail()
-	} else if(props.type == 'reset') {	
+	} else if(props.type == 'reset') {
 		forgetPasswordOTP()
 	}
 }
@@ -64,6 +66,8 @@ const getEmail = async () => {
 }
 
 const resend = () => {
+	inCorrectOTP.value = false
+	expiredOTP.value = false
 	if(email.value) {
 		if(props.type ==  'verify') {
 			resendVerifyOtp()
@@ -88,6 +92,19 @@ const focusOnInput = () => {
 	inputs.focus()
 }
 
+const countDown = () => {
+	interval = setInterval(() => {
+		timer.value--
+	}, 1000)
+}
+
+watch(timer, (newValue, oldValue) => {
+	if (newValue == 0) {
+		clearInterval(interval)
+		expiredOTP.value = true
+	}
+})
+
 // computed
 const enableButton = computed(() => {
 	return otp.value.length == 6 ? true : false
@@ -95,6 +112,11 @@ const enableButton = computed(() => {
 
 onMounted(() => {
 	focusOnInput()
+	countDown()
+})
+
+onBeforeUnmount(() => {
+	clearInterval(interval)
 })
 
 

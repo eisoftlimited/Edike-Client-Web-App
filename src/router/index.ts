@@ -3,6 +3,7 @@ import { useMenuController } from '../composables/MenuController'
 import { useGlobalModal } from '../composables/GlobalModal'
 import { useToken } from '../composables/TokenController'
 import { useSideModal } from '../composables/SideModal'
+import { nextTick } from 'process'
 
 const { closeMenu, menuStatus } = useMenuController()
 const { closeModal } = useGlobalModal()
@@ -47,6 +48,12 @@ const routes = [
 		path: '/add-beneficiary',
 		component: () => import('../views/onboarding/addBeneficiary.vue'),
 		meta: { requiresAuth: true },
+		beforeEnter: (to:any, from:any) => {
+			console.log(to, from)
+			if(from.path != '/verification') {
+				router.push('/dashboard')
+			}
+		}
 	},
 	{
 		path: '/privacy-policy',

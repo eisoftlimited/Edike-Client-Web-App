@@ -32,12 +32,12 @@ export const useBvn  = () => {
 		.then(data => {
 			console.log(data)
 			closeSubLoader()
-			if(data.status = 'valid') {
+			if(data.status == 'valid') {
 				bvnSuccessful.value = true
 				Swal.fire({ title: 'Success!', text: 'Bvn added successfully', icon: 'success'})
 				getUser()
 			} else {
-				Swal.fire({ title: 'Error!', text: 'Bvn was not added successfully', icon: 'error'})
+				Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
 			}
 		})
 		.catch(err => {

@@ -11,7 +11,7 @@
 					</div>
 					<textInput class="" v-model.trim="email" :if-required="true" label="Email Address" place-holder="johndoe@email.com" input-type="email"/>
 					<phoneInput v-model.trim="phone"/>
-					<PasswordInput v-model.trim="password" label="Password" place-holder="Create Password" :allow-password-strength="true" :show-forgot-password="false"/>
+					<PasswordInput v-model.trim="password" label="Password" place-holder="Enter Password" :allow-password-strength="true" :show-forgot-password="false"/>
 					
 					<div class="ml-[5px] flex flex-col gap-4">
 						<p class="flex items-center gap-2 text-xs md:text-sm text-[#666666]" :class="{'text-success' : containsOver8}">

@@ -55,5 +55,17 @@ export const useFetch = () => {
         return fetch(`${baseUrl}${endpoint}`, options)
     }
 
-    return { makeFetch, makeFetchWithAuth, makeFetchWithAuthAndBody, baseUrl, makeFetchWithFormData }
+	const makeFetchToAnotherUrl = (method:string, url:string) => {
+		const options = {
+            method: method,
+            headers: {
+                Accept: 'application/json', 
+                'Content-Type': 'application/json',
+                'x-auth-token': authToken()
+            }
+        };
+        return fetch(url, options)
+	}
+
+    return { makeFetch, makeFetchWithAuth, makeFetchWithAuthAndBody, baseUrl, makeFetchWithFormData, makeFetchToAnotherUrl }
 }
