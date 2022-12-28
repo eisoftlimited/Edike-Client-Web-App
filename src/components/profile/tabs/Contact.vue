@@ -4,8 +4,8 @@
 			<div class="flex flex-col gap-4">
 				<h3 class="text-[22px] font-medium">Get in touch with us</h3>
 				<div class="flex flex-col gap-4">
-					<copyBox label="Phone Number" value="+234 813 790 1372"/>
-					<copyBox label="Email Address" value="contact@edike.com"/>
+					<copyBox label="Phone Number" value="+234 702 500 0490"/>
+					<copyBox label="Email Address" value="info@edike.ng"/>
 				</div>
 			</div>
 

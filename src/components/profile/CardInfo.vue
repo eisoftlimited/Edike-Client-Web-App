@@ -27,7 +27,7 @@
 			</div>
 			<div class="flex items-start gap-3 w-full">
 				<p class="small-text  text-left text-[#8A9099] min-w-[110px]">Card Number</p>
-				<p class="small-text text-[#3F434A] w-full">{{data.card_number}}</p>
+				<p class="small-text text-[#3F434A] w-full">{{`${String(data.card_number).slice(0,4)} .... .... ${String(data.card_number).slice(-4)}`}}</p>
 			</div>
 			<div class="flex items-start gap-3 w-full">
 				<p class="small-text text-left text-[#8A9099] min-w-[110px]">Card Holder</p>
