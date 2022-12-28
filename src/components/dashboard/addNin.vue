@@ -26,12 +26,13 @@
 						<img src="../../assets/img/icons/camera.svg" class="w-[70px] cursor-pointer" alt=""
 							@click="openCamera = true" v-if="!openCamera">
 						<div class="w-full max-w-[300px] mx-auto h-auto  flex flex-col gap-4" v-else>
+							<button class="btn-short mx-auto" type="button"
+								@click="switchCamera">Switch Camera</button>
 							<camera @paused="reCapture = true" @resumed="reCapture = false" :resolution="{ width: 200, height: 200 }" ref="cam" autoplay></camera>
 							<button v-if="!reCapture" class="btn-short mx-auto" type="button"
 								@click="snapshot">Click</button>
 							<button v-else class="btn-short mx-auto" type="button" @click="startCamera">Recapture</button>
 						</div>
-
 					</div>
 				</div>
 				<button type="submit" class="hide hidden">submit</button>
@@ -61,6 +62,7 @@ import { useSideModal } from '../../composables/SideModal'
 import { useNin } from '../../composables/NinController'
 import Camera from "simple-vue-camera";
 import { useGlobalModal } from '../../composables/GlobalModal';
+import Swal from 'sweetalert2';
 
 const { closeSideModal } = useSideModal()
 const { closeModal } = useGlobalModal()
@@ -70,6 +72,8 @@ const { ninSuccessful, ninButtonEnabled, ninNumber, addNin, imageFile } = useNin
 const cam = ref();
 const openCamera = ref(false)
 const reCapture = ref(false)
+const cameras = ref<any>([])
+const currentCamera = ref(0)
 
 const snapshot = async () => {
 	await cam.value?.pause();
@@ -91,6 +95,26 @@ const snapshot = async () => {
 const startCamera = async () => {
 	imageFile.value = undefined
 	await cam.value?.resume();
+}
+
+const switchCamera = () => {
+	cam.value?.devices(["videoinput"])
+	.then((data:any) => {
+		cameras.value == data
+		if(currentCamera.value >= data.length-1) {
+			currentCamera.value = 0
+		} else {
+			currentCamera.value++
+		}
+		console.log(data.length)
+		const device = data[currentCamera.value]
+		console.log(data, data.length, device)
+		cam.value?.changeCamera(device.deviceId);
+	})
+	.catch((err:any) => {
+		console.log(err)
+		Swal.fire({ title: 'Error!', text: 'Could not get the cameras on your device', icon: 'error'})
+	})
 }
 
 const submitForm = () => {

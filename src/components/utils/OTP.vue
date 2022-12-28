@@ -25,7 +25,7 @@
 		<p class="small-text text-darkGray text-center">The verification code will be expire in <span
 				class="text-secondary">01:23</span></p>
 		<div class="flex gap-4 items-center justify-between">
-			<p @click="resend" class="normal-text text-primary w-full max-w-fit font-medium">Resend Code</p>
+			<p @click="resend" class="normal-text text-primary w-full max-w-fit font-medium cursor-pointer">Resend Code</p>
 			<button class="btn-long" :disabled="!enableButton">Submit</button>
 		</div>
 	</form>
@@ -34,11 +34,12 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import { useAuth } from '../../composables/AuthController';
+import Swal from 'sweetalert2';
 
 const props = defineProps<{
 		type: 'verify' | 'reset'
 }>()
-const { otp, verifyEmail, inCorrectOTP, expiredOTP, forgetPasswordOTP, otpNum, resendResetOtp, resendVerifyOtp } = useAuth()
+const { otp, verifyEmail, inCorrectOTP, expiredOTP, forgetPasswordOTP, otpNum, resendResetOtp, resendVerifyOtp, email } = useAuth()
 
 const submitOtp = () => {
 	if(props.type ==  'verify') {
@@ -48,12 +49,31 @@ const submitOtp = () => {
 	}
 }
 
-const resend = () => {
-	if(props.type ==  'verify') {
-		resendVerifyOtp()
-	} else if(props.type == 'reset') {	
-		resendResetOtp()
+const getEmail = async () => {
+	const { value: userEmail } = await Swal.fire({
+		title: 'Input email address',
+		input: 'email',
+		inputLabel: 'Your email address',
+		inputPlaceholder: 'Enter your email address'
+	})
+
+	if (userEmail) {
+		email.value = userEmail
+		resend()
 	}
+}
+
+const resend = () => {
+	if(email.value) {
+		if(props.type ==  'verify') {
+			resendVerifyOtp()
+		} else if(props.type == 'reset') {	
+			resendResetOtp()
+		}
+	} else {
+		getEmail()
+	}
+	
 }
 
 const getCode = () => {

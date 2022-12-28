@@ -1,11 +1,16 @@
 import { computed, ref } from 'vue'
 import { useFetch } from './FetchController'
+import { useLoader } from './LoaderController'
+import Swal from 'sweetalert2'
+import { useUser } from './UserController'
 
-const { makeFetchWithAuthAndBody } = useFetch()
+const { makeFetchWithFormData } = useFetch()
+const { openSubLoader, closeSubLoader } = useLoader()
+const { getUser } = useUser()
 
 const ninSuccessful = ref(false)
 const ninNumber = ref<number>()
-const imageFile = ref<File>()
+const imageFile = ref<any>()
 
 const ninButtonEnabled = computed(() => {
 	return (String(ninNumber.value).length == 11) && imageFile.value != undefined ? true : false
@@ -14,15 +19,28 @@ const ninButtonEnabled = computed(() => {
 export const useNin  = () => {
 
 	const addNin = () => {
-		console.log(imageFile.value)
-		makeFetchWithAuthAndBody('POST', 'auth/verify/nin', 
-		{ nin:String(ninNumber.value), file: imageFile.value})
+		openSubLoader()
+		// console.log(imageFile.value)
+		const formData = new FormData()
+		formData.append('nin', String(ninNumber.value))
+		formData.append('img', imageFile.value)
+        
+		makeFetchWithFormData('POST', 'auth/verify/nin', formData)
 		.then(res => res.json())
 		.then(data => {
 			console.log(data)
+			closeSubLoader()
+			if(data.status = 'valid') {
+				ninSuccessful.value = true
+				Swal.fire({ title: 'Success!', text: 'Nin added successfully', icon: 'success'})
+				getUser()
+			} else {
+				Swal.fire({ title: 'Error!', text: 'Nin was not added successfully', icon: 'error'})
+			}
 		})
 		.catch(err => {
 			console.log(err)
+			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error' })
 		})
 	}
 

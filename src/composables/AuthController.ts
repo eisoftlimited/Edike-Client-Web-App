@@ -58,7 +58,7 @@ export const useAuth = () => {
 					console.log(data)
 					if (data.status == 'valid') {
 						router.push('/verification')
-						resetVariables()
+						// resetVariables()
 					} else {
 						Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
 						// alert(data.msg)
@@ -84,7 +84,6 @@ export const useAuth = () => {
 			.then(res => res.json())
 			.then(data => {
 				console.log(data)
-				
 				if (data.status == 'valid') {
 					saveTokenToLS(data.token)
 					resetVariables()
@@ -94,7 +93,7 @@ export const useAuth = () => {
 					closeMainLoader()
 					Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
 					// alert(data.msg)
-					resetVariables()
+					otp.value = ''
 					inCorrectOTP.value = true
 				}
 			})
