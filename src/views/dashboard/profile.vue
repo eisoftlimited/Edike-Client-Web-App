@@ -23,7 +23,7 @@
 
 	const tabs = [
 		{text: 'Personal Details', comp: Details, id:0},
-		{text: 'Debit Cards', comp: Cards, id:1},
+		{text: 'Cards', comp: Cards, id:1},
 		{text: 'Security', comp: Security, id:2},
 		{text: 'Contact Us', comp: Contact, id:3}
 	]
