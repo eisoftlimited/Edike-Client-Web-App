@@ -1,7 +1,11 @@
 <template>
 	<div class="w-full bg-[#FFFFFF] h-auto flex flex-col px-6">
 		<div class="flex items-center justify-between py-4 h-[80px]">
-			<h3 class="text-[22px]">{{route.name}}</h3>
+			<div>
+				<img src="@/assets/img/logo.svg" class="w-[100px] block mx-auto lg:hidden" alt=""/>
+				<h3 class="text-[22px] hidden lg:block">{{route.name}}</h3>
+			</div>
+			
 			<div class="gap-4 hidden lg:flex">
 				<!-- <img src="@/assets/img/icons/bell.svg" alt=""> -->
 				<!-- <span class="border border-l border-[#E8E9EB]"></span> -->
