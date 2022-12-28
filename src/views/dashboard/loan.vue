@@ -6,7 +6,7 @@
 				class="w-[90%] max-w-[400px] mx-auto h-auto flex flex-col items-center justify-center gap-6">
 				<img src="../../assets/img/illustrations/empty_loan.svg" alt="">
 				<div class="flex flex-col gap-2 items-center">
-					<h4 class="heading4">No Loans Running</h4>
+					<h4 class="heading4 text-center">No Loans Running</h4>
 					<p class="small-text text-center">Lorem ipsum is placeholder text commonly used in the graphic,
 						print, and publishing industries for previewing layouts and visual mockups.</p>
 					<button class="btn-medium" @click="requestLoanForm">Request Loan</button>

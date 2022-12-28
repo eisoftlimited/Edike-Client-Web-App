@@ -1,13 +1,13 @@
 <template>
 	<div class="page flex flex-col gap-4 overflow-auto">
-		<p class="text-[24px] font-medium leading-[36px]">Hello {{ userData?.lastname }} {{ userData?.firstname }}</p>
+		<p class="text-[18px] md:text-[24px] font-medium leading-[36px]">Hello {{ userData?.lastname }} {{ userData?.firstname }}</p>
 		<div class="bg-primary rounded-xl p-4 md:px-8 lg:px-[50px] md:py-0 flex items-end gap-8">
 			<img src="../../assets/img/illustrations/dashboard/banner.svg" class="h-[90%] hidden md:flex" alt="">
 			<div class="h-full flex items-center justify-center">
 				<div class="flex flex-col gap-3 max-w-[460px]">
-					<h5 class="heading5 text-white">Welcome to your Edike dashboard</h5>
-					<p class="small-text text-white">You have {{ 5-count }} task outstanding</p>
-					<button class="btn-medium w-fit px-3 normal-text font-bold bg-[#F5993F]">Complete my profile</button>
+					<h5 class="heading6 md:heading5 text-white text-center md:text-left">Welcome to your edike dashboard</h5>
+					<p class="small-text text-white text-center md:text-left">You have {{ 5-count }} task outstanding</p>
+					<!-- <button class="btn-medium w-fit px-3 normal-text font-bold bg-[#F5993F]">Complete my profile</button> -->
 				</div>
 			</div>
 		</div>
