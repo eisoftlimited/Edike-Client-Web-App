@@ -110,6 +110,7 @@ export const useBeneficiaries  = () => {
 	} 
 	
 	const fetchAllBeneficiaries = () => {
+		beneficiaries.value = []
 		openSubLoader()
 		makeFetchWithAuth('GET', 'beneficiary/all')
 		.then(res => res.json())
