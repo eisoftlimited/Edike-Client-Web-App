@@ -46,7 +46,7 @@ const clearVariables = () => {
 }
 
 const requestLoanForm = () => {
-	if((userData.value?.isnin == 'approved' || userData.value?.isbvn == 'approved') && userData.value?.isbankstatementadded == 'approved' && userData.value?.iscardadded == 'approved' && userData.value?.isidcard == 'approved') {
+	if((userData.value?.isnin == 'approved' || userData.value?.isbvn == 'approved') && userData.value?.isbankstatementadded == 'approved' && userData.value?.isidcard == 'approved') {
 		requestLoanStatus.value = true
 	} else {
 		Swal.fire({ title: 'Verification Incomplete!', text: 'Kindly visit the dashboard to complete verification', icon: 'error'})
@@ -127,3 +127,8 @@ export const autoFetchLoan = () => {
 	if(currentLoan.value.length < 1) fetchLoans()
 	return { bene_id, amount, duration, billImage, requestLoan, selectedBeneficiary, enableLoanButton, fetchLoans, currentLoan, requestLoanStatus, requestLoanForm }
 }
+
+
+
+
+// && userData.value?.iscardadded == 'approved'
