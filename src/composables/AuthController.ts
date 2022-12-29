@@ -259,6 +259,7 @@ export const useAuth = () => {
 		deleteDataFromLS()
 		router.push('/signin')
 		clearUser()
+		document.location.reload()
 	}
 
 	return {

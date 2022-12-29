@@ -13,6 +13,7 @@ const { openSubLoader, closeSubLoader, openMainLoader, closeMainLoader} = useLoa
 const { sideModalLoader, closeSideModal } = useSideModal()
 
 
+
 // const beneficiaryModal = ref(false)
 // const beneficiaryModalType = ref<'add' | 'edit'>('add')
 const beneficiaries = ref<Bene[]>([])
