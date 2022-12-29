@@ -33,7 +33,7 @@ export const useUser = () => {
 				if (data != null || data != undefined) {
 					userData.value = data
 				} else {
-					alert('Couldn\'t fetch user\'s data')
+					// alert('Couldn\'t fetch user\'s data')
 					Swal.fire({ title: 'Error!', text: 'Could not fetch uses\'s data', icon: 'error'})
 				}
 			})

@@ -7,7 +7,7 @@ import {useSideModal} from './SideModal'
 import Swal from 'sweetalert2'
 
 
-const { makeFetchWithAuth, makeFetchWithAuthAndBody } = useFetch()
+const { makeFetchWithAuth, makeFetchWithAuthAndBody, makeFetchWithFormData } = useFetch()
 const { closeModal, globalModalLoader } = useGlobalModal()
 const { openSubLoader, closeSubLoader, openMainLoader, closeMainLoader} = useLoader()
 const { sideModalLoader, closeSideModal } = useSideModal()
@@ -22,9 +22,10 @@ const gender = ref('')
 const dob = ref('')
 const school = ref('')
 const studentClass = ref('')
+const imageFile = ref<any>()
 
 const enableSaveButton = computed(() => {
-	return firstName.value && lastName.value && gender.value && dob.value && school.value && studentClass.value ? true : false
+	return firstName.value && lastName.value && gender.value && dob.value && school.value && studentClass.value && imageFile.value !== undefined ? true : false
 })
 
 const resetVariables = () => {
@@ -42,14 +43,17 @@ export const useBeneficiaries  = () => {
 	
 	const onboardAddBeneficiaries = () => {
 		openMainLoader()
-		makeFetchWithAuthAndBody('POST', 'beneficiary/create', {
-			firstname:firstName.value, 
-			lastname:lastName.value,
-			gender:gender.value,
-			dob:dob.value,
-			school:school.value,
-			studentClass: studentClass.value
-		}).then(res => res.json())
+		const formData = new FormData()
+		formData.append('firstname', firstName.value)
+		formData.append('lastname', lastName.value)
+		formData.append('gender', gender.value)
+		formData.append('dob', dob.value)
+		formData.append('school', school.value)
+		formData.append('studentClass', studentClass.value)
+		formData.append('img', imageFile.value)
+        
+		makeFetchWithFormData('POST', 'beneficiary/create', formData)
+		.then(res => res.json())
 		.then(data => {
 			closeMainLoader()
 			console.log(data)
@@ -73,14 +77,17 @@ export const useBeneficiaries  = () => {
 
 	const addBeneficiaries = () => {
 		openSubLoader()
-		makeFetchWithAuthAndBody('POST', 'beneficiary/create', {
-			firstname:firstName.value, 
-			lastname:lastName.value,
-			gender:gender.value,
-			dob:dob.value,
-			school:school.value,
-			studentClass: studentClass.value
-		}).then(res => res.json())
+		const formData = new FormData()
+		formData.append('firstname', firstName.value)
+		formData.append('lastname', lastName.value)
+		formData.append('gender', gender.value)
+		formData.append('dob', dob.value)
+		formData.append('school', school.value)
+		formData.append('studentClass', studentClass.value)
+		formData.append('img', imageFile.value)
+        
+		makeFetchWithFormData('POST', 'beneficiary/create', formData)
+		.then(res => res.json())
 		.then(data => {
 			closeSubLoader()
 			console.log(data)
@@ -206,7 +213,7 @@ export const useBeneficiaries  = () => {
 	}
 	
 
-	return { beneficiaries, enableSaveButton, firstName, lastName, gender, dob, school, studentClass, addBeneficiaries, onboardAddBeneficiaries, fetchAllBeneficiaries, deleteBeneficiaries, fetchBeneficiary, updateBeneficiaries }
+	return { beneficiaries, enableSaveButton, firstName, lastName, gender, dob, school, studentClass, imageFile, addBeneficiaries, onboardAddBeneficiaries, fetchAllBeneficiaries, deleteBeneficiaries, fetchBeneficiary, updateBeneficiaries }
 }
 
 export const useBackendBeneficiaries = () => {
@@ -217,3 +224,13 @@ export const useBackendBeneficiaries = () => {
 	return { beneficiaries }
 }
 
+
+
+// makeFetchWithAuthAndBody('POST', 'beneficiary/create', {
+// 	firstname:firstName.value, 
+// 	lastname:lastName.value,
+// 	gender:gender.value,
+// 	dob:dob.value,
+// 	school:school.value,
+// 	studentClass: studentClass.value
+// })

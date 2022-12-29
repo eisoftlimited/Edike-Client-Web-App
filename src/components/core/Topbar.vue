@@ -11,7 +11,7 @@
 				<!-- <span class="border border-l border-[#E8E9EB]"></span> -->
 				<div class="flex gap-2 items-center">
 					<div class="bg-[#FFD240] h-[40px] w-[40px] rounded-full flex items-end justify-center">
-						<img v-if="userData?.profileImage" class="rounded-full" :src="userData.profileImage" alt="">
+						<img v-if="userData?.profileImage" class="rounded-full border border-stroke" :src="userData.profileImage" alt="">
 						<img v-else src="@/assets/img/illustrations/user_avatar.svg" alt="">
 					</div>
 					<p class="normal-text">{{userData?.firstname}} {{userData?.lastname}}</p>

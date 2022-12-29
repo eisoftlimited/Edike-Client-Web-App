@@ -1,7 +1,6 @@
 <template>
 	<div class="bene_card bg-[#FAFAFA] rounded-[12px] p-6 flex flex-col gap-5 relative h-fit w-fit max-w-[300px]">
-		<img v-if="data.gender == 'Female'" src="@/assets/img/illustrations/female_avatar.svg" alt=""/>
-		<img v-if="data.gender == 'Male'" src="@/assets/img/illustrations/male_avatar.svg" alt=""/>
+		<img :src="data.beneficiaryImage" class="w-[150px] h-[150px] rounded-full object-cover object-top mx-auto" alt=""/>
 		<div class="flex flex-col gap-3 w-fit mx-auto">
 			<div class="flex items-start gap-3">
 				<p class="small-text font-medium text-[#3F434A] min-w-[100px]">Name</p>

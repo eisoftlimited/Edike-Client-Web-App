@@ -15,8 +15,8 @@
 			<SelectComp :isSchool="true" v-model="school" :toSelect="schools" label="Name of school" selectType="school" />
 			<SelectComp v-model="studentClass" :toSelect="classes" label="Class" selectType="class" />
 			<SelectComp v-model="gender" label="Gender" selectType="gender" />
-			
 			<DateComp v-model="dob"/>
+			<Upload v-model="imageFile" title="Upload ID card image" accept="Accepted file is image" info="" accept-type="image/x-png,image/jpeg" :drop-type="['image/x-png','image/jpeg']"/>
 			
 			<button type="submit" class="hide hidden">submit</button>
 		</form>
@@ -31,13 +31,14 @@
 import textInput from '@/components/utils/textInput.vue';
 import SelectComp from '@/components/utils/selectComp.vue';
 import DateComp from '@/components/utils/dateComp.vue';
+import Upload from '@/components/utils/upload.vue'
 import { useDemos } from '../../composables/Demos';
 import { useBeneficiaries } from '../../composables/Beneficiaries';
 import { useSideModal } from '../../composables/SideModal';
 
 
 const { firstName, lastName, gender, dob, school,studentClass, addBeneficiaries,
-	updateBeneficiaries, enableSaveButton } = useBeneficiaries()
+	updateBeneficiaries, enableSaveButton, imageFile } = useBeneficiaries()
 const { classes, schools } = useDemos()
 const { sideModalProps, closeSideModal } = useSideModal()
 

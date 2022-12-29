@@ -17,6 +17,7 @@
 					<SelectComp v-model="studentClass" :toSelect="classes" label="Class" selectType="class"/>
 					<SelectComp v-model="gender"  label="Gender" selectType="gender"/>
 					<DateComp v-model="dob"/>
+					<Upload v-model="imageFile" title="Upload ID card image" accept="Accepted file is image" info="" accept-type="image/x-png,image/jpeg" :drop-type="['image/x-png','image/jpeg']"/>
 					<button type="submit" class="hide hidden">submit</button>
 				</form>
 				<div class="flex gap-4 items-center justify-between">
@@ -54,14 +55,14 @@ import { ref } from 'vue';
 import FormCard from '../../components/utils/formCard.vue';
 import textInput from '../../components/utils/textInput.vue';
 import SelectComp from '@/components/utils/selectComp.vue';
+import Upload from '@/components/utils/upload.vue'
 import DateComp from '../../components/utils/dateComp.vue';
-import BeneficiaryCard from '../../components/beneficiaries/beneficiaryCard.vue';
 import { useDemos } from '../../composables/Demos';
 import { useBeneficiaries } from '../../composables/Beneficiaries';
 import PreviewBeneficiary from '../../components/beneficiaries/previewBeneficiary.vue';
 
 const { classes, schools } = useDemos()
-const { firstName, lastName, studentClass, school, gender, dob, onboardAddBeneficiaries, enableSaveButton, beneficiaries } = useBeneficiaries()
+const { firstName, lastName, studentClass, school, gender, dob, onboardAddBeneficiaries, enableSaveButton, beneficiaries, imageFile } = useBeneficiaries()
 
 
 const invokeSubmit = () => {

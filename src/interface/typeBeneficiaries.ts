@@ -6,6 +6,8 @@ interface Bene {
     firstname: string;
     school: string;
     studentClass: string;
+	beneficiaryImage: string;
+	beneficiaryPubicId: string;
 }
 
 export default Bene

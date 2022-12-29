@@ -94,6 +94,7 @@ export const useAuth = () => {
 					Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
 					// alert(data.msg)
 					otp.value = ''
+					otpNum.value = undefined
 					inCorrectOTP.value = true
 				}
 			})

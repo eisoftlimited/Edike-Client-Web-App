@@ -16,6 +16,7 @@
 			<SelectComp v-model="studentClass" :toSelect="classes" label="Class" selectType="class" />
 			<SelectComp v-model="gender" label="Gender" selectType="gender" />
 			<DateComp v-model="dob" />
+			<Upload v-model="imageFile" title="Upload ID card image" accept="Accepted file is image" info="" accept-type="image/x-png,image/jpeg" :drop-type="['image/x-png','image/jpeg']"/>
 			<button type="submit" class="hide hidden">submit</button>
 		</form>
 		<div class="flex gap-4 items-center justify-between">
@@ -30,6 +31,7 @@ import { ref, onMounted } from 'vue'
 import textInput from '@/components/utils/textInput.vue';
 import SelectComp from '@/components/utils/selectComp.vue';
 import DateComp from '@/components/utils/dateComp.vue';
+import Upload from '@/components/utils/upload.vue'
 import { useDemos } from '../../composables/Demos';
 import { useGlobalModal } from '../../composables/GlobalModal';
 import { useBeneficiaries } from '../../composables/Beneficiaries';
@@ -37,7 +39,7 @@ import { useBeneficiaries } from '../../composables/Beneficiaries';
 
 const { closeModal, globalModalProps } = useGlobalModal()
 const { classes, schools } = useDemos()
-const { firstName, lastName, gender, dob, school, studentClass, addBeneficiaries, updateBeneficiaries, enableSaveButton } = useBeneficiaries()
+const { firstName, lastName, gender, dob, school, studentClass, addBeneficiaries, updateBeneficiaries, enableSaveButton, imageFile } = useBeneficiaries()
 
 
 const submitForm = () => {

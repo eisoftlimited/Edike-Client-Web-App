@@ -58,7 +58,7 @@ const addId = () => {
 	const formData = new FormData()
 	formData.append('img', idImage.value)
 	
-	makeFetchWithFormData('POST', 'auth/upload/idcard', formData)
+	makeFetchWithFormData('POST', 'auth/upload/id_card', formData)
 	.then(res => res.json())
 	.then(data => {
 		console.log(data)
@@ -72,6 +72,7 @@ const addId = () => {
 		}
 	})
 	.catch(err => {
+		closeSubLoader()
 		console.log(err)
 		Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 	})

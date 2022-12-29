@@ -28,9 +28,6 @@ import {useDemos} from '../../composables/Demos'
 const { banks } = useDemos()
 const props = defineProps<{
 	modelValue: string
-	// selectType: 'class' | 'school' | 'gender'
-	// toSelect?: string[]
-	// label: 'Class' | 'Name of school' | 'Gender'
 }>()
 
 const selectedItem = ref('Please select')
@@ -40,7 +37,6 @@ const readyToSelect = ref(false)
 const isFiltered = ref(false)
 const filteredItems = ref(banks.value)
 const emit = defineEmits(['update:modelValue'])
-const gender = ref(['Male', 'Female'])
 
 const selectItem = (str:string, value:string) => {
 	emit('update:modelValue', value)
