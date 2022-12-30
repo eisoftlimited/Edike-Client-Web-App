@@ -46,7 +46,7 @@ const clearVariables = () => {
 }
 
 const requestLoanForm = () => {
-	if((userData.value?.isnin == 'approved' || userData.value?.isbvn == 'approved') && userData.value?.isbankstatementadded == 'approved' && userData.value?.isidcard == 'approved') {
+	if((userData.value?.isnin == 'approved' || userData.value?.isbvn == 'approved') && userData.value?.isbankstatementadded == 'approved' && userData.value?.isidcard == 'approved' && userData.value?.iscardadded == 'approved') {
 		requestLoanStatus.value = true
 	} else {
 		Swal.fire({ title: 'Verification Incomplete!', text: 'Kindly visit the dashboard to complete verification', icon: 'error'})

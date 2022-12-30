@@ -2,12 +2,12 @@
 	<div class="min-h-full flex flex-col gap-[40px] justify-between" v-if="!addCardSuccessful">
 		<div class="flex flex-col gap-[40px]">
 			<div class="flex flex-col gap-1">
-				<h5 class="heading5">ADD CARD 
-					<span class="normal-text font-normal">(Debit/Credit Card)</span>
+				<h5 class="heading5 text-center">ADD CARD 
+					<span class="normal-text font-normal ">(Debit/Credit Card)</span>
 				</h5>
-				<p class="small-text text-[#404040]">Fill the form below to add your CARD to your Edike account.</p>
+				<p class="small-text text-[#404040] text-center">You will be charged 50 naira only for this.</p>
 			</div>
-			<button class="btn-small" @click="payCard">pay card</button>
+			<button class="btn-medium  mx-auto px-3" @click="payCard">Add Card</button>
 			
 		</div>
 	</div>

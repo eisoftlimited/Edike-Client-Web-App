@@ -1,11 +1,14 @@
 <template>
 	<div class="bene_card bg-[#FFFFFF] rounded-xl flex flex-col sm:flex-row items-start gap-6 p-4 w-full max-w-[480px] cursor-pointer md:hover:bg-stroke" @click="showMore">
-		<img src="../../assets/img/illustrations/small_female_avatar.svg" class="mx-auto" v-if="data.beneficiaryDetails[0].gender == 'Female'" alt="">
-		<img src="../../assets/img/illustrations/small_male_avatar.svg" class="mx-auto" v-else alt=""/>
+		<img :src="data.beneficiaryDetails[0].beneficiaryImage" class="mx-auto w-[150px] h-[150px] rounded-full"  alt="">
 		<div class="flex flex-col gap-3 mx-auto w-full max-w-fit">
 			<div class="flex items-start gap-3">
 				<p class="small-text font-medium text-[#3F434A] min-w-[100px]">Loan Amount</p>
-				<p class="small-text text-[#8A9099] w-full">N {{ data.beneficiary_amount }}</p>
+				<p class="small-text text-[#8A9099] w-full">N {{ formatNumber(String(data.beneficiary_amount)) }}</p>
+			</div>
+			<div class="flex items-start gap-3">
+				<p class="small-text font-medium text-[#3F434A] min-w-[100px]">Loan Tenure</p>
+				<p class="small-text text-[#8A9099] w-full">{{ data.beneficiary_duration }} Month(s)</p>
 			</div>
 			<div class="flex  items-start gap-3">
 				<p class="small-text font-medium text-[#3F434A] min-w-[100px]">Beneficiary</p>
@@ -49,6 +52,11 @@ const showMore = () => {
 		openModal(LoanPreview, undefined, props.data)
 	}
 }
+
+function formatNumber(n:string) {
+		// format number 1000000 to 1,234,567
+		return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+	}
 </script>
 
 

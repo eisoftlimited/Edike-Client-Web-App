@@ -35,7 +35,7 @@ export const useNin  = () => {
 				Swal.fire({ title: 'Success!', text: 'Nin added successfully', icon: 'success'})
 				getUser()
 			} else {
-				Swal.fire({ title: 'Error!', text: 'Nin was not added successfully', icon: 'error'})
+				Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
 			}
 		})
 		.catch(err => {

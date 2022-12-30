@@ -14,7 +14,7 @@
 
 			<div class="flex flex-col gap-4 items-center w-full max-w-[500px] mx-auto md:mx-0" v-if="currentLoan.length && !requestLoanStatus">
 				<CurrentLoanCard v-for="item in currentLoan" :key="item._id" :data="item"/>
-				<button class="btn-medium" @click="requestLoanForm">Request Loan</button>
+				<button class="btn-medium" @click="requestLoanForm">New Loan Request</button>
 			</div>
 
 			<div class="flex items-center gap-[20px] justify-between" v-if="requestLoanStatus">

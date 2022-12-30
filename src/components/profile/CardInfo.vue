@@ -8,7 +8,7 @@
 			</div>
 			<div class="flex items-end justify-between z-20 text-[#FFFFFF]">
 				<div class="flex flex-col">
-					<p class=" small-text font-medium">{{ data.card[0].account_name }}</p>
+					<p class=" small-text font-medium">{{ data.card[0].account_name || `${userData?.lastname} ${userData?.firstname}`}}</p>
 					<div class="flex items-center gap-2 opacity-80">
 						<p class="text-[12px]">{{String(data.card[0].bin).slice(0,4)}}</p>
 						<p class="relative bottom-[5px]">....</p>
@@ -31,7 +31,7 @@
 			</div>
 			<div class="flex items-start gap-3 w-full">
 				<p class="small-text text-left text-[#8A9099] min-w-[110px]">Card Holder</p>
-				<p class="small-text text-[#3F434A] w-full">{{data.card[0].account_name}}</p>
+				<p class="small-text text-[#3F434A] w-full">{{data.card[0].account_name || `${userData?.lastname} ${userData?.firstname}`}}</p>
 			</div>
 			<div class="flex items-start gap-3 w-full">
 				<p class="small-text text-left text-[#8A9099] min-w-[110px]">Expires</p>
@@ -48,6 +48,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Card from '../../interface/typeCard'
+import { useUser } from '../../composables/UserController';
+
+const { userData } = useUser()
 
 const props = defineProps<{
 	data:Card

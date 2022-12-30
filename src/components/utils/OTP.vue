@@ -71,8 +71,10 @@ const resend = () => {
 	if(email.value) {
 		if(props.type ==  'verify') {
 			resendVerifyOtp()
+			timer.value = 120
 		} else if(props.type == 'reset') {	
 			resendResetOtp()
+			timer.value = 120
 		}
 	} else {
 		getEmail()

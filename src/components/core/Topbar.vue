@@ -2,7 +2,10 @@
 	<div class="w-full bg-[#FFFFFF] h-auto flex flex-col px-6">
 		<div class="flex items-center justify-between py-4 h-[80px]">
 			<div>
-				<img src="@/assets/img/logo.svg" class="w-[100px] block mx-auto lg:hidden" alt=""/>
+				<router-link to="/dashboard">
+					<img src="@/assets/img/logo.svg" class="w-[100px] block mx-auto lg:hidden" alt=""/>
+				</router-link>
+				
 				<h3 class="text-[22px] hidden lg:block">{{route.name}}</h3>
 			</div>
 			

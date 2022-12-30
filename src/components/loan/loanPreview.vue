@@ -2,14 +2,17 @@
 	<div class="p-6 flex flex-col gap-6">
 		<p class="text-[22px] font-medium">Loan Details</p>
 		<div>
-			<img v-if="data?.beneficiaryDetails[0].gender == 'Male'" src="../../assets/img/illustrations/small_male_avatar.svg" alt="">
-			<img v-else src="../../assets/img/illustrations/small_female_avatar.svg" alt=""/>
+			<img :src="data?.beneficiaryDetails[0].beneficiaryImage" class="mx-auto w-[150px] h-[150px] rounded-full"  alt="">
 		</div>
 		
 		<div class="flex flex-col gap-3 mx-auto w-full ">
 			<div class="flex items-start gap-3">
 				<p class="small-text font-medium text-[#3F434A] min-w-[150px]">Loan Amount</p>
-				<p class="small-text text-[#8A9099] w-full">N {{ data?.beneficiary_amount }}</p>
+				<p class="small-text text-[#8A9099] w-full">N {{ formatNumber(String(data?.beneficiary_amount)) }}</p>
+			</div>
+			<div class="flex items-start gap-3">
+				<p class="small-text font-medium text-[#3F434A] min-w-[150px]">Loan Tenure</p>
+				<p class="small-text text-[#8A9099] w-full">{{ data?.beneficiary_duration }} Month(s)</p>
 			</div>
 			<div class="flex  items-start gap-3">
 				<p class="small-text font-medium text-[#3F434A] min-w-[150px]">Beneficiary</p>
@@ -53,6 +56,11 @@
 		data.value = sideModalProps.value as Loan
 	} else {
 		data.value = globalModalProps.value as Loan
+	}
+
+	function formatNumber(n:string) {
+		// format number 1000000 to 1,234,567
+		return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 	}
 	
 </script>
