@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
 	<div class="w-full flex flex-col gap-2 relative">
 		<p class="small-text text-darkGray">CVC</p>
 		<input required type="text" placeholder="123" v-model="cvc" minlength="3" maxlength="3"
@@ -15,4 +15,4 @@ import { useCard } from '../../composables/Card';
 	// 		cvc.value = cvc.value.slice(0,-1)
 	// 	}
 	// }
-</script>
+</script> -->

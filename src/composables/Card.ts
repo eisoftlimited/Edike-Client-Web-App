@@ -42,7 +42,19 @@ export const useCard  = () => {
 		})
 	}
 
-	
+	const verifyCard = () => {
+		openSubLoader()
+		makeFetchWithAuth('GET', `card/paystack/callback?reference=${reference.value}`)
+		.then(res => res.json())
+		.then(data =>  {
+			closeSubLoader()
+			console.log(data)
+		})
+		.catch(err => {
+			closeSubLoader()
+			console.log(err)
+		})
+	}
 
 	const getCard = () => {
 		openSubLoader()
@@ -63,7 +75,7 @@ export const useCard  = () => {
 		})
 	}
 
-	return { getCard, addCardSuccessful, payCard }
+	return { getCard, addCardSuccessful, payCard, reference, access_code, verifyCard }
 }
 
 export const fetchCard = () => {
