@@ -29,7 +29,8 @@ export const useCard  = () => {
 			if(data.status == 'valid') {
 				reference.value = data.response.data.reference
 				access_code.value = data.response.data.access_code
-				console.log(reference.value, access_code.value)
+				// console.log(reference.value, access_code.value)
+				localStorage.setItem('edike_reference', JSON.stringify({reference: data.response.data.reference}));
 				window.location.href = data.response.data.authorization_url
 			} else {
 				Swal.fire({ title: 'Error!', text: 'Could not contact paystack', icon: 'error'})
@@ -44,7 +45,8 @@ export const useCard  = () => {
 
 	const verifyCard = () => {
 		openSubLoader()
-		makeFetchWithAuth('GET', `card/paystack/callback?reference=${reference.value}`)
+		const reference = JSON.parse(localStorage.getItem('edike_reference')!)
+		makeFetchWithAuth('GET', `card/paystack/callback?reference=${reference.reference}`)
 		.then(res => res.json())
 		.then(data =>  {
 			closeSubLoader()

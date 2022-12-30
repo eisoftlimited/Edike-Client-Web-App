@@ -3,8 +3,9 @@ import { useMenuController } from '../composables/MenuController'
 import { useGlobalModal } from '../composables/GlobalModal'
 import { useToken } from '../composables/TokenController'
 import { useSideModal } from '../composables/SideModal'
-import { nextTick } from 'process'
+import { useCard } from '../composables/Card'
 
+const { reference } = useCard()
 const { closeMenu, menuStatus } = useMenuController()
 const { closeModal } = useGlobalModal()
 const { isAuthenticated } = useToken()
@@ -60,8 +61,9 @@ const routes = [
 		component: () => import('../views/card_verified.vue'),
 		meta: { requiresAuth: true },
 		beforeEnter: (to:any, from:any) => {
-			console.log(to, from)
-			if(from.path != '/verification') {
+			const reference = localStorage.getItem('edike_reference')
+			console.log(reference)
+			if(reference == '' || reference == null) {
 				router.push('/dashboard')
 			}
 		}
