@@ -1,19 +1,26 @@
-interface Card {
+interface actualCard {
+	account_name: string;
 	bank: string;
 	bin: string;
 	brand: string;
-	card_holder: string;
-	card_number: number;
 	card_type: string;
+	channel: string;
 	country_code: string;
-	country_name: string;
-	createdAt: string;
-	createdBy: string;
-	cvc: string;
+	exp_month: string;
+	exp_year: string;
+	last4: string;
+	reusable: string;
 	date: string;
-	expires_in: string;
-	updatedAt: string;
+}
+
+interface Card {
+	createdAt: string;
+	updatdAt: string;
+	date: string;
+	card: actualCard[];
+	createdBy: string;
 	_id: string;
 }
+
 
 export default Card

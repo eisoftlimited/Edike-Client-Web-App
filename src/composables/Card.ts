@@ -51,6 +51,12 @@ export const useCard  = () => {
 		.then(data =>  {
 			closeSubLoader()
 			console.log(data)
+			if(data.status == 'valid') {
+				localStorage.removeItem('edike_reference')
+				router.push('/dashboard/home')
+			} else {
+				Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
+			}
 		})
 		.catch(err => {
 			closeSubLoader()
