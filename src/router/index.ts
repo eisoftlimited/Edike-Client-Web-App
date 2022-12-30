@@ -56,6 +56,17 @@ const routes = [
 		}
 	},
 	{
+		path: '/card-verified',
+		component: () => import('../views/card_verified.vue'),
+		meta: { requiresAuth: true },
+		beforeEnter: (to:any, from:any) => {
+			console.log(to, from)
+			if(from.path != '/verification') {
+				router.push('/dashboard')
+			}
+		}
+	},
+	{
 		path: '/privacy-policy',
 		component: () => import('../views/legal/privacy_policy.vue')
 	},

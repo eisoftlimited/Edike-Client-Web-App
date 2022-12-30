@@ -7,24 +7,8 @@
 				</h5>
 				<p class="small-text text-[#404040]">Fill the form below to add your CARD to your Edike account.</p>
 			</div>
-
-			<form class="flex flex-col justify-between h-auto" @submit.prevent="addCard">
-				<div class="flex flex-col gap-4">
-					<TextInput input-type="number" :if-required="true" label="Card number" place-holder="card number" v-model="cardNumber"/>
-					<TextInput input-type="text" :if-required="true" label="Card holder" place-holder="card holder name" v-model="card_holder"/>
-					<div class="flex items-start gap-4 justify-between">
-						<CvcInput/>
-						<CardExpireInput/>
-					</div>
-					
-				</div>
-				<button type="submit" class="hide hidden">submit</button>
-			</form>
-		</div>
-
-		<div class="flex gap-4 items-center justify-between">
-			<button type="button" class="btn-short bg-transparent text-primary" @click="closeModals">Cancel</button>
-			<button type="submit" :disabled="!cardButtonEnabled" @click="submitForm" class="btn-short">Submit</button>
+			<button class="btn-small" @click="payCard">pay card</button>
+			
 		</div>
 	</div>
 
@@ -43,23 +27,17 @@
 import { ref } from 'vue'
 import { useSideModal } from '../../composables/SideModal'
 import {useCard} from '../../composables/Card'
-import TextInput from '../utils/textInput.vue';
-import CardExpireInput from '../utils/cardExpireInput.vue'
-import CvcInput from '../utils/cvcInput.vue';
 import { useGlobalModal } from '../../composables/GlobalModal';
 
 const { closeSideModal } = useSideModal()
 const { closeModal } = useGlobalModal()
-const { cardButtonEnabled, cardNumber, card_holder, addCard, addCardSuccessful } = useCard()
+const { addCardSuccessful, payCard } = useCard()
 
 const closeModals = () => {
 	closeModal()
 	closeSideModal()
 }
 
-const submitForm = () => {
-	let btn:HTMLButtonElement = document.querySelector('.hide')!
-	btn.click()
-}
+
 
 </script>

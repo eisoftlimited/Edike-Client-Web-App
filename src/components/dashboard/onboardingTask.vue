@@ -55,7 +55,7 @@ const buttons = [
 	{text: 'Verify NIN', subText: '(National Indentification number)', checkUserData: userData.value?.isnin, comp: AddNin},
 	{text: 'Verify BVN', subText: '(Bank Verificaton number)', checkUserData: userData.value?.isbvn, comp: AddBvn},
 	{text: 'Add Bank Statement', subText: '(Submit your 3 months bank statement)', checkUserData: userData.value?.isbankstatementadded, comp: AddBankStatement},
-	// {text: 'Save your card', subText: '', checkUserData: userData.value?.iscardadded, comp: AddCard},
+	{text: 'Save your card', subText: '', checkUserData: userData.value?.iscardadded, comp: AddCard},
 	{text: 'Add Identity Card', subText: '(Submit any valid id card)', checkUserData: userData.value?.isidcard, comp: AddIdCard},
 ]
 
