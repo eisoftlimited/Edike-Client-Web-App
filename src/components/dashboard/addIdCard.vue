@@ -39,8 +39,10 @@ import { useLoader } from '../../composables/LoaderController';
 import { useFetch } from '../../composables/FetchController';
 import Swal from 'sweetalert2';
 import { useUser } from '../../composables/UserController';
+import { useUtils } from '../../composables/Utils'
 
 
+const { eightPercentCongrats } = useUtils()
 const idImage = ref<any>()
 const addIdSuccessful = ref(false)
 const { closeSideModal } = useSideModal()
@@ -67,6 +69,7 @@ const addId = () => {
 			addIdSuccessful.value = true
 			Swal.fire({ title: 'Success!', text: 'ID card added successfully', icon: 'success'})
 			getUser()
+			eightPercentCongrats()
 		} else {
 			Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
 		}

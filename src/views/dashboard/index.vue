@@ -22,11 +22,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, provide } from 'vue'
+import { ref, provide, watch } from 'vue'
 import { useUser } from '../../composables/UserController';
 import OnboardingTask from '../../components/dashboard/onboardingTask.vue';
 import RecentTransaction from '../../components/dashboard/recentTransaction.vue';
-// import WalletCard from '../../components/dashboard/walletCard.vue'
 
 
 const count = ref(0)
@@ -38,6 +37,8 @@ provide('key', {
   updateCount
 })
 const { userData } = useUser()
+
+
 
 </script>
 

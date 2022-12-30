@@ -48,6 +48,15 @@
 }
 
 
+.drop_down-enter-from, .drop_down-leave-to{
+	opacity: 0;
+	transform: translateY(-20px);
+}
+
+.drop_down-enter-active, .drop_down-leave-active{
+	transition: all .5s ease;
+}
+
 
 
 

@@ -1,6 +1,6 @@
 <template>
 	<div class="bene_card bg-[#FFFFFF] rounded-xl flex flex-col sm:flex-row items-start gap-6 p-4 w-full max-w-[480px] cursor-pointer md:hover:bg-stroke" @click="showMore">
-		<img :src="data.beneficiaryDetails[0].beneficiaryImage" class="mx-auto w-[150px] h-[150px] rounded-full object-cover object-center"  alt="">
+		<img :src="data.beneficiaryDetails[0].beneficiaryImage" class="mx-auto w-[150px] h-[150px] rounded-full object-cover object-top"  alt="">
 		<div class="flex flex-col gap-3 mx-auto w-full max-w-fit">
 			<div class="flex items-start gap-3">
 				<p class="small-text font-medium text-[#3F434A] min-w-[100px]">Loan Amount</p>

@@ -2,7 +2,7 @@
 	<div class="p-6 flex flex-col gap-6">
 		<p class="text-[22px] font-medium">Loan Details</p>
 		<div>
-			<img :src="data?.beneficiaryDetails[0].beneficiaryImage" class="mx-auto w-[150px] h-[150px] rounded-full object-cover object-center"  alt="">
+			<img :src="data?.beneficiaryDetails[0].beneficiaryImage" class="mx-auto w-[150px] h-[150px] rounded-full object-cover object-top"  alt="">
 		</div>
 		
 		<div class="flex flex-col gap-3 mx-auto w-full ">

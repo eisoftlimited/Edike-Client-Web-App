@@ -8,7 +8,7 @@
 			</div>
 
 			<transition appear name="tabs_transition" mode="out-in">
-				<component :is="tabs[currentTab].comp" class="max-w-[1500px]"></component>
+				<component v-if="userData" :is="tabs[currentTab].comp" class="max-w-[1500px]"></component>
 			</transition>
 		</div>
 	</div>
@@ -20,7 +20,9 @@
 	import Cards from '../../components/profile/tabs/Cards.vue';
 	import Security from '../../components/profile/tabs/Security.vue'
 	import Contact from '../../components/profile/tabs/Contact.vue'
+	import { useUser } from '../../composables/UserController';
 
+	const { userData } =  useUser()
 	const tabs = [
 		{text: 'Personal Details', comp: Details, id:0},
 		{text: 'Cards', comp: Cards, id:1},

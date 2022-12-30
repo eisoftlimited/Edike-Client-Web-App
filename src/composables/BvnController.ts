@@ -4,7 +4,9 @@ import { useToken } from './TokenController'
 import { useLoader } from './LoaderController'
 import {useUser} from './UserController'
 import Swal from 'sweetalert2'
+import { useUtils } from './Utils'
 
+const { eightPercentCongrats } = useUtils()
 const { makeFetchWithFormData, baseUrl } = useFetch()
 // const { authToken } = useToken()
 const { openSubLoader, closeSubLoader } = useLoader()
@@ -36,6 +38,7 @@ export const useBvn  = () => {
 				bvnSuccessful.value = true
 				Swal.fire({ title: 'Success!', text: 'Bvn added successfully', icon: 'success'})
 				getUser()
+				eightPercentCongrats()
 			} else {
 				Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
 			}

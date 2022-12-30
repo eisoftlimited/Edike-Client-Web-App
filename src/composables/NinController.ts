@@ -3,7 +3,9 @@ import { useFetch } from './FetchController'
 import { useLoader } from './LoaderController'
 import Swal from 'sweetalert2'
 import { useUser } from './UserController'
+import { useUtils } from './Utils'
 
+const { eightPercentCongrats } = useUtils()
 const { makeFetchWithFormData } = useFetch()
 const { openSubLoader, closeSubLoader } = useLoader()
 const { getUser } = useUser()
@@ -34,6 +36,7 @@ export const useNin  = () => {
 				ninSuccessful.value = true
 				Swal.fire({ title: 'Success!', text: 'Nin added successfully', icon: 'success'})
 				getUser()
+				eightPercentCongrats()
 			} else {
 				Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
 			}

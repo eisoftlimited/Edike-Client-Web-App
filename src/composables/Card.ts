@@ -5,7 +5,9 @@ import Swal from 'sweetalert2'
 import Card from '../interface/typeCard'
 import { useUser } from './UserController'
 import router from '../router'
+import { useUtils } from './Utils'
 
+const { eightPercentCongrats } = useUtils()
 const { makeFetchWithAuthAndBody, makeFetchWithAuth } = useFetch()
 const { openSubLoader, closeSubLoader } = useLoader()
 const { getUser } = useUser()
@@ -54,6 +56,7 @@ export const useCard  = () => {
 			if(data.status == 'valid') {
 				localStorage.removeItem('edike_reference')
 				router.push('/dashboard/home')
+				eightPercentCongrats()
 			} else {
 				Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 			}

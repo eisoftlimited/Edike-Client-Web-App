@@ -5,10 +5,11 @@ import { useGlobalModal } from './GlobalModal'
 import { useLoader } from './LoaderController'
 import {useSideModal} from './SideModal'
 import Swal from 'sweetalert2'
+import proceedToLoan from '@/components/beneficiaries/proceedToLoanModal.vue'
 
 
 const { makeFetchWithAuth, makeFetchWithAuthAndBody, makeFetchWithFormData } = useFetch()
-const { closeModal, globalModalLoader } = useGlobalModal()
+const { closeModal, openModal, globalModalLoader } = useGlobalModal()
 const { openSubLoader, closeSubLoader, openMainLoader, closeMainLoader} = useLoader()
 const { sideModalLoader, closeSideModal } = useSideModal()
 
@@ -93,11 +94,12 @@ export const useBeneficiaries  = () => {
 			closeSubLoader()
 			console.log(data)
 			if(data.beneficiary._id) {
-				Swal.fire({ title: 'Success', text: 'Beneficiary added successfully', icon: 'success'})
+				// Swal.fire({ title: 'Success', text: 'Beneficiary added successfully', icon: 'success'})
 				closeModal()
 				closeSideModal()
 				fetchAllBeneficiaries()
 				resetVariables()
+				openModal(proceedToLoan)
 			} else {
 				Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
 			}

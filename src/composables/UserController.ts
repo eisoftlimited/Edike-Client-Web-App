@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 import User from '../interface/typeUser';
 
 
-const { makeFetchWithAuth } = useFetch()
+const { makeFetchWithAuth, makeFetchWithAuthAndBody } = useFetch()
 const { authToken, deleteDataFromLS } = useToken()
 const { openSubLoader, closeSubLoader } = useLoader()
 
@@ -47,8 +47,15 @@ export const useUser = () => {
 		userData.value = data
 	}
 
-	const updateUserData = () => {
-		alert('updating')
+	const updateUserData = (data:{}) => {
+		makeFetchWithAuthAndBody('PATCH', 'auth/user/update/details', data)
+		.then(res => res.json())
+		.then(data => {
+			console.log(data)
+		})
+		.catch(err => {
+			console.log(err)
+		})
 	}
 
 

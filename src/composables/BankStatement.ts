@@ -3,11 +3,11 @@ import { useFetch } from './FetchController'
 import { useLoader } from './LoaderController'
 import Swal from 'sweetalert2'
 import { useUser } from './UserController'
-// import { useToken } from './TokenController'
+import { useUtils } from './Utils'
 
+const { eightPercentCongrats } = useUtils()
 const { makeFetchWithFormData, baseUrl } = useFetch()
 const { openSubLoader, closeSubLoader } = useLoader()
-// const { authToken } = useToken()
 const { getUser } = useUser()
 
 const bankStatementSuccessful = ref(false)
@@ -38,6 +38,7 @@ export const useBankStatement = () => {
 					bankStatementSuccessful.value = true
 					Swal.fire({ title: 'Success!', text: 'Bank Statement was added successfully', icon: 'success' })
 					getUser()
+					eightPercentCongrats()
 				} else {
 					Swal.fire({ title: 'Error!', text: data.msg, icon: 'error' })
 				}
