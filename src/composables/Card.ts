@@ -25,7 +25,7 @@ export const useCard  = () => {
 		openSubLoader()
 		makeFetchWithAuth('GET', 'card/paystack/pay')
 		.then(res => res.json())
-		.then(data => {
+		.then((data) => {
 			closeSubLoader()
 			console.log(data)
 			if(data.status == 'valid') {
@@ -50,12 +50,13 @@ export const useCard  = () => {
 		const reference = JSON.parse(localStorage.getItem('edike_reference')!)
 		makeFetchWithAuth('GET', `card/paystack/callback?reference=${reference.reference}`)
 		.then(res => res.json())
-		.then(data =>  {
+		.then((data) => {
 			closeSubLoader()
 			console.log(data)
 			if(data.status == 'valid') {
 				localStorage.removeItem('edike_reference')
 				router.push('/dashboard/home')
+				// await getUser()
 				eightPercentCongrats()
 			} else {
 				Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})

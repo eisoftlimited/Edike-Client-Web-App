@@ -22,7 +22,7 @@ const clearUser = () => {
 
 export const useUser = () => {
 	
-	const getUser = () => {
+	const getUser = async () => {
 		userData.value = undefined
 		openSubLoader()
 		makeFetchWithAuth('GET', 'auth/user')
@@ -33,7 +33,6 @@ export const useUser = () => {
 				if (data != null || data != undefined) {
 					userData.value = data
 				} else {
-					// alert('Couldn\'t fetch user\'s data')
 					Swal.fire({ title: 'Error!', text: 'Could not fetch uses\'s data', icon: 'error'})
 				}
 			})
@@ -72,16 +71,6 @@ export const getUserAutomatically = () => {
 
 export const refreshToken = () => {
 	console.log('refreshtoken')
-	// let path:string;
-	// router.beforeEach((to, from) => {
-	// 	path = to.path
-	// 	// console.log(path)
-	// 	// if(path == '/add-beneficiary') {
-	// 	// 	router.push('/dashboard')
-	// 	// 	return;
-	// 	// }
-	// })
-	
 	if (authToken != null) {
 		makeFetchWithAuth('GET', 'auth/user')
 			.then(res => res.json())

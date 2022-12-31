@@ -3,7 +3,7 @@
 		<div class="flex flex-col gap-[40px]">
 			<div class="flex flex-col gap-1">
 				<h5 class="heading5">UPLOAD BANK STATEMENT
-					<span class="normal-text font-normal">(min 3 months)</span>
+					<span class="normal-text font-normal">(min 6 months)</span>
 				</h5>
 				<p class="small-text text-[#404040]">Login to your internet banking and generate a 3 month bank statement to upload here.</p>
 			</div>

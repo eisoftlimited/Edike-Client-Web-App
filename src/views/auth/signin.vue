@@ -7,7 +7,10 @@
 				<form class="flex flex-col gap-5" @submit.prevent="loginUser">
 					<textInput class="" v-model="email" :if-required="true" label="Email Address" place-holder="johndoe@email.com" input-type="email"/>
 					<PasswordInput v-model="password" label="Password" place-holder="Enter Password" :allow-password-strength="false" :show-forgot-password="true"/>
-					
+					<!-- <div class="flex items-center gap-2">
+						<input ref="check" @change="checkInput()" type="checkbox" id="remember" class="bg-green"/>
+						<label class="small-text text-darkGray" for="remember">Remember me</label>
+					</div> -->
 					<button class="btn-long" :disabled="!enableLoginButton">Login</button>
 				</form>
 				<p class="small-text text-darkGray text-center">Don't have an account?
@@ -19,16 +22,23 @@
 </template>
 
 <script setup lang="ts">
+import {ref} from 'vue'
 import PasswordInput from '@/components/utils/passwordInput.vue';
 import textInput from '@/components/utils/textInput.vue';
 import FormCard from '@/components/utils/formCard.vue';
 import { useAuth } from '../../composables/AuthController';
 import { usePassword } from '../../composables/PasswordController';
 
-const { email, password, loginUser } = useAuth()
+const { email, password, loginUser, rememberMe } = useAuth()
 const { enableLoginButton } = usePassword()
+const check = ref<HTMLInputElement>()
 
 
+		const checkInput = () => {
+			let el = check.value!
+			alert(el.checked)
+			rememberMe.value = el.checked
+		}
  
 	
 </script>

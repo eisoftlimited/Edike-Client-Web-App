@@ -31,13 +31,13 @@ export const useBankStatement = () => {
 
 		makeFetchWithFormData('POST', 'auth/bank/bank-statement', formData)
 			.then(res => res.json())
-			.then(data => {
+			.then( (data) => {
 				console.log(data)
 				closeSubLoader()
 				if (data.status = 'valid') {
 					bankStatementSuccessful.value = true
 					Swal.fire({ title: 'Success!', text: 'Bank Statement was added successfully', icon: 'success' })
-					getUser()
+					// await getUser()
 					eightPercentCongrats()
 				} else {
 					Swal.fire({ title: 'Error!', text: data.msg, icon: 'error' })

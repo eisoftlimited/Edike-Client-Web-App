@@ -5,10 +5,13 @@ import App from './App.vue'
 import authLayout from './layout/authLayout.vue'
 import onboardingLayout from './layout/onboardingLayout.vue'
 import { refreshToken } from './composables/UserController'
+import { useUtils } from './composables/Utils'
 
-// const { refreshToken } = useUser()
+
+const { checkInactivity } = useUtils()
 
 refreshToken()
+checkInactivity()
 
 
 const app = createApp(App)

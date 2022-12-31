@@ -62,13 +62,13 @@ const addId = () => {
 	
 	makeFetchWithFormData('POST', 'auth/upload/id_card', formData)
 	.then(res => res.json())
-	.then(data => {
+	.then((data) => {
 		console.log(data)
 		closeSubLoader()
 		if(data.status == 'valid') {
 			addIdSuccessful.value = true
 			Swal.fire({ title: 'Success!', text: 'ID card added successfully', icon: 'success'})
-			getUser()
+			// await getUser()
 			eightPercentCongrats()
 		} else {
 			Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})

@@ -23,7 +23,7 @@ const oldPass = ref('')
 const otp = ref('')
 const otpNum = ref<number>()
 
-
+const rememberMe = ref(false)
 const inCorrectOTP = ref(false)
 const expiredOTP = ref(false)
 const resetPassOtpComp = ref(false)
@@ -265,6 +265,6 @@ export const useAuth = () => {
 	return {
 		firstName, lastName, email, password, phone, oldPass, otp, registerUser, loginUser, logOut, verifyEmail, otpNum,
 		inCorrectOTP, expiredOTP, forgotPassword, forgetPasswordOTP, resetPassOtpComp, enterNewPassComp, changePassword, 
-		resendResetOtp, resendVerifyOtp
+		resendResetOtp, resendVerifyOtp, rememberMe
 	}
 }

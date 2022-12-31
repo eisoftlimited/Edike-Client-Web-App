@@ -31,13 +31,13 @@ export const useBvn  = () => {
         
 		makeFetchWithFormData('POST', 'auth/verify/bvn', formData)
 		.then(res => res.json())
-		.then(data => {
+		.then((data) => {
 			console.log(data)
 			closeSubLoader()
 			if(data.status == 'valid') {
 				bvnSuccessful.value = true
 				Swal.fire({ title: 'Success!', text: 'Bvn added successfully', icon: 'success'})
-				getUser()
+				// await getUser()
 				eightPercentCongrats()
 			} else {
 				Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})

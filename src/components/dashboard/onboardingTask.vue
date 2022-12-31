@@ -44,8 +44,10 @@ import AddIdCard from './addIdCard.vue'
 import { useSideModal } from '../../composables/SideModal';
 import { useGlobalModal } from '../../composables/GlobalModal';
 import {useUser} from '../../composables/UserController'
+import {useUtils} from '../../composables/Utils'
 
-
+const { saveLoginCredToCookies } = useUtils()
+// saveLoginCredToCookies('saykeed@gmail.com', 'Simple123#')
 const { openSideModal } = useSideModal()
 const { openModal } = useGlobalModal()
 const { userData } = useUser()
