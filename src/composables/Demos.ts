@@ -3514,6 +3514,7 @@ const banks = ref([
 	{option: 'Kcb bank', value: 'kcbbank'},
 	{option: 'Wema bank', value: 'wemabank'},
 	{option: 'Family bank', value: 'familybank'},
+	{option: 'Other bank', value: 'others'},
 ])
 const analysis_type = ref([
 	{option: 'Individual', value: 'individual'},

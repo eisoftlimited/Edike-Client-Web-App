@@ -1,12 +1,12 @@
 <template>
-	<div class="bene_card bg-[#FAFAFA] rounded-[12px] p-6 flex flex-col gap-5 relative h-fit w-fit max-w-[300px]">
+	<div class="bene_card bg-[#FAFAFA] rounded-[12px] p-6 flex flex-col gap-5 relative min-w-[300px] h-fit w-fit max-w-[300px]">
 		<div class="flex w-full justify-end">
 			<button class="w-fit py-2" @click="modifyCard = !modifyCard">
 				<img src="@/assets/img/icons/dots.svg" alt="">
 			</button>
 		</div>
 		<img :src="data.beneficiaryImage" class="w-[150px] h-[150px] rounded-full object-cover object-top mx-auto" alt=""/>
-		<div class="flex flex-col gap-3 w-fit mx-auto">
+		<div class="flex flex-col  gap-3 w-fit ">
 			<div class="flex items-start gap-3">
 				<p class="small-text font-medium text-[#3F434A] min-w-[100px]">Name</p>
 				<p class="small-text text-[#8A9099] w-full">{{data.firstname}} {{data.lastname}}</p>
