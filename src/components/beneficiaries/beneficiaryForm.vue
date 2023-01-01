@@ -12,7 +12,8 @@
 				<textInput class="w-1/2" v-model.trim="lastName" :if-required="true" label="Last Name"
 					place-holder="Enter text here..." input-type="text" />
 			</div>
-			<SelectComp :isSchool="true" v-model="school" :toSelect="schools" label="Name of school" selectType="school" />
+			<!-- <SelectComp :isSchool="true" v-model="school" :toSelect="schools" label="Name of school" selectType="school" /> -->
+			<selectSchool v-model="school" :to-select="schools"/>
 			<SelectComp v-model="studentClass" :toSelect="classes" label="Class" selectType="class" />
 			<SelectComp v-model="gender" label="Gender" selectType="gender" />
 			<DateComp v-model="dob"/>
@@ -30,6 +31,7 @@
 <script setup lang="ts">
 import textInput from '@/components/utils/textInput.vue';
 import SelectComp from '@/components/utils/selectComp.vue';
+import selectSchool from '../utils/selectSchools.vue';
 import DateComp from '@/components/utils/dateComp.vue';
 import Upload from '@/components/utils/upload.vue'
 import { useDemos } from '../../composables/Demos';

@@ -13,7 +13,8 @@
 						<textInput class="w-1/2" v-model="firstName" :if-required="true" label="First Name" place-holder="Enter text here..." input-type="text"/>
 						<textInput class="w-1/2" v-model="lastName" :if-required="true" label="Last Name" place-holder="Enter text here..." input-type="text"/>
 					</div>	
-					<SelectComp :isSchool="true" v-model="school" :toSelect="schools" label="Name of school" selectType="school"/>
+					<!-- <SelectComp :isSchool="true" v-model="school" :toSelect="schools" label="Name of school" selectType="school"/> -->
+					<selectSchool v-model="school" :to-select="schools"/>
 					<SelectComp v-model="studentClass" :toSelect="classes" label="Class" selectType="class"/>
 					<SelectComp v-model="gender"  label="Gender" selectType="gender"/>
 					<DateComp v-model="dob"/>
@@ -60,6 +61,7 @@ import DateComp from '../../components/utils/dateComp.vue';
 import { useDemos } from '../../composables/Demos';
 import { useBeneficiaries } from '../../composables/Beneficiaries';
 import PreviewBeneficiary from '../../components/beneficiaries/previewBeneficiary.vue';
+import selectSchool from '../../components/utils/selectSchools.vue'
 
 const { classes, schools } = useDemos()
 const { firstName, lastName, studentClass, school, gender, dob, onboardAddBeneficiaries, enableSaveButton, beneficiaries, imageFile } = useBeneficiaries()
