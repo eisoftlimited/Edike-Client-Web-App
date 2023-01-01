@@ -1,6 +1,11 @@
 <template>
 	<div class=" w-full flex items-center justify-center">
-		<h3 class="heading4 mt-[200px] text-primary font-bold text-center w-[90%] max-w-[400px] mx-auto">CARD VERIFIED SUCCESSFULLY</h3>
+
+		<div class="mt-[200px] w-[90%] max-w-[400px] mx-auto flex flex-col gap-4 items-center">
+			<h3 class="heading4 text-primary font-bold text-center">CARD VERIFIED SUCCESSFULLY</h3>
+			<router-link to="/dashboard" class="py-2 px-4 w-full max-w-fit bg-primary mx-auto rounded-lg text-white">Back to dashboard</router-link>
+		</div>
+		
 	</div>
 </template>
 
