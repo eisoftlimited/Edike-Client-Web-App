@@ -28,7 +28,7 @@ const logOut = () => {
 
 export const useUser = () => {
 	
-	const getUser = async () => {
+	const getUser = () => {
 		userData.value = undefined
 		openSubLoader()
 		makeFetchWithAuth('GET', 'auth/user')
@@ -57,13 +57,23 @@ export const useUser = () => {
 	}
 
 	const updateUserData = (data:{}) => {
-		makeFetchWithAuthAndBody('PATCH', 'auth/user/update/details', data)
+		openSubLoader()
+		makeFetchWithAuthAndBody('PATCH', 'auth/user/update/profile', data)
 		.then(res => res.json())
 		.then(data => {
 			console.log(data)
+			closeSubLoader()
+			if(data.status == 'valid') {
+				Swal.fire({ title: 'Success!', text: data.msg, icon: 'success'})
+				getUser()
+			} else {
+				Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
+			}
 		})
 		.catch(err => {
+			closeSubLoader()
 			console.log(err)
+			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 		})
 	}
 
