@@ -11,8 +11,8 @@
 				<textInput class="w-1/2" v-model.trim="lastName" :if-required="true" label="Last Name"
 					place-holder="Enter text here..." input-type="text" />
 			</div>
-			<SelectComp :isSchool="true" v-model="school" :toSelect="schools" label="Name of school"
-				selectType="school" />
+			<!-- <SelectComp :isSchool="true" v-model="school" :toSelect="schools" label="Name of school" selectType="school" /> -->
+			<selectSchool v-model="school" :to-select="schools"/>
 			<SelectComp v-model="studentClass" :toSelect="classes" label="Class" selectType="class" />
 			<SelectComp v-model="gender" label="Gender" selectType="gender" />
 			<DateComp v-model="dob" />
@@ -35,6 +35,7 @@ import Upload from '@/components/utils/upload.vue'
 import { useDemos } from '../../composables/Demos';
 import { useGlobalModal } from '../../composables/GlobalModal';
 import { useBeneficiaries } from '../../composables/Beneficiaries';
+import selectSchool from '../utils/selectSchools.vue';
 
 
 const { closeModal, globalModalProps } = useGlobalModal()

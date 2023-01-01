@@ -1,6 +1,6 @@
 <template>
 	<div class="flex flex-col gap-2">
-		<p class="small-text text-darkGray">{{label}}</p>
+		<p class="small-text text-darkGray">Name of schools</p>
 		<div class="bg-transparent rounded-xl border focus:outline-0 h-[40px] px-4 py-2 small-text focus:border-secondary transition-all flex items-center justify-between" @click="(readyToSelect = !readyToSelect)"
 			:class="{ 'border-secondary': readyToSelect, 'border-lightGray': !readyToSelect}"
 		>
@@ -9,22 +9,14 @@
 		</div>
 
 		<div class="flex flex-col max-h-[250px] overflow-auto px-1 py-2" v-if="readyToSelect">
-			<searchInput v-model="searchTerm" v-if="selectType != 'gender'"/>
+			<searchInput v-model="searchTerm"/>
 
-			<!-- <p v-if="selectType == 'school'" class="small-text text-[#3F434A] px-2 py-2 h-[40px] my-1 cursor-pointer hover:bg-[#F4F5F5] flex items-center gap-2"  
-				v-for="item in filteredItems" :key="`${item}-school`" @click="selectItem(item)"
+			<p class="small-text text-[#3F434A] px-2 py-2 h-[40px] my-1 cursor-pointer hover:bg-[#F4F5F5] flex items-center gap-2"  
+				v-for="item in filteredItems" :key="`${item}-school`" @click="selectItem(item.school_name)"
 			>
 				<img src="@/assets/img/icons/select_school.svg" alt="">
-				{{item}}
-			</p> -->
-
-			<p v-if="selectType == 'class'" class="small-text text-[#3F434A] px-2 py-2 h-[40px] my-1 cursor-pointer hover:bg-[#F4F5F5]"  
-				v-for="item in filteredItems" :key="item" @click="selectItem(item)"
-			>{{item}}</p>
-
-			<p v-if="selectType == 'gender'" class="small-text text-[#3F434A] px-2 py-2 h-[40px] my-1 cursor-pointer hover:bg-[#F4F5F5]"  
-				v-for="item in gender" :key="item" @click="selectItem(item)"
-			>{{item}}</p>
+				{{item.school_name}}
+			</p>
 		</div>
 	</div>
 </template>
@@ -35,9 +27,9 @@ import searchInput from './searchInput.vue';
 
 const props = defineProps<{
 	modelValue: string
-	selectType: 'class' | 'school' | 'gender'
-	toSelect?: string[] 
-	label: 'Class' | 'Name of school' | 'Gender'
+	// selectType: 'class' | 'school' | 'gender'
+	toSelect?: {id:number; school_name:string;}[] 
+	// label: 'Class' | 'Name of school' | 'Gender'
 }>()
 
 const selectedItem = ref('Please select')
@@ -62,7 +54,7 @@ watch(searchTerm, async (newValue, oldValue) => {
 	isFiltered.value = true
 	const regex = new RegExp(newValue, "i");
 	filteredItems.value = props.toSelect?.filter((el) => {
-		return regex.test(el)
+		return regex.test(el.school_name)
 	})
   } else {
 	isFiltered.value = false
