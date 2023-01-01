@@ -16,7 +16,7 @@
 							class="w-full caret-secondary bg-transparent rounded-xl border border-lightGray focus:outline-0 h-[40px] py-2 px-3 small-text focus:border-secondary transition-all" />
 						<div class="flex items-center gap-2">
 							<div class="h-2 w-2 rounded-full bg-darkGray"></div>
-							<p class="text-xs">Dial *560*2*4# on your line to get your nin.</p>
+							<p class="text-xs">Dial *560*2*4# on your line to get your bvn.</p>
 						</div>
 					</div>
 
