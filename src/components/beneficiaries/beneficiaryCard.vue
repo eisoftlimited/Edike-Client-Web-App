@@ -1,5 +1,5 @@
 <template>
-	<div class="bene_card bg-[#FAFAFA] rounded-[12px] p-6 flex flex-col gap-5 relative h-fit w-fit max-w-[300px]">
+	<div class="bene_card bg-[#FAFAFA] rounded-[12px] p-6 flex flex-col gap-5 relative min-w-[300px] h-fit w-fit max-w-[300px]">
 		<div class="flex w-full justify-end">
 			<button class="w-fit py-2" @click="modifyCard = !modifyCard">
 				<img src="@/assets/img/icons/dots.svg" alt="">

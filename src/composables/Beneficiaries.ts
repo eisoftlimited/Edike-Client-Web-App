@@ -99,7 +99,10 @@ export const useBeneficiaries  = () => {
 				closeSideModal()
 				fetchAllBeneficiaries()
 				resetVariables()
-				openModal(proceedToLoan)
+				setTimeout(() => {
+					openModal(proceedToLoan)
+				}, 1000);
+				
 			} else {
 				Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
 			}

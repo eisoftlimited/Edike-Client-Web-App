@@ -22,8 +22,7 @@
 				<div class="hidden lg:flex w-1/2 max-w-[430px]">
 					<div class="flex flex-col gap-2 " v-if="!bene_id">
 						<h4 class="heading4 text-center">No Beneficiaries Selected</h4>
-						<p class="small-text text-center">Lorem ipsum is placeholder text commonly used in the graphic,
-							print, and publishing industries for previewing layouts and visual mockups.</p>
+						<!-- <p class="small-text text-center">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p> -->
 					</div>
 					<div v-else>
 						<previewBeneficiary v-if="selectedBeneficiary[0]"  :data="selectedBeneficiary[0]"/>
