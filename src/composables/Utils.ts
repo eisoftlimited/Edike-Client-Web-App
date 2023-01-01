@@ -47,6 +47,7 @@ export const useUtils  = () => {
 
 	const eightPercentCongrats = () => {
 		openSubLoader()
+		userData.value = undefined
 		makeFetchWithAuth('GET', 'auth/user')
 			.then(res => res.json())
 			.then(data => {

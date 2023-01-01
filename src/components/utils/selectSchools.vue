@@ -17,6 +17,10 @@
 				<img src="@/assets/img/icons/select_school.svg" alt="">
 				{{item.school_name}}
 			</p>
+			<p @click="otherSchool" class="small-text text-[#3F434A] px-2 py-2 h-[40px] my-1 cursor-pointer hover:bg-[#F4F5F5] flex items-center gap-2">
+				<img src="@/assets/img/icons/select_school.svg" alt=""/>
+				Others
+			</p>
 		</div>
 	</div>
 </template>
@@ -24,12 +28,11 @@
 <script setup lang="ts">
 import { ref, watch, onMounted } from 'vue'
 import searchInput from './searchInput.vue';
+import Swal from 'sweetalert2';
 
 const props = defineProps<{
 	modelValue: string
-	// selectType: 'class' | 'school' | 'gender'
 	toSelect?: {id:number; school_name:string;}[] 
-	// label: 'Class' | 'Name of school' | 'Gender'
 }>()
 
 const selectedItem = ref('Please select')
@@ -39,7 +42,6 @@ const readyToSelect = ref(false)
 const isFiltered = ref(false)
 const filteredItems = ref(props.toSelect)
 const emit = defineEmits(['update:modelValue'])
-const gender = ref(['Male', 'Female'])
 
 const selectItem = (str:string) => {
 	emit('update:modelValue', str)
@@ -61,6 +63,23 @@ watch(searchTerm, async (newValue, oldValue) => {
 	filteredItems.value = props.toSelect
   }
 })
+
+const otherSchool = async () => {
+	const { value: otherSchoolName } = await Swal.fire({
+		title: 'Input School Name',
+		input: 'text',
+		// inputLabel: 'Your email address',
+		inputPlaceholder: 'Enter school name'
+	})
+
+	if (otherSchoolName) {
+		emit('update:modelValue', otherSchoolName)
+		selectedItem.value = otherSchoolName
+		itemSelected.value = true
+		readyToSelect.value = false
+		searchTerm.value = ''
+	}
+}
 
 onMounted(() => {
 	if(props.modelValue) {

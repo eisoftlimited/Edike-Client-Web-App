@@ -135,7 +135,7 @@ export const useAuth = () => {
 			password: password.value
 		}).then(res => res.json())
 			.then(data => {
-				closeMainLoader()
+				// closeMainLoader()
 				console.log(data)
 				if (data.token) {
 					saveTokenToLS(data.token)
@@ -146,6 +146,7 @@ export const useAuth = () => {
 					Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
 					router.push('/verification')
 				} else {Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})}
+				closeMainLoader()
 			})
 			.catch(err => {
 				closeMainLoader()
