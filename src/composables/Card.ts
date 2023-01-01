@@ -55,7 +55,7 @@ export const useCard  = () => {
 			console.log(data)
 			if(data.status == 'valid') {
 				localStorage.removeItem('edike_reference')
-				router.push('/dashboard/home')
+				// router.push('/dashboard/home')
 				// await getUser()
 				eightPercentCongrats()
 			} else {
