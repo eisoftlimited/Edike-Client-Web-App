@@ -19,6 +19,12 @@ const clearUser = () => {
 	userData.value = undefined
 }
 
+const logOut = () => {
+	deleteDataFromLS()
+	router.push('/signin')
+	clearUser()
+	// document.location.reload()
+}
 
 export const useUser = () => {
 	
@@ -31,6 +37,10 @@ export const useUser = () => {
 				closeSubLoader()
 				console.log(data)
 				if (data != null || data != undefined) {
+					if(data.msg == 'Not Authorized') {
+						logOut()
+						return;
+					}
 					userData.value = data
 				} else {
 					Swal.fire({ title: 'Error!', text: 'Could not fetch uses\'s data', icon: 'error'})
@@ -77,12 +87,14 @@ export const refreshToken = () => {
 			.then(data => {
 				console.log(data)
 				if (data != null || data != undefined) {
+					if(data.msg == 'Not Authorized') {
+						logOut()
+						return;
+					}
 					userData.value = data
 					// router.push(path)
 				} else {
-					deleteDataFromLS()
-					router.push('/signin')
-					clearUser()
+					logOut()
 				}
 			})
 			.catch(err => console.log(err))
