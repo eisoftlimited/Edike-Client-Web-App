@@ -18,7 +18,7 @@
 			>{{(item)}}</p>
 
 			<p v-if="selectType == 'Year'" class="small-text text-[#3F434A] px-2 py-2 h-[40px] my-1 cursor-pointer hover:bg-[#F4F5F5] text-center"  
-				v-for="item in 22" :key="item" @click="selectItem(String(item + 1997))"
+				v-for="item in 25" :key="item" @click="selectItem(String(item + 1997))"
 			>{{(item + 1997)}}</p>
 			
 
