@@ -9,14 +9,7 @@
 		</div>
 
 		<div class="flex flex-col max-h-[250px] overflow-auto px-1 py-2" v-if="readyToSelect">
-			<searchInput v-model="searchTerm" v-if="selectType != 'gender'"/>
-
-			<!-- <p v-if="selectType == 'school'" class="small-text text-[#3F434A] px-2 py-2 h-[40px] my-1 cursor-pointer hover:bg-[#F4F5F5] flex items-center gap-2"  
-				v-for="item in filteredItems" :key="`${item}-school`" @click="selectItem(item)"
-			>
-				<img src="@/assets/img/icons/select_school.svg" alt="">
-				{{item}}
-			</p> -->
+			<searchInput v-model="searchTerm" place-holder="Search Class" v-if="selectType != 'gender'"/>
 
 			<p v-if="selectType == 'class'" class="small-text text-[#3F434A] px-2 py-2 h-[40px] my-1 cursor-pointer hover:bg-[#F4F5F5]"  
 				v-for="item in filteredItems" :key="item" @click="selectItem(item)"
@@ -35,9 +28,9 @@ import searchInput from './searchInput.vue';
 
 const props = defineProps<{
 	modelValue: string
-	selectType: 'class' | 'school' | 'gender'
+	selectType: 'class' | 'gender'
 	toSelect?: string[] 
-	label: 'Class' | 'Name of school' | 'Gender'
+	label: 'Class' | 'Gender'
 }>()
 
 const selectedItem = ref('Please select')

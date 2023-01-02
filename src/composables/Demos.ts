@@ -4,7 +4,7 @@ import {useFetch} from './FetchController'
 const { makeFetchToAnotherUrl } = useFetch()
 
 
-const classes = ref(['Nursery 1', 'Nursery 2', 'Basic 1', 'Basic 2', 'Basic 3', 'Basic 4', 'Basic 5', 'Basic 6', 'JSS 1', 'JSS 2', 'JSS 3', 'SSS 1', 'SSS 2', 'SSS 3' ])
+const classes = ref(['Daycare', 'Creche', 'Kindergarten', 'Nursery 1', 'Nursery 2', 'Basic 1', 'Basic 2', 'Basic 3', 'Basic 4', 'Basic 5', 'Basic 6', 'JSS 1', 'JSS 2', 'JSS 3', 'SSS 1', 'SSS 2', 'SSS 3' ])
 // const schools = ref(['El- Bethel Schools', 'Gem Stars Private School', 'St. Anthonio Junior School', 'Grace Group of Schools', 'Hope International Group of Schools'])
 const schools = ref([
 	{
@@ -3498,6 +3498,18 @@ const schools = ref([
 	   {
 		"id": 873,
 		"school_name": "HONEYTREAT TRADE ACADEMY"
+	   },
+	   {
+		"id": 874,
+		"school_name": "Suprême Éducation Foundation"
+	   },
+	   {
+		"id": 875,
+		"school_name": "Chrisland School"
+	   },
+	   {
+		"id": 876,
+		"school_name": "Lakewood Private School"
 	   }
 ])
 const banks = ref([
