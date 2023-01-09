@@ -13,8 +13,8 @@
 			</div>
 
 			<div class="flex flex-col gap-4 items-center w-full max-w-[500px] mx-auto md:mx-0" v-if="currentLoan.length && !requestLoanStatus">
+				<button class="btn-medium" @click="requestLoanForm">Request New Fees Payment</button>
 				<CurrentLoanCard v-for="item in currentLoan" :key="item._id" :data="item"/>
-				<button class="btn-medium" @click="requestLoanForm">New Loan Request</button>
 			</div>
 
 			<div class="flex items-center gap-[20px] justify-between" v-if="requestLoanStatus">
@@ -40,7 +40,7 @@ import { autoFetchLoan } from '../../composables/LoanController';
 import previewBeneficiary from '../../components/beneficiaries/previewBeneficiary.vue';
 import CurrentLoanCard from '../../components/loan/currentLoanCard.vue';
 
-const { bene_id, selectedBeneficiary, currentLoan, requestLoanStatus, requestLoanForm } = autoFetchLoan()
+const { bene_id, selectedBeneficiary, currentLoan, requestLoanStatus, requestLoanForm, clearVariables } = autoFetchLoan()
 requestLoanStatus.value = false
 </script>
 

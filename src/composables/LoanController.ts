@@ -7,7 +7,10 @@ import { useToken } from './TokenController'
 import Swal from 'sweetalert2'
 import Loan from '../interface/typeLoan'
 import { useUser } from './UserController'
+import { useGlobalModal } from './GlobalModal'
+import requestLoanPreview from '../components/loan/requestLoanPreview.vue'
 
+const { openModal, closeModal } = useGlobalModal()
 const { makeFetchWithAuthAndBody, makeFetchWithAuth, baseUrl } = useFetch()
 const { beneficiaries } = useBeneficiaries()
 const { openSubLoader, closeSubLoader } = useLoader()
@@ -57,9 +60,12 @@ const requestLoanForm = () => {
 
 export const useLoan  = () => {
 
-	
+	const previewLoan = () => {
+		openModal(requestLoanPreview, 'Repayment Summary')
+	}
 
 	const requestLoan = () => {
+		closeModal()
 		openSubLoader()
 		// console.log(billImage.value)
 		const formData = new FormData()
@@ -118,14 +124,14 @@ export const useLoan  = () => {
 		clearVariables()
 	}
 
-	return { bene_id, amount, duration, billImage, requestLoan, selectedBeneficiary, enableLoanButton, fetchLoans, currentLoan, requestLoanStatus, closeLoanRequest, requestLoanForm }
+	return { bene_id, amount, duration, billImage, requestLoan, selectedBeneficiary, enableLoanButton, fetchLoans, currentLoan, requestLoanStatus, closeLoanRequest, requestLoanForm, clearVariables, previewLoan }
 }
 
 export const autoFetchLoan = () => {
-	const { fetchLoans, requestLoan } = useLoan()
+	const { fetchLoans, requestLoan, previewLoan } = useLoan()
 
 	if(currentLoan.value.length < 1) fetchLoans()
-	return { bene_id, amount, duration, billImage, requestLoan, selectedBeneficiary, enableLoanButton, fetchLoans, currentLoan, requestLoanStatus, requestLoanForm }
+	return { bene_id, amount, duration, billImage, requestLoan, selectedBeneficiary, enableLoanButton, fetchLoans, currentLoan, requestLoanStatus, requestLoanForm, clearVariables, previewLoan }
 }
 
 

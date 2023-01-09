@@ -16,7 +16,7 @@
 			<SelectComp v-model="studentClass" :toSelect="classes" label="Class" selectType="class" />
 			<SelectComp v-model="gender" label="Gender" selectType="gender" />
 			<DateComp v-model="dob" />
-			<Upload v-model="imageFile" title="Upload ID card image" accept="Accepted file is image" info="" accept-type="image/x-png,image/jpeg" :drop-type="['image/x-png','image/jpeg']"/>
+			<Upload v-model="imageFile" title="Upload beneficiary image" accept="Accepted file is image" info="" accept-type="image/x-png,image/jpeg" :drop-type="['image/x-png','image/jpeg']"/>
 			<button type="submit" class="hide hidden">submit</button>
 		</form>
 		<div class="flex gap-4 items-center justify-between">
