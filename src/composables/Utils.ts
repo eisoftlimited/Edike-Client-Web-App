@@ -89,7 +89,12 @@ export const useUtils  = () => {
 		console.log('save')
 	}
 
-	return { getSize, eightPercentCongrats, checkInactivity, saveLoginCredToCookies }
+	function formatNumber(n:string) {
+		// format number 1000000 to 1,234,567
+		return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+	}
+
+	return { getSize, eightPercentCongrats, checkInactivity, saveLoginCredToCookies, formatNumber }
 }
 
 

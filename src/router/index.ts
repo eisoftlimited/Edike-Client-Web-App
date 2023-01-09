@@ -98,7 +98,7 @@ const routes = [
             },
 			{
                 path: 'loan',
-				name: 'Loans',
+				name: 'Transactions',
                 component: () => import('../views/dashboard/loan.vue')
             },
 		]

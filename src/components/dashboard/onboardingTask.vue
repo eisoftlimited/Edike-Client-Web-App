@@ -2,10 +2,10 @@
 	<div class="p-6 rounded-xl flex flex-col gap-4 w-full bg-[#FFFFFF]">
 		<div class="flex flex-col gap-2">
 			<p class="flex items-center justify-between small-text text-[#595F69]">Onboarding Tasks
-				<span class="text-[#8A9099]">{{ calculate * 20 }}%</span>
+				<span class="text-[#8A9099]">{{ calculate * 25 }}%</span>
 			</p>
 			<div class="h-[6px] rounded-sm bg-[#F8F8F8] relative overflow-hidden">
-				<div class="bg-primary absolute top-0 left-0 h-[6px] rounded-sm" :class="{'w-[20%]': calculate == 1, 'w-[40%]': calculate == 2, 'w-[60%]': calculate == 3, 'w-[80%]': calculate == 4, 'w-[100%]': calculate == 5}"></div>
+				<div class="bg-primary absolute top-0 left-0 h-[6px] rounded-sm" :class="{'w-[25%]': calculate == 1, 'w-[50%]': calculate == 2, 'w-[75%]': calculate == 3, 'w-[100%]': calculate == 4}"></div>
 			</div>
 		</div>
 
@@ -65,7 +65,7 @@ const calculate = computed(() => {
 	let count = 0;
 	let arr = []
 	arr.push(userData.value?.isbvn)
-	arr.push(userData.value?.isnin)
+	// arr.push(userData.value?.isnin)
 	arr.push(userData.value?.iscardadded)
 	arr.push(userData.value?.isbankstatementadded)
 	arr.push(userData.value?.isidcard)
