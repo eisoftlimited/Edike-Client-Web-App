@@ -19,7 +19,12 @@
 			<p class="small-text">Total Payable</p>
 			<div class="h-[40px] border border-lightGray rounded-lg p-2">NGN {{ formatNumber(String(Number(amount) + (Number(amount) * (5/100) * Number(duration)))) }}</div>
 		</div>
-		<button class="btn-medium mx-auto" @click="requestLoan">Submit</button>
+		
+		<div class="flex flex-col gap-1">
+			<p class="small-text font-medium text-center">NOTE: payment will be made into the school account number</p>
+			<button class="btn-medium mx-auto" @click="requestLoan">Submit</button>
+		</div>
+		
 		
 	</div>
 </template>
