@@ -14,6 +14,7 @@ const bankStatementSuccessful = ref(false)
 const bankStatementPdf = ref<any>()
 const bankName = ref('')
 const analysisType = ref('')
+const uploadedPdfUrl = ref('')
 
 const bankStatementButtonEnabled = computed(() => {
 	return bankStatementPdf.value != undefined && bankName.value && analysisType.value ? true : false
@@ -28,6 +29,7 @@ export const useBankStatement = () => {
 		formData.append('bank_name', bankName.value)
 		formData.append('bank_file', bankStatementPdf.value)
 		formData.append('loan_access_type', analysisType.value)
+		formData.append('pdf_link', uploadedPdfUrl.value)
 
 		makeFetchWithFormData('POST', 'auth/bank/bank-statement', formData)
 			.then(res => res.json())
@@ -49,7 +51,7 @@ export const useBankStatement = () => {
 			})
 	}
 
-	return { bankStatementPdf, bankStatementSuccessful, addBankStatement, bankStatementButtonEnabled, bankName, analysisType }
+	return { bankStatementPdf, bankStatementSuccessful, addBankStatement, bankStatementButtonEnabled, bankName, analysisType, uploadedPdfUrl }
 }
 
 

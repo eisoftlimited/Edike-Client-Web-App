@@ -18,7 +18,7 @@
 
 		<div class="flex gap-4 items-center justify-between">
 			<button type="button" class="btn-short bg-transparent text-primary" @click="closeModals">Cancel</button>
-			<button type="submit" :disabled="!bankStatementButtonEnabled" @click="addBankStatement" class="btn-short">Save</button>
+			<button type="submit" :disabled="!bankStatementButtonEnabled" @click="useStorage(bankStatementPdf)" class="btn-short">Save</button>
 		</div>
 	</div>
 
@@ -41,6 +41,7 @@ import Upload from '../utils/upload.vue';
 import SelectBank from '../utils/selectBank.vue'
 import SelectAnalysisType from '../utils/selectAnalysisType.vue';
 import { useGlobalModal } from '../../composables/GlobalModal';
+import { useStorage } from '../../firebase/storage'
 
 
 const { closeSideModal } = useSideModal()

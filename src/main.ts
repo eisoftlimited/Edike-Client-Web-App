@@ -6,6 +6,7 @@ import authLayout from './layout/authLayout.vue'
 import onboardingLayout from './layout/onboardingLayout.vue'
 import { refreshToken } from './composables/UserController'
 import { useUtils } from './composables/Utils'
+import './firebase/index'
 
 
 const { checkInactivity } = useUtils()
