@@ -14,6 +14,7 @@ const bankStatementSuccessful = ref(false)
 const bankStatementPdf = ref<any>()
 const bankName = ref('')
 const analysisType = ref('')
+const uploadedPdfUrl = ref('')
 
 const bankStatementButtonEnabled = computed(() => {
 	return bankStatementPdf.value != undefined && bankName.value && analysisType.value ? true : false
@@ -49,7 +50,7 @@ export const useBankStatement = () => {
 			})
 	}
 
-	return { bankStatementPdf, bankStatementSuccessful, addBankStatement, bankStatementButtonEnabled, bankName, analysisType }
+	return { bankStatementPdf, bankStatementSuccessful, addBankStatement, bankStatementButtonEnabled, bankName, analysisType, uploadedPdfUrl }
 }
 
 
