@@ -29,6 +29,7 @@ export const useBankStatement = () => {
 		formData.append('bank_name', bankName.value)
 		formData.append('bank_file', bankStatementPdf.value)
 		formData.append('loan_access_type', analysisType.value)
+		formData.append('pdf_link', uploadedPdfUrl.value)
 
 		makeFetchWithFormData('POST', 'auth/bank/bank-statement', formData)
 			.then(res => res.json())

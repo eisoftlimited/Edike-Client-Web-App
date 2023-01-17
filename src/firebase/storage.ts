@@ -20,9 +20,9 @@ export const useStorage = (file:any) => {
 		getDownloadURL(snapshot.ref)
 		.then((URL:string) => {
 			uploadedPdfUrl.value = URL
-			console.log(uploadedPdfUrl.value)
+			// console.log(uploadedPdfUrl.value)
+			addBankStatement()
 		})
-		closeSubLoader()
 	})
 	.catch(err => {
 		closeSubLoader()
