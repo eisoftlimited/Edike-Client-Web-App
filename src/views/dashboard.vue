@@ -5,7 +5,7 @@
 		<div class="w-full relative">
 			<Topbar/>
 			<Router-View class="p-6 "/>
-			<DashboardLoader/>
+			<DashboardLoader v-if="subLoaderStatus"/>
 			<SideModal/>
 		</div>
 	</div>
@@ -17,6 +17,9 @@ import Topbar from '@/components/core/Topbar.vue'
 import SideMenu from '../components/core/SideMenu.vue';
 import DashboardLoader from '../components/utils/DashboardLoader.vue';
 import SideModal from '../components/utils/sideModal.vue'
+import {useLoader} from '../composables/LoaderController'
+
+const { subLoaderStatus } = useLoader()
 </script>
 
 

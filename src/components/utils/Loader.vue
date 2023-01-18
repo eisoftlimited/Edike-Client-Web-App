@@ -1,16 +1,15 @@
 <template>
-	<div class="fixed top-0 left-0 w-full h-full bg-[#FFFFFF] flex items-center justify-center z-20" v-if="mainLoaderStatus">
+	<div class="fixed top-0 left-0 w-full h-full bg-[#FFFFFF] flex items-center justify-center z-20">
 		<div class="w-fit flex items-end">
 			<img v-for="item in img" :key="item.img" :src="getImageUrl(item.type, item.img)" class="w-[30px] md:w-auto" alt="">
 		</div>
+		
 	</div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUpdated } from 'vue';
-import { useLoader } from '../../composables/LoaderController'
+import { ref, onMounted } from 'vue';
 
-const { mainLoaderStatus } = useLoader()
 let index = ref<number>(0)
 const img = ref([
 	{type: 'fade', img: 'e'},
@@ -47,12 +46,13 @@ const recurse = () => {
 }
 
 
-// onMounted(() => {
-	
-// })
-
-onUpdated(() => {
+onMounted(() => {
 	index.value = 0
 	recurse()
 })
+
+// onUpdated(() => {
+// 	index.value = 0
+// 	recurse()
+// })
 </script>
