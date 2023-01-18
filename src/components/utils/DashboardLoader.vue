@@ -1,5 +1,5 @@
 <template>
-	<div class="loader absolute bottom-0 left-0 w-full h-full  flex items-center justify-center z-30" v-if="subLoaderStatus">
+	<div class="loader absolute bottom-0 left-0 w-full h-full  flex items-center justify-center z-30">
 		<div class="w-fit flex items-end">
 			<img v-for="item in img" :key="item.img" :src="getImageUrl(item.type, item.img)" class="w-[30px] md:w-auto" alt="">
 		</div>
@@ -7,10 +7,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUpdated } from 'vue';
-import { useLoader } from '../../composables/LoaderController'
+import { ref, onMounted } from 'vue';
 
-const { subLoaderStatus } = useLoader()
 let index = ref<number>(0)
 const img = ref([
 	{type: 'fade', img: 'e'},
@@ -52,9 +50,6 @@ onMounted(() => {
 	recurse()
 })
 
-onUpdated(() => {
-	
-})
 </script>
 
 <style scoped>
