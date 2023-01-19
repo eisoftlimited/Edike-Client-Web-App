@@ -1,5 +1,4 @@
 <template>
-	<button @click="useLoader().openSubLoader()">testing</button>
 	<router-view/>
 	<global-modal/>
 	<Loader v-if="mainLoaderStatus"/>
