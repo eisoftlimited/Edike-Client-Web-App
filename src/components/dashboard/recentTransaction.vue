@@ -25,5 +25,7 @@
 </template>
 
 <script setup lang="ts">
+	import { fetchTransactions } from '../../composables/Transaction'
 
+	fetchTransactions()
 </script>
