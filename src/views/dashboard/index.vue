@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, provide, watch } from 'vue'
+import { ref, provide } from 'vue'
 import { useUser } from '../../composables/UserController';
 import OnboardingTask from '../../components/dashboard/onboardingTask.vue';
 import RecentTransaction from '../../components/dashboard/recentTransaction.vue';
