@@ -28,15 +28,25 @@
 			</div>
 			<div class="flex items-start gap-3">
 				<p class="small-text font-medium text-[#3F434A] min-w-[150px]">Loan Status</p>
-				<p class="small-text font-bold text-[#F9AC3B] w-full">{{ data?.status }}</p>
+				<p class="small-text font-bold w-full" :class="{'text-primary' : data?.status == 'ongoing', 'text-[#F9AC3B]' : data?.status != 'ongoing'}">{{ data?.status }}</p>
 			</div>
-			<div class="flex items-start gap-3">
-				<p class="small-text font-medium text-[#3F434A] min-w-[150px]">Payment Balance</p>
-				<p class="small-text text-[#8A9099] w-full">N {{ data?.beneficiary_amount }}</p>
-			</div>
-			<div class="flex items-start gap-3">
-				<p class="small-text font-medium text-[#3F434A] min-w-[150px]">Next Payment</p>
-				<p class="small-text text-[#8A9099] w-full">{{ `${new Date(data?.createdAt!).getFullYear()}-${new Date(data?.createdAt!).getMonth()}-${new Date(data?.createdAt!).getDate()}` }}</p>
+			<div v-if="data?.status == 'ongoing'" class="flex flex-col gap-3">
+				<div class="flex items-start gap-3">
+					<p class="small-text font-medium text-[#3F434A] min-w-[150px]">Date Disbursed</p>
+					<p class="small-text text-[#8A9099] w-full">{{ formatDate(data.dateDisbursed) }}</p>
+				</div>
+				<!-- <div class="flex items-start gap-3">
+					<p class="small-text font-medium text-[#3F434A] min-w-[150px]">Payment Balance</p>
+					<p class="small-text text-[#8A9099] w-full">N {{ data?.beneficiary_amount }}</p>
+				</div> -->
+				<div class="flex items-start gap-3">
+					<p class="small-text font-medium text-[#3F434A] min-w-[150px]">Next Payment Date</p>
+					<p class="small-text text-[#8A9099] w-full">{{ formatDate(data.paymentDate) }}</p>
+				</div>
+				<div class="flex items-start gap-3">
+					<p class="small-text font-medium text-[#3F434A] min-w-[150px]">Next Payment</p>
+					<p class="small-text text-[#8A9099] w-full">{{ data.nextPayment }}</p>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -47,10 +57,12 @@
 	import { useSideModal } from '../../composables/SideModal';
 	import { useGlobalModal } from '../../composables/GlobalModal';
 	import Loan from '../../interface/typeLoan';
+	import { useUtils } from '../../composables/Utils';
 
 	const data = ref<Loan>()
 	const { sideModalProps } = useSideModal()
 	const { globalModalProps } = useGlobalModal()
+	const { formatDate } = useUtils()
 
 	if(globalModalProps.value == undefined) {
 		data.value = sideModalProps.value as Loan
