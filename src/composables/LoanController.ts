@@ -105,7 +105,7 @@ export const useLoan  = () => {
 		makeFetchWithAuth('GET', 'loan/all')
 		.then(res => res.json())
 		.then(data => {
-			console.log(data)
+			// console.log(data)
 			closeSubLoader()
 			if(data.length > 0) {
 				currentLoan.value = data.loan

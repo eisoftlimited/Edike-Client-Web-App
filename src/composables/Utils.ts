@@ -94,7 +94,12 @@ export const useUtils  = () => {
 		return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 	}
 
-	return { getSize, eightPercentCongrats, checkInactivity, saveLoginCredToCookies, formatNumber }
+	const formatDate = (date:string) => {
+		let format = new Date(date)
+		return `${format.getFullYear()}-${format.getMonth() +1}-${format.getDate()}`
+	}
+
+	return { getSize, eightPercentCongrats, checkInactivity, saveLoginCredToCookies, formatNumber, formatDate }
 }
 
 

@@ -9,6 +9,11 @@ interface Loan {
     createdAt: string;
 	createdBy: string;
 	date: string;
+	dateDisbursed: string;
+	endsTime: string;
+	nextPayment: string;
+	paymentDate: string;
+	totalPayback: string;
 	status: string;
     updatedAt: string;
 	_id: string;

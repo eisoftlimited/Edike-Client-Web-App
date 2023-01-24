@@ -52,7 +52,7 @@ export const useCard  = () => {
 		.then(res => res.json())
 		.then((data) => {
 			closeSubLoader()
-			console.log(data)
+			// console.log(data)
 			if(data.status == 'valid') {
 				localStorage.removeItem('edike_reference')
 				// router.push('/dashboard/home')
@@ -74,7 +74,7 @@ export const useCard  = () => {
 		.then(res => res.json())
 		.then(data => {
 			closeSubLoader()
-			console.log(data)
+			// console.log(data)
 			if(data._id) {
 				addedCard.value = data
 			} else {
