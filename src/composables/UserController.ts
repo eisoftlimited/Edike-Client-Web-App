@@ -35,7 +35,7 @@ export const useUser = () => {
 			.then(res => res.json())
 			.then(data => {
 				closeSubLoader()
-				console.log(data)
+				// console.log(data)
 				if (data != null || data != undefined) {
 					if(data.msg == 'Not Authorized') {
 						logOut()
@@ -61,7 +61,7 @@ export const useUser = () => {
 		makeFetchWithAuthAndBody('PATCH', 'auth/user/update/profile', data)
 		.then(res => res.json())
 		.then(data => {
-			console.log(data)
+			// console.log(data)
 			closeSubLoader()
 			if(data.status == 'valid') {
 				Swal.fire({ title: 'Success!', text: data.msg, icon: 'success'})

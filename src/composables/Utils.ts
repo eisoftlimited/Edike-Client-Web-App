@@ -52,7 +52,7 @@ export const useUtils  = () => {
 			.then(res => res.json())
 			.then(data => {
 				closeSubLoader()
-				console.log(data)
+				// console.log(data)
 				if (data != null || data != undefined) {
 					userData.value = data
 					alertEightPercent()

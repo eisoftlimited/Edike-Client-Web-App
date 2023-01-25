@@ -84,7 +84,7 @@ export const useLoan  = () => {
 		fetch(`${baseUrl}loan/apply/beneficiary_loan/${bene_id.value}`, options)
 		.then(res => res.json())
 		.then(data => {
-			console.log(data)
+			// console.log(data)
 			closeSubLoader()
 			if(data.status = 'valid') {
 				Swal.fire({ title: 'Success!', text: 'Loan request made successfully', icon: 'success'})

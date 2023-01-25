@@ -5,9 +5,8 @@
 			<FormCard class="lg:mb-[150px]">
 				<div class="flex flex-col gap-2">
 					<h4 class="heading5 md:heading4 text-center text-boldText">Almost There</h4>
-					<p class="small-text text-[#404040] text-center">We have successful created your new account. But
-						before you start you will have to activate it. We have sent a verification code to the email you
-						provided during registration. Please input the six digit code to verify your account.</p>
+					<p class="small-text text-[#404040] text-center">Thank you for signing up on edike.ng <br>
+						To proceed, kindly activate your account with the six digit verification code sent to {{ email ?? 'your email' }}</p>
 				</div>
 				<OTP type="verify"/>
 				<p class="small-text text-darkGray text-center">Remember you login details?
@@ -21,6 +20,9 @@
 <script setup lang="ts">
 import OTP from '@/components/utils/OTP.vue';
 import FormCard from '@/components/utils/formCard.vue';
+import { useAuth } from '../../composables/AuthController'
+
+const { email } = useAuth()
 
 
 </script>

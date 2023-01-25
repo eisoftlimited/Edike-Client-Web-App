@@ -92,7 +92,7 @@ export const useBeneficiaries  = () => {
 		.then(res => res.json())
 		.then(data => {
 			closeSubLoader()
-			console.log(data)
+			// console.log(data)
 			if(data.beneficiary._id) {
 				// Swal.fire({ title: 'Success', text: 'Beneficiary added successfully', icon: 'success'})
 				closeModal()
@@ -122,7 +122,7 @@ export const useBeneficiaries  = () => {
 		.then(res => res.json())
 		.then(data => {
 			closeSubLoader()
-			console.log(data)
+			// console.log(data)
 			if(data.length) {
 				beneficiaries.value = data.beneficiary
 			} else {
@@ -140,7 +140,7 @@ export const useBeneficiaries  = () => {
 		makeFetchWithAuth('GET', `beneficiary/get/${id}`)
 		.then(res => res.json())
 		.then((data:Bene) => {
-			console.log(data)
+			// console.log(data)
 			if(data.firstname) {
 				firstName.value = data.firstname
 				lastName.value = data.lastname
@@ -176,7 +176,7 @@ export const useBeneficiaries  = () => {
 		}).then(res => res.json())
 		.then((data) => {
 			closeSubLoader()
-			console.log(data)
+			// console.log(data)
 			if(data._id) {
 				Swal.fire({ title: 'Success!', text: 'Beneficiary updated successfully', icon: 'success'})
 				// alert('Beneficiariary updated successfully')
@@ -203,7 +203,7 @@ export const useBeneficiaries  = () => {
 		.then(res => res.json())
 		.then(data => {
 			closeSubLoader()
-			console.log(data)
+			// console.log(data)
 			if(data.status == 'valid') {
 				Swal.fire({ title: 'Success!', text: data.msg, icon: 'success'})
 				fetchAllBeneficiaries()

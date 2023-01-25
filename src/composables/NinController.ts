@@ -30,7 +30,7 @@ export const useNin  = () => {
 		makeFetchWithFormData('POST', 'auth/verify/nin', formData)
 		.then(res => res.json())
 		.then((data) => {
-			console.log(data)
+			// console.log(data)
 			closeSubLoader()
 			if(data.status == 'valid') {
 				ninSuccessful.value = true

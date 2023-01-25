@@ -6,48 +6,29 @@
 		</div>
 		
 		<div class="flex flex-col gap-3 mx-auto w-full ">
-			<div class="flex items-start gap-3">
-				<p class="small-text font-medium text-[#3F434A] min-w-[150px]">Loan Amount</p>
-				<p class="small-text text-[#8A9099] w-full">N {{ formatNumber(String(data?.beneficiary_amount)) }}</p>
-			</div>
-			<div class="flex items-start gap-3">
-				<p class="small-text font-medium text-[#3F434A] min-w-[150px]">Loan Tenure</p>
-				<p class="small-text text-[#8A9099] w-full">{{ data?.beneficiary_duration }} Month(s)</p>
-			</div>
-			<div class="flex  items-start gap-3">
-				<p class="small-text font-medium text-[#3F434A] min-w-[150px]">Beneficiary</p>
-				<p class="small-text text-[#8A9099] w-full">{{ data?.beneficiaryDetails[0].lastname }} {{ data?.beneficiaryDetails[0].firstname }}</p>
-			</div>
-			<div class="flex items-start gap-3">
-				<p class="small-text font-medium text-[#3F434A] min-w-[150px]">School</p>
-				<p class="small-text text-[#8A9099] w-full">{{ data?.beneficiaryDetails[0].school }}</p>
-			</div>
-			<div class="flex items-start gap-3">
-				<p class="small-text font-medium text-[#3F434A] min-w-[150px]">Class</p>
-				<p class="small-text text-[#8A9099] w-full">{{ data?.beneficiaryDetails[0].studentClass }}</p>
-			</div>
-			<div class="flex items-start gap-3">
-				<p class="small-text font-medium text-[#3F434A] min-w-[150px]">Loan Status</p>
-				<p class="small-text font-bold w-full" :class="{'text-primary' : data?.status == 'ongoing', 'text-[#F9AC3B]' : data?.status != 'ongoing'}">{{ data?.status }}</p>
-			</div>
-			<div v-if="data?.status == 'ongoing'" class="flex flex-col gap-3">
-				<div class="flex items-start gap-3">
-					<p class="small-text font-medium text-[#3F434A] min-w-[150px]">Date Disbursed</p>
-					<p class="small-text text-[#8A9099] w-full">{{ formatDate(data.dateDisbursed) }}</p>
-				</div>
-				<!-- <div class="flex items-start gap-3">
-					<p class="small-text font-medium text-[#3F434A] min-w-[150px]">Payment Balance</p>
-					<p class="small-text text-[#8A9099] w-full">N {{ data?.beneficiary_amount }}</p>
-				</div> -->
-				<div class="flex items-start gap-3">
-					<p class="small-text font-medium text-[#3F434A] min-w-[150px]">Next Payment Date</p>
-					<p class="small-text text-[#8A9099] w-full">{{ formatDate(data.paymentDate) }}</p>
-				</div>
-				<div class="flex items-start gap-3">
-					<p class="small-text font-medium text-[#3F434A] min-w-[150px]">Next Payment</p>
-					<p class="small-text text-[#8A9099] w-full">{{ data.nextPayment }}</p>
-				</div>
-			</div>
+			<p class="normal-text font-bold">Loan Details</p>
+			<dataBox key-data="Loan Status" :key-value="`${data?.status}`" :color="data?.status == 'completed' ? 'text-success' : data?.status == 'declined' ? 'text-error' : 'text-[#F9AC3B]'" />
+			<dataBox key-data="Loan Amount" :key-value="`N ${formatNumber(String(data?.beneficiary_amount))}`" />
+			<dataBox key-data="Loan Duration" :key-value="`${data?.beneficiary_duration} Month(s)`" />
+			<dataBox v-if="data?.status == 'ongoing' || data?.status == 'completed'"
+			 key-data="Date Disbursed" :key-value="`${formatDate(data?.dateDisbursed!)}`" />
+		</div>
+
+		<div class="flex flex-col gap-3 mx-auto w-full " v-if="data?.status == 'ongoing' || data?.status == 'completed'">
+			<p class="normal-text font-bold">Loan Payback</p>
+			<dataBox key-data="Total Payback" :key-value="data?.totalPayback!" />
+			<!-- <dataBox key-data="Payment Balance" :key-value="`coming`" /> -->
+			<dataBox key-data="Payment Date" :key-value="`${formatDate(data?.paymentDate!)}`" />
+			<dataBox key-data="Next Payment" :key-value="`${data?.nextPayment}`" />
+			
+		</div>
+
+		<div class="flex flex-col gap-3 mx-auto w-full ">
+			<p class="normal-text font-bold">Beneficiary</p>
+			<dataBox key-data="Beneficiary" :key-value="`${data?.beneficiaryDetails[0].lastname} ${data?.beneficiaryDetails[0].firstname}`" />
+			<dataBox key-data="School" :key-value="`${data?.beneficiaryDetails[0].school}`" />
+			<dataBox key-data="Class" :key-value="`${data?.beneficiaryDetails[0].studentClass}`" />
+			
 		</div>
 	</div>
 </template>
@@ -58,6 +39,7 @@
 	import { useGlobalModal } from '../../composables/GlobalModal';
 	import Loan from '../../interface/typeLoan';
 	import { useUtils } from '../../composables/Utils';
+	import dataBox from './dataBox.vue'
 
 	const data = ref<Loan>()
 	const { sideModalProps } = useSideModal()

@@ -20,8 +20,9 @@
 			<div class="h-[40px] border border-lightGray rounded-lg p-2">NGN {{ formatNumber(String(Number(amount) + (Number(amount) * (5/100) * Number(duration)))) }}</div>
 		</div>
 		
-		<div class="flex flex-col gap-1">
-			<p class="small-text font-medium text-center">NOTE: payment will be made into the school account number</p>
+		<div class="flex flex-col gap-2">
+			<p class="text-xs font-medium text-center">Note: Payment of school fees shall be made into beneficiaries school account details on the school bill you provided.</p>
+			<p class="text-xs font-medium text-center">By submitting, you agree to <span class="text-primary">T&C’s</span> of edike.</p>
 			<button class="btn-medium mx-auto" @click="requestLoan">Submit</button>
 		</div>
 		
@@ -30,9 +31,15 @@
 </template>
 
 <script setup lang="ts">
+	import { onMounted } from 'vue';
+	import { useInterest } from '../../composables/Interest'
 	import { useLoan } from '../../composables/LoanController';
 	import {useUtils} from '../../composables/Utils'
 
 	const { formatNumber } = useUtils()
 	const { amount, duration, requestLoan } = useLoan()
+
+	onMounted(() => {
+		useInterest()
+	})
 </script>
