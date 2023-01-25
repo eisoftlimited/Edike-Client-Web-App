@@ -50,7 +50,7 @@ const selectItem = (str:string) => {
 onMounted(() => {
 	setTimeout(() => {
 		if(props.modelValue) {
-			console.log(props.modelValue) 
+			// console.log(props.modelValue) 
 			itemSelected.value = true
 			selectedItem.value = props.modelValue
 		}

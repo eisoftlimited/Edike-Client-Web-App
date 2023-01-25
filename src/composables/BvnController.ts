@@ -32,7 +32,7 @@ export const useBvn  = () => {
 		makeFetchWithFormData('POST', 'auth/verify/bvn', formData)
 		.then(res => res.json())
 		.then((data) => {
-			console.log(data)
+			// console.log(data)
 			closeSubLoader()
 			if(data.status == 'valid') {
 				bvnSuccessful.value = true

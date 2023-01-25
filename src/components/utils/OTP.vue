@@ -6,7 +6,7 @@
 			<div class="flex items-center gap-2 w-fit mx-auto" @click="focusOnInput">
 				<div v-for="index in 6" :key="index"
 					class="w-[40px] h-[40px] md:w-[64px] md:h-[64px] lg:max-w-[45px] lg:max-h-[45px] rounded-lg border border-stroke flex items-center justify-center"
-					:class="{ 'border-success': otp[index - 1] != null, 'border-secondary': otp.length > 0 && otp.length == index - 1, 'border-error': inCorrectOTP }">
+					:class="{ 'border-success': otp[index - 1] != null, 'border-secondary': otp.length >= 0 && otp.length == index - 1, 'border-error': inCorrectOTP }">
 					<h3 class="heading4 md:heading3 text-[#2D233B]">{{ otp[index - 1] }}</h3>
 				</div>
 			</div>
@@ -65,16 +65,22 @@ const getEmail = async () => {
 	}
 }
 
+const restartTimer = () => {
+	clearInterval(interval)
+	timer.value = 120
+	countDown()
+}
+
 const resend = () => {
 	inCorrectOTP.value = false
 	expiredOTP.value = false
 	if(email.value) {
 		if(props.type ==  'verify') {
 			resendVerifyOtp()
-			timer.value = 120
+			restartTimer()
 		} else if(props.type == 'reset') {	
 			resendResetOtp()
-			timer.value = 120
+			restartTimer()
 		}
 	} else {
 		getEmail()

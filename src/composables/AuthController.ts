@@ -55,7 +55,7 @@ export const useAuth = () => {
 			}).then(res => res.json())
 				.then(data => {
 					closeMainLoader()
-					console.log(data)
+					// console.log(data)
 					if (data.status == 'valid') {
 						router.push('/verification')
 						// resetVariables()
@@ -83,7 +83,7 @@ export const useAuth = () => {
 		makeFetch('POST', 'auth/activate/account', { otpToken: otp.value })
 			.then(res => res.json())
 			.then(data => {
-				console.log(data)
+				// console.log(data)
 				if (data.status == 'valid') {
 					saveTokenToLS(data.token)
 					resetVariables()
@@ -113,7 +113,7 @@ export const useAuth = () => {
 		})
 		.then(res => res.json())
 		.then(data => {
-			console.log(data)
+			// console.log(data)
 			closeMainLoader()
 			if(data.status == 'valid') {
 				Swal.fire({ title: 'Success!', text: `A new OTP has been send to ${email.value}`, icon: 'success'})
@@ -136,7 +136,7 @@ export const useAuth = () => {
 		}).then(res => res.json())
 			.then(data => {
 				// closeMainLoader()
-				console.log(data)
+				// console.log(data)
 				if (data.token) {
 					saveTokenToLS(data.token)
 					updateUser(data.useful[0])
@@ -162,7 +162,7 @@ export const useAuth = () => {
 			email: email.value,
 		}).then(res => res.json())
 			.then(data => {
-				console.log(data)
+				// console.log(data)
 				closeMainLoader()
 				if (data.status == 'valid') {
 					// alert(data.msg)
@@ -185,7 +185,7 @@ export const useAuth = () => {
 		makeFetch('POST', 'auth/reset', { otp: otp.value })
 			.then(res => res.json())
 			.then(data => {
-				console.log(data)
+				// console.log(data)
 				closeMainLoader()
 				if (data.status == 'valid') {
 					// alert(data.msg)
@@ -214,7 +214,7 @@ export const useAuth = () => {
 		})
 		.then(res => res.json())
 		.then(data => {
-			console.log(data)
+			// console.log(data)
 			closeMainLoader()
 			if(data.status == 'valid') {
 				Swal.fire({ title: 'Success!', text: `A new OTP has been send to ${email.value}`, icon: 'success'})
@@ -237,7 +237,7 @@ export const useAuth = () => {
 		}).then(res => res.json())
 			.then(data => {
 				closeMainLoader()
-				console.log(data)
+				// console.log(data)
 				if (data.status == 'valid') {
 					// alert(data.msg)
 					router.push('/signin')

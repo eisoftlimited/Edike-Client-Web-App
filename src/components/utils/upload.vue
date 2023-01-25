@@ -53,7 +53,7 @@ import { ref } from 'vue';
 			emit('update:modelValue', file)
 			file_name.value = file.name
 			file_dropped.value = true
-			console.log(file)
+			// console.log(file)
 		} else {
 			Swal.fire({ title: 'Error!', text: 'Invalid file type', icon: 'error'})
 		}
@@ -62,7 +62,7 @@ import { ref } from 'vue';
 
 	const getImage = () => {
 		let x:HTMLInputElement = document.querySelector('.filehide')!
-		console.log(x.files![0])
+		// console.log(x.files![0])
 		emit('update:modelValue', x.files![0])
 		file_name.value = x.files![0].name
 		file_dropped.value = true

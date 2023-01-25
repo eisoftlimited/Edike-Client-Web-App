@@ -24,7 +24,7 @@
 			</div>
 			<div class="flex items-start gap-3">
 				<p class="small-text font-medium text-[#3F434A] min-w-[100px]">Loan Status</p>
-				<p class="small-text font-bold w-full" :class="{'text-primary' : data?.status == 'ongoing', 'text-[#F9AC3B]' : data?.status != 'ongoing'}">{{ data.status }}</p>
+				<p class="small-text font-bold w-full" :class="[data?.status == 'completed' ? 'text-success' : data?.status == 'declined' ? 'text-error' : 'text-[#F9AC3B]']">{{ data.status }}</p>
 			</div>
 		</div>
 	</div>

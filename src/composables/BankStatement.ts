@@ -24,7 +24,7 @@ export const useBankStatement = () => {
 
 	const addBankStatement = () => {
 		openSubLoader()
-		console.log(bankStatementPdf.value)
+		// console.log(bankStatementPdf.value)
 		const formData = new FormData()
 		formData.append('bank_name', bankName.value)
 		formData.append('bank_file', bankStatementPdf.value)
@@ -34,7 +34,7 @@ export const useBankStatement = () => {
 		makeFetchWithFormData('POST', 'auth/bank/bank-statement', formData)
 			.then(res => res.json())
 			.then( (data) => {
-				console.log(data)
+				// console.log(data)
 				closeSubLoader()
 				if (data.status = 'valid') {
 					bankStatementSuccessful.value = true
