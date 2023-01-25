@@ -90,12 +90,12 @@ export const getUserAutomatically = () => {
 }
 
 export const refreshToken = () => {
-	console.log('refreshtoken')
+	// console.log('refreshtoken')
 	if (authToken != null) {
 		makeFetchWithAuth('GET', 'auth/user')
 			.then(res => res.json())
 			.then(data => {
-				console.log(data)
+				// console.log(data)
 				if (data != null || data != undefined) {
 					if(data.msg == 'Not Authorized') {
 						logOut()

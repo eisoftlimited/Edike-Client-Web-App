@@ -31,7 +31,7 @@ const profile_phone = ref(String(userData.value?.phone!))
 
 
 const submitForm = () => {
-	console.log(profile_firstName.value, profile_lastName.value, profile_phone.value)
+	// console.log(profile_firstName.value, profile_lastName.value, profile_phone.value)
 	updateUserData({firstname: profile_firstName.value, lastname: profile_lastName.value, phone: profile_phone.value})
 }
 const updates = computed(() => {
