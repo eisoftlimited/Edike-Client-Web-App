@@ -73,6 +73,10 @@ const routes = [
 		component: () => import('../views/legal/privacy_policy.vue')
 	},
 	{
+		path: '/terms&conditions',
+		component: () => import('../views/legal/terms.vue')
+	},
+	{
 		path: '/dashboard',
 		component: () => import('../views/dashboard.vue'),
 		meta: { requiresAuth: true },
