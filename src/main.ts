@@ -11,7 +11,7 @@ import './firebase/index'
 
 const { checkInactivity } = useUtils()
 
-refreshToken()
+// refreshToken()
 checkInactivity()
 
 
