@@ -41,6 +41,8 @@ import AddNin from './addNin.vue'
 import AddBankStatement from './addBankStatement.vue';
 import AddCard from './addCard.vue'
 import AddIdCard from './addIdCard.vue'
+import Address from './address.vue';
+import AddNextofKin from './addNextofKin.vue';
 import { useSideModal } from '../../composables/SideModal';
 import { useGlobalModal } from '../../composables/GlobalModal';
 import {useUser} from '../../composables/UserController'
@@ -59,6 +61,8 @@ const buttons = [
 	{text: 'Add Bank Statement', subText: '(Submit your 6 months bank statement)', checkUserData: userData.value?.isbankstatementadded, comp: AddBankStatement},
 	{text: 'Save your card', subText: '', checkUserData: userData.value?.iscardadded, comp: AddCard},
 	{text: 'Add Identity Card', subText: '(Submit any valid id card)', checkUserData: userData.value?.isidcard, comp: AddIdCard},
+	// {text: 'Upload utility bill', subText: '', checkUserData: 'pending', comp: Address},
+	// {text: 'Provide next of Kin', subText: '', checkUserData: 'pending', comp: AddNextofKin}
 ]
 
 const calculate = computed(() => {

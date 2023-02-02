@@ -1,10 +1,11 @@
-import {ref} from 'vue'
+import {Ref, ref} from 'vue'
 import { useFetch } from './FetchController'
 import { useLoader } from './LoaderController'
+import TypeTransaction from '../interface/typeTransaction'
 
 const { openSubLoader, closeSubLoader } = useLoader()
 const { makeFetchWithAuth } = useFetch()
-const transactions = ref()
+export const transactions = ref([]) as Ref<TypeTransaction[]>
 
 export const fetchTransactions = () => {
 	openSubLoader()
@@ -13,6 +14,11 @@ export const fetchTransactions = () => {
 	.then(data => {
 		closeSubLoader()
 		console.log(data)
+		if(data.status == 'valid') {
+			transactions.value = data.ans
+		} else {
+			transactions.value = []
+		}
 	})
 	.catch(err => {
 		closeSubLoader()

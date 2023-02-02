@@ -7,25 +7,37 @@
 			</p>
 		</div>
 		<div class="w-full overflow-x-auto">
-			<div class="min-w-[600px]">
-				<div class="w-full flex gap-8 items-center justify-between">
-					<p class="small-text font-bold text-[#929EAE] min-w-[150px]">DESCRIPTION</p>
-					<p class="small-text font-bold text-[#929EAE] min-w-[100px]">TYPE</p>
-					<p class="small-text font-bold text-[#929EAE] min-w-[100px]">AMOUNT</p>
-					<p class="small-text font-bold text-[#929EAE] min-w-[100px]">DATE</p>
+			<table class="min-w-[700px]">
+				<tr class="w-full text-left small-text font-bold text-[#929EAE] h-[40px]">
+					<th class="w-[40%]">DESCRIPTION</th>
+					<th class="w-[20%]">TYPE</th>
+					<th class="w-[20%]">AMOUNT</th>
+					<th class="w-[20%]">DATE</th>
+				</tr>
+				<template v-if="transactions.length">
+					<tr v-for="item, index in transactions" class="small-text font-medium h-[40px]">
+						<td>{{ item.amount == '5000' ? 'Card Verification' : 'Loan Repayment' }}</td>
+						<td class="text-error">Debit</td>
+						<td>NGN {{ Number(item.amount)/100 }}</td>
+						<td>{{ formatDate(item.paid_at) }}</td>
+					</tr>
+				</template>
+				
+				<div v-else class="w-fit mx-auto flex flex-col gap-2">
+					<img src="../../assets/img/illustrations/dashboard/no_transaction.svg" alt="">
+					<p class="small-text text-[#929EAE] text-center">No Transactions to Display</p>
 				</div>
-			</div>
+			</table>
 		</div>
-		<div class="w-fit mx-auto flex flex-col gap-2">
-			<img src="../../assets/img/illustrations/dashboard/no_transaction.svg" alt="">
-			<p class="small-text text-[#929EAE] text-center">No Transactions to Display</p>
-		</div>
+		
 		
 	</div>
 </template>
 
 <script setup lang="ts">
-	import { fetchTransactions } from '../../composables/Transaction'
+import { useUtils } from '../../composables/Utils';
+import { fetchTransactions, transactions } from '../../composables/Transaction'
 
+const { formatDate } = useUtils()
 	fetchTransactions()
 </script>

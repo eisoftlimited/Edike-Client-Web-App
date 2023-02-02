@@ -136,7 +136,7 @@ export const useAuth = () => {
 		}).then(res => res.json())
 			.then(data => {
 				// closeMainLoader()
-				// console.log(data)
+				console.log(data)
 				if (data.token) {
 					saveTokenToLS(data.token)
 					updateUser(data.useful[0])
