@@ -7,7 +7,7 @@
 			</p>
 		</div>
 		<div class="w-full overflow-x-auto">
-			<table class="min-w-[700px]">
+			<table class="min-w-[700px] w-full">
 				<tr class="w-full text-left small-text font-bold text-[#929EAE] h-[40px]">
 					<th class="w-[40%]">DESCRIPTION</th>
 					<th class="w-[20%]">TYPE</th>
@@ -15,7 +15,7 @@
 					<th class="w-[20%]">DATE</th>
 				</tr>
 				<template v-if="transactions.length">
-					<tr v-for="item, index in transactions" class="small-text font-medium h-[40px]">
+					<tr v-for="item, index in transactions" class="small-text font-medium h-[40px]" :class="[index%2 != 1 ? 'bg-[#F8F8F8]' : '']">
 						<td>{{ item.amount == '5000' ? 'Card Verification' : 'Loan Repayment' }}</td>
 						<td class="text-error">Debit</td>
 						<td>NGN {{ Number(item.amount)/100 }}</td>
