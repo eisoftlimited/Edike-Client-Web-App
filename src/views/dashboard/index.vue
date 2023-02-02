@@ -15,7 +15,7 @@
 		<div class="w-full">
 			<div class="flex flex-col gap-3">
 				<OnboardingTask v-if="userData != undefined"/>
-				<!-- <RecentTransaction/> -->
+				<RecentTransaction/>
 			</div>
 			<!-- <WalletCard/> -->
 		</div>
