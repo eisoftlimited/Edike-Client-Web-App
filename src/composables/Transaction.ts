@@ -13,7 +13,7 @@ export const fetchTransactions = () => {
 	.then(res => res.json())
 	.then(data => {
 		closeSubLoader()
-		console.log(data)
+		// console.log(data)
 		if(data.status == 'valid') {
 			transactions.value = data.ans
 		} else {

@@ -1,11 +1,32 @@
 <template>
-	<div class="flex flex-row max-w-[600px] mx-auto flex-wrap w-full items-center justify-center p-4 gap-4 ">
-		<router-link to="/signup">Sign up</router-link>
-		<router-link to="/signin">Sign in</router-link>
-		<router-link to="/verification">Verification</router-link>
-		<router-link to="/forgot">forgot</router-link>
-		<router-link to="/reset">Reset</router-link>
-		<router-link to="/reset/new-password">new password</router-link>
-		<router-link to="/add-beneficiary">Add beneficiary</router-link>
+	<div class="py-[70px] px-4 bg-[#0A6C55]">
+		<div class="w-full max-w-[1200px] flex flex-col gap-8 md:flex-row justify-between md:items-center">
+			<div class="flex flex-col gap-1">
+				<img src="../../assets/img/logo.svg" class="w-[100px]" alt="">
+				<p class="small-text text-white">Copyright © 2022 Edike. All rights reserved.</p>
+			</div>
+
+			<div class="flex items-center gap-4">
+				<span class="flex items-center gap-1">
+					<img src="../../assets/img/icons/footer/mail.svg" alt="">
+					<p class="text-sm text-white">support@edike.ng</p>
+				</span>
+				<a v-for="n in socials" :key="n.icon" :href="n.route">
+					<img :src="getImageUrl(n.icon)" alt="">
+				</a>
+			</div>
+		</div>
 	</div>
 </template>
+
+<script setup lang="ts">
+
+const socials = [
+	{icon: 'twitter', route: '/'},
+	{icon: 'facebook', route: '/'},
+	{icon: 'instagram', route: '/'}
+]
+const getImageUrl = (imgName:string) => {
+	return new URL(`../../assets/img/icons/footer/${imgName}.svg`, import.meta.url).href
+}
+</script>

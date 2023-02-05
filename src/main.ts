@@ -5,6 +5,7 @@ import App from './App.vue'
 import authLayout from './layout/authLayout.vue'
 import onboardingLayout from './layout/onboardingLayout.vue'
 import { refreshToken } from './composables/UserController'
+import landingLayout from './layout/landingLayout.vue'
 import { useUtils } from './composables/Utils'
 import './firebase/index'
 
@@ -19,3 +20,4 @@ const app = createApp(App)
 app.use(router).mount('#app')
 app.component('auth-layout', authLayout)
 app.component('onboarding-layout', onboardingLayout)
+app.component('landing-layout', landingLayout)

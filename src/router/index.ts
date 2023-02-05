@@ -4,12 +4,14 @@ import { useGlobalModal } from '../composables/GlobalModal'
 import { useToken } from '../composables/TokenController'
 import { useSideModal } from '../composables/SideModal'
 import { useCard } from '../composables/Card'
+import { useSidemenu } from '../composables/sidemenu'
 
 const { reference } = useCard()
 const { closeMenu, menuStatus } = useMenuController()
 const { closeModal } = useGlobalModal()
 const { isAuthenticated } = useToken()
 const { closeSideModal } = useSideModal()
+const { closeSideMenu }  = useSidemenu()
 
 const checkIfAuthenticated = () => {
 	if (isAuthenticated()) {
@@ -20,8 +22,18 @@ const checkIfAuthenticated = () => {
 const routes = [
 	{
 		path: '/',
-		component: () => import('../views/auth/signup.vue'),
-		beforeEnter: () => checkIfAuthenticated()
+		component: () => import('../views/index.vue'),
+		// beforeEnter: () => checkIfAuthenticated()
+	},
+	{
+		path: '/contact',
+		component: () => import('../views/contact.vue'),
+		// beforeEnter: () => checkIfAuthenticated()
+	},
+	{
+		path: '/faqs',
+		component: () => import('../views/faqs.vue'),
+		// beforeEnter: () => checkIfAuthenticated()
 	},
 	{
 		path: '/signup',
@@ -50,7 +62,7 @@ const routes = [
 		component: () => import('../views/onboarding/addBeneficiary.vue'),
 		meta: { requiresAuth: true },
 		beforeEnter: (to:any, from:any) => {
-			console.log(to, from)
+			// console.log(to, from)
 			if(from.path != '/verification') {
 				router.push('/dashboard')
 			}
@@ -62,7 +74,7 @@ const routes = [
 		meta: { requiresAuth: true },
 		beforeEnter: (to:any, from:any) => {
 			const reference = localStorage.getItem('edike_reference')
-			console.log(reference)
+			// console.log(reference)
 			if(reference == '' || reference == null) {
 				router.push('/dashboard')
 			}
@@ -128,6 +140,7 @@ router.beforeEach((to) => {
 	if(menuStatus) closeMenu()
 	closeModal()
 	closeSideModal()
+	closeSideMenu()
 	if (!isAuthenticated() && to.meta.requiresAuth) {
 		return { name: 'Signin' }
 	}
