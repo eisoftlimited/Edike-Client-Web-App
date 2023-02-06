@@ -35,7 +35,7 @@ export const useUser = () => {
 			.then(res => res.json())
 			.then(data => {
 				closeSubLoader()
-				// console.log(data)
+				console.log(data)
 				if (data != null || data != undefined) {
 					if(data.msg == 'Not Authorized') {
 						logOut()
