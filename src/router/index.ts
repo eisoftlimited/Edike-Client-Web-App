@@ -20,19 +20,24 @@ const checkIfAuthenticated = () => {
 }
 
 const routes = [
+	// {
+	// 	path: '/',
+	// 	component: () => import('../views/index.vue'),
+	// 	// beforeEnter: () => checkIfAuthenticated()
+	// },
+	// {
+	// 	path: '/contact',
+	// 	component: () => import('../views/contact.vue'),
+	// 	// beforeEnter: () => checkIfAuthenticated()
+	// },
+	// {
+	// 	path: '/faqs',
+	// 	component: () => import('../views/faqs.vue'),
+	// 	// beforeEnter: () => checkIfAuthenticated()
+	// },
 	{
 		path: '/',
-		component: () => import('../views/index.vue'),
-		// beforeEnter: () => checkIfAuthenticated()
-	},
-	{
-		path: '/contact',
-		component: () => import('../views/contact.vue'),
-		// beforeEnter: () => checkIfAuthenticated()
-	},
-	{
-		path: '/faqs',
-		component: () => import('../views/faqs.vue'),
+		component: () => import('../views/auth/signin.vue'),
 		// beforeEnter: () => checkIfAuthenticated()
 	},
 	{
