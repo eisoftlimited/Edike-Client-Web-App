@@ -7,14 +7,14 @@
 			</p>
 		</div>
 		<div class="w-full overflow-x-auto">
-			<table class="min-w-[700px] w-full">
+			<table class="min-w-[700px] w-full" v-if="transactions.length">
 				<tr class="w-full text-left small-text font-bold text-[#929EAE] h-[40px]">
 					<th class="w-[40%]">DESCRIPTION</th>
 					<th class="w-[20%]">TYPE</th>
 					<th class="w-[20%]">AMOUNT</th>
 					<th class="w-[20%]">DATE</th>
 				</tr>
-				<template v-if="transactions.length">
+				<template >
 					<tr v-for="item, index in transactions" class="small-text font-medium h-[40px]" :class="[index%2 != 1 ? 'bg-[#F8F8F8]' : '']">
 						<td>{{ item.amount == '5000' ? 'Card Tokenization' : 'Loan Repayment' }}</td>
 						<td class="text-error">Debit</td>
@@ -23,11 +23,12 @@
 					</tr>
 				</template>
 				
-				<div v-else class="w-fit mx-auto flex flex-col gap-2">
-					<img src="../../assets/img/illustrations/dashboard/no_transaction.svg" alt="">
-					<p class="small-text text-[#929EAE] text-center">No Transactions to Display</p>
-				</div>
+				
 			</table>
+			<div v-else class="w-fit mx-auto flex flex-col gap-2">
+				<img src="../../assets/img/illustrations/dashboard/no_transaction.svg" alt="">
+				<p class="small-text text-[#929EAE] text-center">No Transactions to Display</p>
+			</div>
 		</div>
 		
 		
