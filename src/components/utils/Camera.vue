@@ -67,7 +67,7 @@ const switchCamera = () => {
 		cam.value?.changeCamera(device.deviceId);
 	})
 	.catch((err:any) => {
-		console.log(err)
+		// console.log(err)
 		Swal.fire({ title: 'Error!', text: 'Could not get the cameras on your device', icon: 'error'})
 	})
 }

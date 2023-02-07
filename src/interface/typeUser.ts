@@ -9,6 +9,8 @@ interface User {
     isbvn: string;
     iscardadded: string;
 	isloaned: string;
+	isnextofkin: string;
+	isaddressadded: string;
     isnin: string;
 	isidcard: string;
     lastname: string;

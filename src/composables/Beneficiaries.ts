@@ -58,7 +58,7 @@ export const useBeneficiaries  = () => {
 		.then(res => res.json())
 		.then(data => {
 			closeMainLoader()
-			console.log(data)
+			// console.log(data)
 			if(data.beneficiary._id) {
 				Swal.fire({ title: 'Success', text: 'Beneficiary added successfully', icon: 'success'})
 				closeModal()
@@ -72,7 +72,7 @@ export const useBeneficiaries  = () => {
 		})
 		.catch(err => {
 			closeMainLoader()
-			console.log(err)
+			// console.log(err)
 			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 		})
 	} 
@@ -110,7 +110,7 @@ export const useBeneficiaries  = () => {
 		})
 		.catch(err => {
 			closeSubLoader()
-			console.log(err)
+			// console.log(err)
 			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 		})
 	} 
@@ -131,7 +131,7 @@ export const useBeneficiaries  = () => {
 		})
 		.catch(err => {
 			closeSubLoader()
-			console.log(err)
+			// console.log(err)
 			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 		})
 	}
@@ -159,7 +159,7 @@ export const useBeneficiaries  = () => {
 			
 		})
 		.catch(err => {
-			console.log(err)
+			// console.log(err)
 			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 		})
 	}
@@ -192,7 +192,7 @@ export const useBeneficiaries  = () => {
 		})
 		.catch(err => {
 			closeSubLoader()
-			console.log(err)
+			// console.log(err)
 			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 		})
 	}
@@ -214,7 +214,7 @@ export const useBeneficiaries  = () => {
 		})
 		.catch(err => {
 			closeSubLoader()
-			console.log(err)
+			// console.log(err)
 			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 		})
 	}

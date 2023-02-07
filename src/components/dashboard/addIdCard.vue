@@ -56,14 +56,14 @@ const { getUser } = useUser()
 const addId = () => {
 	// alert('adding')
 	openSubLoader()
-	console.log(idImage.value)
+	// console.log(idImage.value)
 	const formData = new FormData()
 	formData.append('img', idImage.value)
 	
 	makeFetchWithFormData('POST', 'auth/upload/id_card', formData)
 	.then(res => res.json())
 	.then((data) => {
-		console.log(data)
+		// console.log(data)
 		closeSubLoader()
 		if(data.status == 'valid') {
 			addIdSuccessful.value = true
@@ -76,7 +76,7 @@ const addId = () => {
 	})
 	.catch(err => {
 		closeSubLoader()
-		console.log(err)
+		// console.log(err)
 		Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 	})
 }

@@ -6,7 +6,7 @@
 			<div class="h-full flex items-center justify-center">
 				<div class="flex flex-col gap-3 max-w-[460px]">
 					<h5 class="heading6 md:heading5 text-white text-center md:text-left">Welcome to your edike dashboard</h5>
-					<p v-if="4-count" class="small-text text-white text-center md:text-left">You have {{ 4-count }} task outstanding</p>
+					<p v-if="6-count" class="small-text text-white text-center md:text-left">You have {{ 6-count }} task outstanding</p>
 					<!-- <p v-else class="small-text text-white text-center md:text-left">You have completed onboarding</p> -->
 					<!-- <button class="btn-medium w-fit px-3 normal-text font-bold bg-[#F5993F]">Complete my profile</button> -->
 				</div>

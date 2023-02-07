@@ -22,6 +22,6 @@ export const fetchTransactions = () => {
 	})
 	.catch(err => {
 		closeSubLoader()
-		console.log(err)
+		// console.log(err)
 	})
 }

@@ -28,18 +28,19 @@ export const useUtils  = () => {
 		let count = 0;
 		let arr = []
 		arr.push(userData.value?.isbvn)
-		arr.push(userData.value?.isnin)
 		arr.push(userData.value?.iscardadded)
 		arr.push(userData.value?.isbankstatementadded)
 		arr.push(userData.value?.isidcard)
-		console.log(arr, userData.value?.isbvn)
+		arr.push(userData.value?.isnextofkin)
+		arr.push(userData.value?.isaddressadded)
+		// console.log(arr, userData.value?.isbvn)
 		arr.forEach(item => {
 			if(item == 'approved') {
 				count++
 			}
 		})
 		// alert(count)
-		if(count == 4) {
+		if(count == 6) {
 			const { openModal } = useGlobalModal()
 			openModal(vericationCongrats)
 		}
@@ -61,7 +62,7 @@ export const useUtils  = () => {
 				}
 			})
 			.catch(err => {
-				console.log(err)
+				// console.log(err)
 				Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 			})
 		
@@ -86,7 +87,7 @@ export const useUtils  = () => {
 		// const userPass = await encryptString(password_cred, encryptPassword);
 
 		// console.log(userEmail, userPass);
-		console.log('save')
+		// console.log('save')
 	}
 
 	function formatNumber(n:string) {

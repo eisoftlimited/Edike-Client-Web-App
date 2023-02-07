@@ -44,7 +44,7 @@ export const useBvn  = () => {
 			}
 		})
 		.catch(err => {
-			console.log(err)
+			// console.log(err)
 			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 		})
 	}

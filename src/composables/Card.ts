@@ -27,7 +27,7 @@ export const useCard  = () => {
 		.then(res => res.json())
 		.then((data) => {
 			closeSubLoader()
-			console.log(data)
+			// console.log(data)
 			if(data.status == 'valid') {
 				reference.value = data.response.data.reference
 				access_code.value = data.response.data.access_code
@@ -40,7 +40,7 @@ export const useCard  = () => {
 		})
 		.catch(err => {
 			closeSubLoader()
-			console.log(err)
+			// console.log(err)
 			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 		})
 	}
@@ -64,7 +64,7 @@ export const useCard  = () => {
 		})
 		.catch(err => {
 			closeSubLoader()
-			console.log(err)
+			// console.log(err)
 		})
 	}
 
@@ -82,7 +82,7 @@ export const useCard  = () => {
 			}
 		})
 		.catch(err => {
-			console.log(err)
+			// console.log(err)
 			closeSubLoader()
 		})
 	}

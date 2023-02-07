@@ -35,7 +35,7 @@ export const useUser = () => {
 			.then(res => res.json())
 			.then(data => {
 				closeSubLoader()
-				console.log(data)
+				// console.log(data)
 				if (data != null || data != undefined) {
 					if(data.msg == 'Not Authorized') {
 						logOut()
@@ -47,7 +47,7 @@ export const useUser = () => {
 				}
 			})
 			.catch(err => {
-				console.log(err)
+				// console.log(err)
 				Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 			})
 	}
@@ -72,7 +72,7 @@ export const useUser = () => {
 		})
 		.catch(err => {
 			closeSubLoader()
-			console.log(err)
+			// console.log(err)
 			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 		})
 	}
@@ -107,7 +107,9 @@ export const refreshToken = () => {
 					logOut()
 				}
 			})
-			.catch(err => console.log(err))
+			.catch(err => {
+				// console.log(err)
+			})
 	} else {
 		router.push('/signin')
 	}

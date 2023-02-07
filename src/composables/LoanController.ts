@@ -49,7 +49,7 @@ const clearVariables = () => {
 }
 
 const requestLoanForm = () => {
-	if((userData.value?.isnin == 'approved' || userData.value?.isbvn == 'approved') && userData.value?.isbankstatementadded == 'approved' && userData.value?.isidcard == 'approved' && userData.value?.iscardadded == 'approved') {
+	if((userData.value?.isnin == 'approved' || userData.value?.isbvn == 'approved') && userData.value?.isbankstatementadded == 'approved' && userData.value?.isidcard == 'approved' && userData.value?.iscardadded == 'approved' && userData.value?.isnextofkin == 'approved' && userData.value?.isaddressadded == 'approved') {
 		requestLoanStatus.value = true
 	} else {
 		Swal.fire({ title: 'Verification Incomplete!', text: 'Kindly visit the dashboard to complete verification', icon: 'error'})
@@ -95,7 +95,7 @@ export const useLoan  = () => {
 			}
 		})
 		.catch(err => {
-			console.log(err)
+			// console.log(err)
 			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 		})
 	}
@@ -114,7 +114,7 @@ export const useLoan  = () => {
 			}
 		})
 		.catch(err => {
-			console.log(err)
+			// console.log(err)
 			closeSubLoader()
 		})
 	}

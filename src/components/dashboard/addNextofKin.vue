@@ -14,7 +14,12 @@ import { ref } from 'vue';
 import textInput from '../utils/textInput.vue';
 import phoneInput from '../utils/phoneInput.vue';
 import { useFetch } from '../../composables/FetchController';
+import { useSideModal } from '../../composables/SideModal';
+import { useGlobalModal } from '../../composables/GlobalModal';
+import Swal from 'sweetalert2';
+import { useUtils } from '../../composables/Utils';
 
+const { eightPercentCongrats } = useUtils()
 const { makeFetchWithAuthAndBody } = useFetch()
 const firstName = ref('')
 const lastName = ref('')
@@ -23,7 +28,7 @@ const phone = ref('')
 
 
 const submitForm = () => {
-	console.log(firstName.value, lastName.value, address.value, phone.value)
+	// console.log(firstName.value, lastName.value, address.value, phone.value)
 	makeFetchWithAuthAndBody('POST', 'auth/user/next-of-kin/details', {
 		nextofkinfirstname: firstName.value,
 		nextofkinlastname: lastName.value,
@@ -32,10 +37,17 @@ const submitForm = () => {
 	})
 	.then(res => res.json())
 	.then(data => {
-		console.log(data)
+		// console.log(data)
+		if(data.status == 'valid') {
+			useGlobalModal().closeModal()
+			useSideModal().closeSideModal()
+			Swal.fire({ title: 'Success!', text: 'Next of kin was added successfully', icon: 'success' })
+			eightPercentCongrats()
+		}
 	})
 	.catch(err => {
-		console.log(err)
+		// console.log(err)
+		Swal.fire({ title: 'Error!', text: 'Unable to add next of kin', icon: 'error' })
 	})
 }
 

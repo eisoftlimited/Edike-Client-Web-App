@@ -16,9 +16,11 @@ import Upload from '../utils/upload.vue';
 import Swal from 'sweetalert2';
 import { useFetch } from '../../composables/FetchController';
 import { useLoader } from '../../composables/LoaderController';
+import { useUtils} from '../../composables/Utils'
 
 const { openSubLoader, closeSubLoader } = useLoader()
 const { makeFetchWithFormData } = useFetch()
+const { eightPercentCongrats } = useUtils()
 
 const idImage = ref<any>()
 const address = ref('')
@@ -26,7 +28,7 @@ const address = ref('')
 const submitForm = () => {
 	if(idImage.value != undefined) {
 		openSubLoader()
-		console.log(idImage.value)
+		// console.log(idImage.value)
 		const formData = new FormData()
 		formData.append('houseAddressLink', idImage.value)
 		formData.append('houseAddress', address.value)
@@ -34,17 +36,18 @@ const submitForm = () => {
 		makeFetchWithFormData('POST', 'auth/user/address', formData)
 		.then(res => res.json())
 		.then((data) => {
-			console.log(data)
+			// console.log(data)
 			closeSubLoader()
 			if(data.status == 'valid') {
 				Swal.fire({ title: 'Success!', text: 'Address added successfully', icon: 'success'})
+				eightPercentCongrats()
 			} else {
 				Swal.fire({ title: 'Error!', text: data.msg, icon: 'error'})
 			}
 		})
 		.catch(err => {
 			closeSubLoader()
-			console.log(err)
+			// console.log(err)
 			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 		})
 	} else {

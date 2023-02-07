@@ -3538,10 +3538,10 @@ const getSchools = () => {
 	makeFetchToAnotherUrl('GET', 'https://edikeatadmin.onrender.com/edike/api/v1/school/admin/all-active')
 	.then(res => res.json())
 	.then(data => {
-		console.log(data)
+		// console.log(data)
 	})
 	.catch(err => {
-		console.log(err)
+		// console.log(err)
 	})
 }
 

@@ -66,7 +66,7 @@ export const useAuth = () => {
 				})
 				.catch(err => {
 					closeMainLoader()
-					console.log(err)
+					// console.log(err)
 					Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 					resetVariables()
 				})
@@ -100,7 +100,7 @@ export const useAuth = () => {
 			})
 			.catch(err => {
 				closeMainLoader()
-				console.log(err)
+				// console.log(err)
 				Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 				resetVariables()
 			})
@@ -123,7 +123,7 @@ export const useAuth = () => {
 		})
 		.catch(err => {
 			closeMainLoader()
-			console.log(err)
+			// console.log(err)
 			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 		})
 	}
@@ -136,7 +136,7 @@ export const useAuth = () => {
 		}).then(res => res.json())
 			.then(data => {
 				// closeMainLoader()
-				console.log(data)
+				// console.log(data)
 				if (data.token) {
 					saveTokenToLS(data.token)
 					updateUser(data.useful[0])
@@ -150,7 +150,7 @@ export const useAuth = () => {
 			})
 			.catch(err => {
 				closeMainLoader()
-				console.log(err)
+				// console.log(err)
 				Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 				resetVariables()
 			})
@@ -174,7 +174,7 @@ export const useAuth = () => {
 			})
 			.catch(err => {
 				closeMainLoader()
-				console.log(err)
+				// console.log(err)
 				Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 				resetVariables()
 			})
@@ -200,7 +200,7 @@ export const useAuth = () => {
 			})
 			.catch(err => {
 				closeMainLoader()
-				console.log(err)
+				// console.log(err)
 				// alert('error')
 				Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 				resetVariables()
@@ -224,7 +224,7 @@ export const useAuth = () => {
 		})
 		.catch(err => {
 			closeMainLoader()
-			console.log(err)
+			// console.log(err)
 			Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 		})
 	}
@@ -250,7 +250,7 @@ export const useAuth = () => {
 			})
 			.catch(err => {
 				closeMainLoader()
-				console.log(err)
+				// console.log(err)
 				Swal.fire({ title: 'Error!', text: 'Please try again', icon: 'error'})
 				resetVariables()
 			})

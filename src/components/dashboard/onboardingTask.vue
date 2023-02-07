@@ -2,10 +2,10 @@
 	<div class="p-6 rounded-xl flex flex-col gap-4 w-full bg-[#FFFFFF]">
 		<div class="flex flex-col gap-2">
 			<p class="flex items-center justify-between small-text text-[#595F69]">Onboarding Tasks
-				<span class="text-[#8A9099]">{{ calculate * 25 }}%</span>
+				<span class="text-[#8A9099]">{{ Math.floor(calculate * (100/6)) }}%</span>
 			</p>
 			<div class="h-[6px] rounded-sm bg-[#F8F8F8] relative overflow-hidden">
-				<div class="bg-primary absolute top-0 left-0 h-[6px] rounded-sm" :class="{'w-[25%]': calculate == 1, 'w-[50%]': calculate == 2, 'w-[75%]': calculate == 3, 'w-[100%]': calculate == 4}"></div>
+				<div class="bg-primary absolute top-0 left-0 h-[6px] rounded-sm" :class="{'w-[18%]': calculate == 1, 'w-[36%]': calculate == 2, 'w-[50%]': calculate == 3, 'w-[68%]': calculate == 4 , 'w-[82%]': calculate == 5 , 'w-[100%]': calculate == 6}"></div>
 			</div>
 		</div>
 
@@ -61,8 +61,8 @@ const buttons = [
 	{text: 'Add Bank Statement', subText: '(Submit your 6 months bank statement)', checkUserData: userData.value?.isbankstatementadded, comp: AddBankStatement},
 	{text: 'Save your card', subText: '', checkUserData: userData.value?.iscardadded, comp: AddCard},
 	{text: 'Add Identity Card', subText: '(Submit any valid id card)', checkUserData: userData.value?.isidcard, comp: AddIdCard},
-	// {text: 'Upload utility bill', subText: '', checkUserData: 'pending', comp: Address},
-	// {text: 'Provide next of Kin', subText: '', checkUserData: 'pending', comp: AddNextofKin}
+	{text: 'Upload utility bill', subText: '', checkUserData: userData.value?.isaddressadded, comp: Address},
+	{text: 'Provide next of Kin', subText: '', checkUserData: userData.value?.isnextofkin, comp: AddNextofKin}
 ]
 
 const calculate = computed(() => {
@@ -73,6 +73,8 @@ const calculate = computed(() => {
 	arr.push(userData.value?.iscardadded)
 	arr.push(userData.value?.isbankstatementadded)
 	arr.push(userData.value?.isidcard)
+	arr.push(userData.value?.isnextofkin)
+	arr.push(userData.value?.isaddressadded)
 	arr.forEach(item => {
 		if(item == 'approved') {
 			count++

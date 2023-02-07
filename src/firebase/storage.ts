@@ -21,7 +21,7 @@ export const useStorage = (file?:any) => {
 		// console.log(data)
 		uploadBytes(userPdfRef, file)
 		.then((snapshot:any) => {
-			console.log(snapshot);
+			// console.log(snapshot);
 			getDownloadURL(snapshot.ref)
 			.then((URL:string) => {
 				uploadedPdfUrl.value = URL
@@ -32,7 +32,7 @@ export const useStorage = (file?:any) => {
 	})
 	.catch(err => {
 		closeSubLoader()
-		console.log(err)
+		// console.log(err)
 		Swal.fire({ title: 'Error!', text: 'Could not upload bank statement', icon: 'error' })
 	})
 	

@@ -14,14 +14,14 @@ export const useBank = () => {
 		.then(res => res.json())
 		.then(data => {
 			closeSubLoader()
-			console.log(data)
+			// console.log(data)
 			if(data.msg.message == 'Banks retrieved') {
 				bankCode.value = data.msg.data
 			}
 		})
 		.catch(err => {
 			closeSubLoader()
-			console.log(err)
+			// console.log(err)
 		})
 	}
 
