@@ -61,8 +61,8 @@ const buttons = [
 	{text: 'Add Bank Statement', subText: '(Submit your 6 months bank statement)', checkUserData: userData.value?.isbankstatementadded, comp: AddBankStatement},
 	{text: 'Save your card', subText: '', checkUserData: userData.value?.iscardadded, comp: AddCard},
 	{text: 'Add Identity Card', subText: '(Submit any valid id card)', checkUserData: userData.value?.isidcard, comp: AddIdCard},
-	{text: 'Upload utility bill', subText: '', checkUserData: 'pending', comp: Address},
-	{text: 'Provide next of Kin', subText: '', checkUserData: 'pending', comp: AddNextofKin}
+	// {text: 'Upload utility bill', subText: '', checkUserData: 'pending', comp: Address},
+	// {text: 'Provide next of Kin', subText: '', checkUserData: 'pending', comp: AddNextofKin}
 ]
 
 const calculate = computed(() => {
