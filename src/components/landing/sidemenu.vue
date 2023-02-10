@@ -18,9 +18,9 @@ import { useSidemenu } from '../../composables/sidemenu';
 
 const links = [
 	{text: 'Home', route: '/'},
-	{text: 'FAQs', route: '/faqs'},
+	// {text: 'FAQs', route: '/faqs'},
 	{text: 'Contact Us', route: '/contact'},
-	{text: 'Help', route: '/'},
+	// {text: 'Help', route: '/'},
 	{text: 'Sign Up', route: '/signup'},
 	{text: 'Sign In', route: '/signin'},
 ]
@@ -36,5 +36,10 @@ const { sidemenuStatus, closeSideMenu } = useSidemenu()
 
 .side-enter-active, .side-leave-active{
 	transition: all 1s ease;
+}
+
+a.router-link-exact-active{
+	background-color: #44AF89;
+	color: white;
 }
 </style>

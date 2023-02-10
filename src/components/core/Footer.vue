@@ -1,6 +1,6 @@
 <template>
 	<div class="py-[70px] px-4 bg-[#0A6C55]">
-		<div class="w-full max-w-[1200px] flex flex-col gap-8 md:flex-row justify-between md:items-center">
+		<div class="w-full max-w-[1200px] mx-auto flex flex-col gap-8 md:flex-row justify-between md:items-center">
 			<div class="flex flex-col gap-1">
 				<img src="../../assets/img/logo.svg" class="w-[100px]" alt="">
 				<p class="small-text text-white">Copyright © 2022 Edike. All rights reserved.</p>
