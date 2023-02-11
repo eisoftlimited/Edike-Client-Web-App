@@ -9,7 +9,6 @@
 			<div class="bg-[#ffffff] rounded-3xl p-4 md:p-8 w-full max-w-[500px] mx-auto">
 				<div class="flex flex-col gap-7">
 					<div class="flex flex-col gap-1">
-						<p class="text-base text-[#1E3446]">Feedback form</p>
 						<h3 class="text-[#120A00] heading5 md:heading4 !font-medium">We Love to hear from you</h3>
 					</div>
 
@@ -37,7 +36,7 @@
 								<img src="../assets/img/icons/contact/message.svg" alt="">
 								<div class="flex flex-col">
 									<p class="small-text font-bold">EMAIL</p>
-									<p class="small-text text-[#F58634]">support@edike.ng</p>
+									<p class="small-text text-[#F58634]">info@edike.ng</p>
 								</div>
 							</div>
 						</div>
