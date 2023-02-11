@@ -5,7 +5,7 @@
 				<h3 class="text-2xl md:text-3xl font-medium">Terms & Conditions</h3>
 				<p class="small-text">Home / Terms & Conditions</p>
 			</div>
-			<vue-pdf-embed source="./legal/edikepdf.pdf" />
+			<vue-pdf-embed source="./legal/edike_terms.pdf" />
 		</div>
 	</landing-layout>
 </template>

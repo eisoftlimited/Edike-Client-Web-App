@@ -18,9 +18,9 @@ import { useSidemenu } from '../../composables/sidemenu';
 
 const links = [
 	{text: 'Home', route: '/'},
-	// {text: 'FAQs', route: '/faqs'},
+	{text: 'FAQs', route: '/'},
 	{text: 'Contact Us', route: '/contact'},
-	// {text: 'Help', route: '/'},
+	{text: 'About Us', route: '/'},
 	{text: 'Sign Up', route: '/signup'},
 	{text: 'Sign In', route: '/signin'},
 ]

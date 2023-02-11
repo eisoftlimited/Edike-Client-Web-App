@@ -20,8 +20,8 @@
 <script setup lang="ts">
 import { useSidemenu } from '../../composables/sidemenu';
 const links = [
-	// {text: 'FAQs', route: '/faqs'},
-	// {text: 'Help', route: '/'},
+	{text: 'FAQs', route: '/'},
+	{text: 'About Us', route: '/'},
 	{text: 'Contact Us', route: '/contact'}
 ]
 </script>

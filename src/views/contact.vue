@@ -24,19 +24,28 @@
 						<button type="submit" class="btn-short !w-full">Submit</button>
 					</form>
 
-					<div class="flex items-center justify-between">
-						<div class="flex items-center gap-2">
-							<img src="../assets/img/icons/contact/phone.svg" alt="">
-							<div class="flex flex-col">
-								<p class="small-text font-bold">PHONE</p>
-								<p class="small-text text-[#F58634]">03 5432 1234</p>
+					<div class="flex flex-col items-center gap-4 ">
+						<div class="flex w-full items-center justify-between">
+							<div class="flex items-center gap-2">
+								<img src="../assets/img/icons/contact/phone.svg" alt="">
+								<div class="flex flex-col">
+									<p class="small-text font-bold">PHONE</p>
+									<p class="small-text text-[#F58634]">0702 500 0490</p>
+								</div>
+							</div>
+							<div class="flex items-center gap-2">
+								<img src="../assets/img/icons/contact/message.svg" alt="">
+								<div class="flex flex-col">
+									<p class="small-text font-bold">EMAIL</p>
+									<p class="small-text text-[#F58634]">support@edike.ng</p>
+								</div>
 							</div>
 						</div>
-						<div class="flex items-center gap-2">
-							<img src="../assets/img/icons/contact/message.svg" alt="">
+						<div class="flex items-start gap-2">
+							<!-- <img src="../assets/img/icons/contact/address.svg" class="w-[20px]" alt=""> -->
 							<div class="flex flex-col">
-								<p class="small-text font-bold">EMAIL</p>
-								<p class="small-text text-[#F58634]">info@edike.ng</p>
+								<p class="small-text font-bold">ADDRESS</p>
+								<p class="small-text text-[#F58634] max-w-[200px]">14B, Kafayat Abdulrazaq Street, Lekki phase 1, Lagos, Nigeria.</p>
 							</div>
 						</div>
 					</div>
