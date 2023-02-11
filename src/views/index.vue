@@ -6,17 +6,19 @@
 				<div class="flex flex-col items-center gap-6 w-full text-center max-w-[400px] mx-auto">
 					<h3 class="heading3 !font-medium">Pay School Fees in Minutes</h3>
 					<p class="small-text text-[#627E84]">Get financing for payment of your child(ren) school fees. Convenient repayment split for up to 3 Months.</p>
-					<img src="../assets/img/illustrations/landing/hero_about_rounded.svg" class="w-[120px]" alt="">
+					<a href="#goal">
+						<img src="../assets/img/illustrations/landing/hero_about_rounded.svg" class="w-[120px]" alt="">
+					</a>
 				</div>
 				<img class="hidden lg:flex w-[250px] xl:w-[300px]" src="../assets/img/illustrations/landing/hero_one.svg" alt="">
 			</div>
-			<div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-4 justify-between w-full max-w-[1200px] mx-auto">
+			<div id="goal" class="flex flex-col lg:flex-row items-center gap-8 lg:gap-4 justify-between w-full max-w-[1200px] mx-auto">
 				<div class="flex flex-col gap-4 w-full max-w-[400px]">
 					<p class="text-primary font-semibold text-base">OUR GOAL</p>
 					<h4 class="heading4 !font-medium">What we Offer</h4>
 					<p class="small-text text-[#627E84]">Our goal is to improve access to education in Nigeria and Africa by bridging the funding gap that exists on the consumer side.We are building a user-friendly ecosystem that provides resources that aid learning and supports parents with the management of financial obligation of school fees payment.</p>
-					<router-link class="btn-short w-fit px-3 flex items-center justify-center" to="/">
-						Join our Community
+					<router-link class="btn-short w-fit px-3 flex items-center justify-center" to="/contact">
+						Contact Us
 					</router-link>
 				</div>
 				<img src="../assets/img/illustrations/landing/offer_img.svg" class="w-full max-w-[600px]" alt="">
@@ -37,13 +39,10 @@
 						</div>
 					</template>
 				</div>
-				<router-link class="btn-short w-fit px-3 flex items-center justify-center" to="/">
-					Join our Community
-				</router-link>
 			</div>
 
 			<div class="flex flex-col gap-4 text-center mb-[60px]">
-				<h4 class="heading4 !font-medium">Powered by</h4>
+				<h4 class="heading4 !font-medium">Our Partners</h4>
 				<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
 					<div v-for="n in partners" :key="n" class="flex items-center justify-center p-4 rounded h-[90px] bg-[#ffffff]">
 						<img :src="getPartnerImg(n)" class="h-[80%]" alt="">

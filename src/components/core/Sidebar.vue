@@ -1,7 +1,7 @@
 <template>
 	<div class="flex flex-col justify-between bg-[#FFFFFF] h-full w-[275px] py-6">
 		<div class="flex flex-col gap-[60px]">
-			<router-link to="/" class="font-bold medium-text text-[#3F434A] flex items-center gap-3 py-4 px-6">
+			<router-link to="/dashboard" class="font-bold medium-text text-[#3F434A] flex items-center gap-3 py-4 px-6">
 				<img src="@/assets/img/logo.svg" class="w-[100px] block mx-auto" alt="">
 			</router-link>
 			<div class="flex flex-col">
