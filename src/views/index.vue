@@ -5,7 +5,7 @@
 				<img  class="hidden lg:flex w-[250px] xl:w-[300px]" src="../assets/img/illustrations/landing/hero_two.svg" alt="">
 				<div class="flex flex-col items-center gap-6 w-full text-center max-w-[400px] mx-auto">
 					<h3 class="heading3 !font-medium">Pay School Fees in Minutes</h3>
-					<p class="small-text text-[#627E84]">Get school fees offers for your child(ren) up to N5,000,000.00 per child for up to 3 months!</p>
+					<p class="small-text text-[#627E84]">Get financing for payment of your child(ren) school fees. Convenient repayment split for up to 3 Months.</p>
 					<img src="../assets/img/illustrations/landing/hero_about_rounded.svg" class="w-[120px]" alt="">
 				</div>
 				<img class="hidden lg:flex w-[250px] xl:w-[300px]" src="../assets/img/illustrations/landing/hero_one.svg" alt="">
@@ -14,7 +14,7 @@
 				<div class="flex flex-col gap-4 w-full max-w-[400px]">
 					<p class="text-primary font-semibold text-base">OUR GOAL</p>
 					<h4 class="heading4 !font-medium">What we Offer</h4>
-					<p class="small-text text-[#627E84]">We provide a user-friendly and streamlined school fees payment offers payment process, while providing education resources and tools to help users manage their loans and make informed decisions about financing their education.</p>
+					<p class="small-text text-[#627E84]">Our goal is to improve access to education in Nigeria and Africa by bridging the funding gap that exists on the consumer side.We are building a user-friendly ecosystem that provides resources that aid learning and supports parents with the management of financial obligation of school fees payment.</p>
 					<router-link class="btn-short w-fit px-3 flex items-center justify-center" to="/">
 						Join our Community
 					</router-link>
@@ -56,7 +56,7 @@
 			<div class="bg-[#FFFFFF] p-6 py-[60px] lg:py-[90px] md:p-8 flex items-center justify-center rounded-3xl">
 				<div class="w-full max-w-[600px] text-center flex flex-col gap-5">
 					<h4 class="heading4 !font-medium text-[#17343D]">Subscribe to our News and Updates</h4>
-					<p class="small-text text-[#627E84] w-full max-w-[400px] mx-auto">Edike is launching soon, so stay up to date with the latest news and updates by subscribing to our social network feeds and notifications.</p>
+					<p class="small-text text-[#627E84] w-full max-w-[400px] mx-auto">Stay up to date with the latest news and updates by subscribing to our social network feeds and notifications.</p>
 					<div class="flex flex-col md:flex-row items-center gap-3 mx-auto w-full max-w-[400px]">
 						<input type="email" placeholder="Email address" class="border outline-none rounded-lg py-1 px-2 w-full">
 						<button class="bg-primary py-1 text-white rounded-lg px-3">Subscribe</button>

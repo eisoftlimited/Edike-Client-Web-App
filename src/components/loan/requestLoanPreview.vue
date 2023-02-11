@@ -22,7 +22,7 @@
 		
 		<div class="flex flex-col gap-2">
 			<p class="text-xs font-medium text-center">Note: Payment of school fees shall be made into beneficiaries school account details on the school bill you provided.</p>
-			<p class="text-xs font-medium text-center">By submitting, you agree to <span class="text-primary">T&C’s</span> of edike.</p>
+			<p class="text-xs font-medium text-center">By submitting, you agree to <router-link to="/terms&conditions" class="text-primary">T&C’s</router-link> of edike.</p>
 			<button class="btn-medium mx-auto" @click="requestLoan">Submit</button>
 		</div>
 	</div>

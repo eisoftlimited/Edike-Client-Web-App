@@ -39,7 +39,7 @@
 					<div class="flex gap-2 items-center">
 						<input type="checkbox" required class="bg-green">
 						<p class="small-text text-darkGray">I accept 
-							<router-link to="/" class="text-secondary">Terms and Conditions</router-link>
+							<router-link to="/terms&conditions" class="text-secondary">Terms and Conditions</router-link>
 						</p>
 					</div>
 					
