@@ -9,7 +9,7 @@
 			<div class="flex items-center gap-4">
 				<span class="flex items-center gap-1">
 					<img src="../../assets/img/icons/footer/mail.svg" alt="">
-					<p class="text-sm text-white">support@edike.ng</p>
+					<p class="text-sm text-white">info@edike.ng</p>
 				</span>
 				<a v-for="n in socials" :key="n.icon" target="blank" :href="n.route">
 					<img :src="getImageUrl(n.icon)" alt="">
