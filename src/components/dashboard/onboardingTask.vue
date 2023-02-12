@@ -17,8 +17,6 @@
 				<img v-if="item.checkUserData == 'approved'" src="../../assets/img/icons/dashboard/checked.svg" alt="" />
 				<img v-else src="../../assets/img/icons/dashboard/unchecked.svg" alt="">
 			</button>
-
-			
 		</div>
 
 		<div class="flex-col gap-4 hidden lg:flex">
@@ -30,7 +28,6 @@
 				<img v-else src="../../assets/img/icons/dashboard/unchecked.svg" alt="">
 			</button>
 		</div>
-
 	</div>
 </template>
 
@@ -62,7 +59,7 @@ const buttons = [
 	{text: 'Save your card', subText: '', checkUserData: userData.value?.iscardadded, comp: AddCard},
 	{text: 'Add Identity Card', subText: '(Submit any valid id card)', checkUserData: userData.value?.isidcard, comp: AddIdCard},
 	{text: 'Upload utility bill', subText: '', checkUserData: userData.value?.isaddressadded, comp: Address},
-	{text: 'Provide next of Kin', subText: '', checkUserData: userData.value?.isnextofkin, comp: AddNextofKin}
+	{text: 'Add next of Kin', subText: '', checkUserData: userData.value?.isnextofkin, comp: AddNextofKin}
 ]
 
 const calculate = computed(() => {
