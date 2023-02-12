@@ -88,7 +88,7 @@ const schools = [
 	{img: 'tamar', text: 'Tamar Preparatory School'}
 ]
 
-const partners = [ 'lagos', 'paystack', 'dojah', 'badij' ]
+const partners = [ 'dojah', 'paystack', 'dojah', 'badij' ]
 
 const getImageUrl = (imgName:string) => {
 	return new URL(`../assets/img/illustrations/landing/schools/${imgName}.svg`, import.meta.url).href
