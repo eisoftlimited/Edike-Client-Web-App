@@ -9,6 +9,11 @@
 			<div class="flex flex-col">
 				<router-link v-for="n in links" :key="n.text" :to="n.route" class="px-2 py-3 text-primary text-sm font-medium">{{ n.text }}</router-link>
 			</div>
+
+			<div class="flex items-center gap-4">
+				<router-link class="btn-short flex items-center justify-center" to="/signin">Sign In</router-link>
+				<router-link class="btn-short flex items-center justify-center" to="/signup">Sign Up</router-link>
+			</div>
 		</div>
 	</transition>
 </template>
@@ -18,11 +23,9 @@ import { useSidemenu } from '../../composables/sidemenu';
 
 const links = [
 	{text: 'Home', route: '/'},
-	{text: 'FAQs', route: '/'},
-	{text: 'Contact Us', route: '/contact'},
-	{text: 'About Us', route: '/'},
-	{text: 'Sign Up', route: '/signup'},
-	{text: 'Sign In', route: '/signin'},
+	{text: 'About Us', route: '#'},
+	{text: 'FAQs', route: '#'},
+	{text: 'Contact Us', route: '/contact'}
 ]
 const { sidemenuStatus, closeSideMenu } = useSidemenu()
 

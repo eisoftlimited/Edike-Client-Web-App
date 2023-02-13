@@ -6,14 +6,21 @@
 				<p class="small-text text-white max-w-[400px]">Copyright © 2023 Edike. All rights reserved | Powered by Competence Asset Management Company Limited.</p>
 			</div>
 
-			<div class="flex items-center gap-4">
-				<span class="flex items-center gap-1">
-					<img src="../../assets/img/icons/footer/mail.svg" alt="">
-					<p class="text-sm text-white">info@edike.ng</p>
-				</span>
-				<a v-for="n in socials" :key="n.icon" target="blank" :href="n.route">
-					<img :src="getImageUrl(n.icon)" alt="">
-				</a>
+			<div class="flex flex-col gap-2">
+				<div class="flex items-center gap-4">
+					<span class="flex items-center gap-1">
+						<img src="../../assets/img/icons/footer/mail.svg" alt="">
+						<p class="text-sm text-white">info@edike.info</p>
+					</span>
+					<a v-for="n in socials" :key="n.icon" target="blank" :href="n.route">
+						<img :src="getImageUrl(n.icon)" alt="">
+					</a>
+				</div>
+				<div class="flex items-center gap-2 text-sm text-white">
+					<router-link to="/terms&conditions" >Terms of use</router-link>
+					<span>|</span>
+					<router-link to="/privacy-policy">Privacy Policy</router-link>
+				</div>
 			</div>
 		</div>
 	</div>

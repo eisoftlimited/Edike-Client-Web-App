@@ -5,7 +5,7 @@
 				<img  class="hidden lg:flex w-[250px] xl:w-[300px]" src="../assets/img/illustrations/landing/hero_two.svg" alt="">
 				<div class="flex flex-col items-center gap-6 w-full text-center max-w-[400px] mx-auto">
 					<h3 class="heading3 !font-medium">Pay School Fees in Minutes</h3>
-					<p class="small-text text-[#627E84]">Get financing for payment of your child(ren) school fees. Convenient repayment split for up to 3 Months.</p>
+					<p class="small-text text-[#627E84]">Get financing for payment of your child(ren) school fees. Convenient repayment split up to 3 Months.</p>
 					<a href="#goal">
 						<img src="../assets/img/illustrations/landing/hero_about_rounded.svg" class="w-[120px]" alt="">
 					</a>
@@ -16,7 +16,7 @@
 				<div class="flex flex-col gap-4 w-full max-w-[400px]">
 					<p class="text-primary font-semibold text-base">OUR GOAL</p>
 					<h4 class="heading4 !font-medium">What we Offer</h4>
-					<p class="small-text text-[#627E84]">Our goal is to improve access to education in Nigeria and Africa by bridging the funding gap that exists on the consumer side.We are building a user-friendly ecosystem that provides resources that aid learning and supports parents with the management of financial obligation of school fees payment.</p>
+					<p class="small-text text-[#627E84]">Our goal is to improve access to education in Nigeria and Africa by bridging the funding gap that exists on the consumer side. We are building a user-friendly ecosystem that provides resources which aids learning and supports parents with the management of financial obligation of their lads school fees.</p>
 					<router-link class="btn-short w-fit px-3 flex items-center justify-center" to="/contact">
 						Contact Us
 					</router-link>
@@ -88,7 +88,7 @@ const schools = [
 	{img: 'tamar', text: 'Tamar Preparatory School'}
 ]
 
-const partners = [ 'dojah', 'paystack', 'dojah', 'badij' ]
+const partners = [ 'credrails', 'paystack', 'dojah', 'badij' ]
 
 const getImageUrl = (imgName:string) => {
 	return new URL(`../assets/img/illustrations/landing/schools/${imgName}.svg`, import.meta.url).href

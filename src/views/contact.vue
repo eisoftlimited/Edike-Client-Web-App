@@ -36,7 +36,7 @@
 								<img src="../assets/img/icons/contact/message.svg" alt="">
 								<div class="flex flex-col">
 									<p class="small-text font-bold">EMAIL</p>
-									<p class="small-text text-[#F58634]">info@edike.ng</p>
+									<p class="small-text text-[#F58634]">info@edike.info</p>
 								</div>
 							</div>
 						</div>
