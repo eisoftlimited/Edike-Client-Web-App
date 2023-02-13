@@ -5,13 +5,19 @@
 				<h3 class="text-2xl md:text-3xl font-medium">Terms & Conditions</h3>
 				<p class="small-text">Home / Terms & Conditions</p>
 			</div>
-			<vue-pdf-embed source="./legal/edike_terms.pdf" />
+			<vue-pdf-embed v-if="now" source="./legal/edike_terms.pdf" />
 		</div>
 	</landing-layout>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import VuePdfEmbed from 'vue-pdf-embed'
 
+const now = ref(false)
+onMounted(() => {
+	setTimeout(() => {
+		now.value = true
+	}, 500);
+})
 </script>

@@ -35,8 +35,8 @@ const sub_list1 = [
 const data = [
 	{title: 'Register', desc: 'Create an account with your personal information to start the process.', img: 'one'},
 	{title: 'Get Verified', desc: 'Submit the necessary documentation to verify your identity and eligibility for an edike offer.', img: 'two'},
-	{title: 'Add a Beneficiary', desc: 'Choose a trusted individual as a recipient of the school fees payment offer.', img: 'three'},
-	{title: 'Submit your school fees payment request', desc: 'Fill out a school fees payment request with invoice form and select convenient repayment duration. We approve and disburse.', img: 'four'}
+	{title: 'Add a Beneficiary', desc: 'Add student(s) information as beneficiary.', img: 'three'},
+	{title: 'Submit your school fees payment request', desc: 'Upload school fees invoice and submit', img: 'four'}
 ]
 
 const getImageUrl = (imgName:string) => {
