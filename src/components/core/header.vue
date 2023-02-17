@@ -21,7 +21,7 @@
 import { useSidemenu } from '../../composables/sidemenu';
 const links = [
 	{text: 'About Us', route: '#'},
-	{text: 'FAQs', route: '#'},
+	{text: 'FAQs', route: '/faqs'},
 	{text: 'Contact Us', route: '/contact'}
 ]
 </script>
