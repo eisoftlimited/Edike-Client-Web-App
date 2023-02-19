@@ -8,7 +8,7 @@ const { makeFetchToAnotherUrl } =  useFetch()
 
 export const useInterest = () => {
 	rate.value = undefined
-	openSubLoader
+	openSubLoader()
 	makeFetchToAnotherUrl('GET', 'https://admin.edike.click/edike/api/v1/percentage/getrate')
 	.then(res => res.json())
 	.then(data => {
@@ -22,6 +22,7 @@ export const useInterest = () => {
 	})
 	.catch(err => {
 		closeSubLoader()
-		// console.log(err)
+		console.log(err)
+		rate.value = 0.05
 	})
 }
