@@ -23,7 +23,7 @@
 				</div>
 				<img src="../assets/img/illustrations/landing/offer_img.svg" class="w-full max-w-[600px]" alt="">
 			</div>
-			<div class="map py-[100px] flex flex-col items-center gap-5 w-full max-w-[1200px] mx-auto text-center">
+			<!-- <div class="map py-[100px] flex flex-col items-center gap-5 w-full max-w-[1200px] mx-auto text-center">
 				<h4 class="heading4 !font-medium">Our Schools Listing</h4>
 				<div class="hidden md:flex flex-wrap items-center justify-center gap-2">
 					<div v-for="n in schools" :key="n.text" class="flex items-center gap-1 py-2 px-3 rounded-full bg-[#ffffff]">
@@ -39,7 +39,7 @@
 						</div>
 					</template>
 				</div>
-			</div>
+			</div> -->
 
 			<div class="flex flex-col gap-4 text-center mb-[60px]">
 				<h4 class="heading4 !font-medium">Our Partners</h4>
