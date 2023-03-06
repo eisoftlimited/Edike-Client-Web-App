@@ -23,23 +23,23 @@
 				</div>
 				<img src="../assets/img/illustrations/landing/offer_img.svg" class="w-full max-w-[600px]" alt="">
 			</div>
-			<!-- <div class="map py-[100px] flex flex-col items-center gap-5 w-full max-w-[1200px] mx-auto text-center">
+			<div class="map py-[100px] flex flex-col items-center gap-5 w-full max-w-[1200px] mx-auto text-center">
 				<h4 class="heading4 !font-medium">Our Schools Listing</h4>
-				<div class="hidden md:flex flex-wrap items-center justify-center gap-2">
-					<div v-for="n in schools" :key="n.text" class="flex items-center gap-1 py-2 px-3 rounded-full bg-[#ffffff]">
-						<img :src="getImageUrl(n.img)" alt="">
+				<div class="flex flex-wrap items-center justify-center gap-2">
+					<div v-for="n in schools" :key="n.text" class="flex items-center gap-3 py-2 px-3 rounded-full bg-[#ffffff]">
+						<img :src="getImageUrl(n.img)" class="h-[30px]" alt="">
 						<p class="small-text text-[#2B3450] font-medium">{{ n.text }}</p>
 					</div>
 				</div>
-				<div class="flex flex-wrap gap-2 items-center justify-center md:hidden">
+				<!-- <div class="flex flex-wrap gap-2 items-center justify-center md:hidden">
 					<template v-for="n,index in schools" :key="n.text">
 						<div v-if="index < 7" class="flex items-center gap-1 py-2 px-3 rounded-full bg-[#ffffff]">
 							<img :src="getImageUrl(n.img)" alt="">
 							<p class="small-text text-[#2B3450] font-medium">{{ n.text }}</p>
 						</div>
 					</template>
-				</div>
-			</div> -->
+				</div> -->
+			</div>
 
 			<div class="flex flex-col gap-4 text-center mb-[60px]">
 				<h4 class="heading4 !font-medium">Our Partners</h4>
@@ -69,29 +69,36 @@
 <script setup lang="ts">
 import howItWorks from '../components/landing/howItWorks.vue';
 const schools = [
-	{img: 'daily', text: 'Daily light College'},
-	{img: 'triple', text: 'Triple Cross school'},
-	{img: 'berit', text: 'Berit School'},
-	{img: 'triple', text: 'Triple Cross school'},
-	{img: 'bosom', text: 'Bosom Private School'},
-	{img: 'mozan', text: 'Mozan School'},
-	{img: 'mimak', text: 'Mimak College'},
-	{img: 'lapaz', text: 'LA PAZ Academy'},
-	{img: 'peniel', text: 'Peniel Home School'},
-	{img: 'brite', text: 'Brite Hill School'},
-	{img: 'daystar', text: 'Daystar School'},
-	{img: 'twinkly', text: 'Twinkly Tots'},
-	{img: 'tunwase', text: 'Tunwase High School'},
-	{img: 'real', text: 'Real Academy LTD'},
-	{img: 'rola', text: 'Rola INT School'},
-	{img: 'digilearn', text: 'Digilearn Center LTD'},
-	{img: 'tamar', text: 'Tamar Preparatory School'}
+	// {img: 'daily', text: 'Daily light College'},
+	// {img: 'triple', text: 'Triple Cross school'},
+	// {img: 'berit', text: 'Berit School'},
+	// {img: 'triple', text: 'Triple Cross school'},
+	// {img: 'bosom', text: 'Bosom Private School'},
+	// {img: 'mozan', text: 'Mozan School'},
+	// {img: 'mimak', text: 'Mimak College'},
+	// {img: 'lapaz', text: 'LA PAZ Academy'},
+	// {img: 'peniel', text: 'Peniel Home School'},
+	// {img: 'brite', text: 'Brite Hill School'},
+	// {img: 'daystar', text: 'Daystar School'},
+	// {img: 'twinkly', text: 'Twinkly Tots'},
+	// {img: 'tunwase', text: 'Tunwase High School'},
+	// {img: 'real', text: 'Real Academy LTD'},
+	// {img: 'rola', text: 'Rola INT School'},
+	// {img: 'digilearn', text: 'Digilearn Center LTD'},
+	// {img: 'tamar', text: 'Tamar Preparatory School'},
+	{img: 'lakewood', text: 'Lakewood Private School'},
+	{img: 'quiver', text: 'Quiver School'},
+	{img: 'emerald', text: 'Emerald School'},
+	{img: 'starfield', text: 'Starfield Montessori School'},
+	{img: 'supreme', text: 'Supreme Education Foundation School'},
+	{img: 'marymount', text: 'Marymount School'},
+	{img: 'corona', text: 'Corona School'}
 ]
 
 const partners = [ 'credrails', 'paystack', 'dojah', 'badij' ]
 
 const getImageUrl = (imgName:string) => {
-	return new URL(`../assets/img/illustrations/landing/schools/${imgName}.svg`, import.meta.url).href
+	return new URL(`../assets/img/illustrations/landing/schools/new/${imgName}.svg`, import.meta.url).href
 }
 
 const getPartnerImg = (imgName:string) => {
