@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vueuse/core": "^9.7.0",
+    "@vueuse/core": "^9.13.0",
     "encrypt-string": "^1.0.0",
     "firebase": "^9.15.0",
     "simple-vue-camera": "^1.1.3",
