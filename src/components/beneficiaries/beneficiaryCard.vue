@@ -24,7 +24,7 @@
 				<p class="small-text text-[#8A9099] w-full">{{data.studentClass}}</p>
 			</div>
 		</div>
-		<div class="absolute right-6 top-14 flex flex-col gap-4 p-4 rounded-lg bg-[#FAFAFA] w-[130px]" v-if="modifyCard">
+		<div class="absolute shadow-md border right-6 top-14 flex flex-col gap-4 p-4 rounded-lg bg-[#FAFAFA] w-[130px]" v-if="modifyCard">
 			<button class="flex md:hidden items-center gap-4 small-text text-darkGray" @click="editBeneficiarySmallScreen">
 				<img src="../../assets/img/icons/edit.svg" alt="">
 				Edit
@@ -33,11 +33,11 @@
 				<img src="../../assets/img/icons/edit.svg" alt="">
 				Edit
 			</button>
-			<hr class="border border-[#E8E9EB]"/>
+			<!-- <hr class="border border-[#E8E9EB]"/>
 			<button class="flex items-center gap-4 small-text text-error" @click="deleteBeneficiaries(data._id)">
 				<img src="../../assets/img/icons/delete.svg" alt="">
 				Delete
-			</button>
+			</button> -->
 		</div>
 	</div>
 </template>
