@@ -87,11 +87,11 @@ export const useLoan  = () => {
 			// console.log(data)
 			closeSubLoader()
 			if(data.status = 'valid') {
-				Swal.fire({ title: 'Success!', text: 'Loan request made successfully', icon: 'success'})
+				Swal.fire({ title: 'Success!', text: 'School fees financing made successfully', icon: 'success'})
 				fetchLoans()
 				closeLoanRequest()
 			} else {
-				Swal.fire({ title: 'Error!', text: 'Loan request was unsuccesful', icon: 'error'})
+				Swal.fire({ title: 'Error!', text: 'School fees financing was unsuccesful', icon: 'error'})
 			}
 		})
 		.catch(err => {

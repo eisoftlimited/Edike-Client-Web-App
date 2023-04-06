@@ -6,9 +6,9 @@
 				class="w-[90%] max-w-[400px] mx-auto h-auto flex flex-col items-center justify-center gap-6">
 				<img src="../../assets/img/illustrations/empty_loan.svg" alt="">
 				<div class="flex flex-col gap-2 items-center">
-					<h4 class=" heading5 md:heading4  text-center">No Running Loans</h4>
+					<h4 class=" heading5 md:heading4 text-center">No Running School fees request</h4>
 					<p class="small-text text-center"></p>
-					<button class="btn-medium" @click="requestLoanForm">Request Loan</button>
+					<button class="btn-medium" @click="requestLoanForm">Request School fees financing</button>
 				</div>
 			</div>
 

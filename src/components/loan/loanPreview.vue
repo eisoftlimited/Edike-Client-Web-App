@@ -7,9 +7,9 @@
 		
 		<div class="flex flex-col gap-3 mx-auto w-full ">
 			<p class="normal-text font-bold">Loan Details</p>
-			<dataBox key-data="Loan Status" :key-value="`${data?.status}`" :color="data?.status == 'completed' ? 'text-success' : data?.status == 'declined' ? 'text-error' : 'text-[#F9AC3B]'" />
-			<dataBox key-data="Loan Amount" :key-value="`N ${formatNumber(String(data?.beneficiary_amount))}`" />
-			<dataBox key-data="Loan Duration" :key-value="`${data?.beneficiary_duration} Month(s)`" />
+			<dataBox key-data="Request Status" :key-value="`${data?.status}`" :color="data?.status == 'completed' ? 'text-success' : data?.status == 'declined' ? 'text-error' : 'text-[#F9AC3B]'" />
+			<dataBox key-data="Fees Amount" :key-value="`N ${formatNumber(String(data?.beneficiary_amount))}`" />
+			<dataBox key-data="Request Duration" :key-value="`${data?.beneficiary_duration} Month(s)`" />
 			<dataBox v-if="data?.status == 'ongoing' || data?.status == 'completed'"
 			 key-data="Date Disbursed" :key-value="`${formatDate(data?.dateDisbursed!)}`" />
 		</div>

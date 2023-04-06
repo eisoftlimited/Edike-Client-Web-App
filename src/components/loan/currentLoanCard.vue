@@ -3,11 +3,11 @@
 		<img :src="data.beneficiaryDetails[0].beneficiaryImage" class="mx-auto w-[150px] h-[150px] rounded-full object-cover object-top"  alt="">
 		<div class="flex flex-col gap-3 mx-auto w-full max-w-fit">
 			<div class="flex items-start gap-3">
-				<p class="small-text font-medium text-[#3F434A] min-w-[100px]">Loan Amount</p>
+				<p class="small-text font-medium text-[#3F434A] min-w-[100px]">Fees Amount</p>
 				<p class="small-text text-[#8A9099] w-full">N {{ formatNumber(String(data.beneficiary_amount)) }}</p>
 			</div>
 			<div class="flex items-start gap-3">
-				<p class="small-text font-medium text-[#3F434A] min-w-[100px]">Loan Tenure</p>
+				<p class="small-text font-medium text-[#3F434A] min-w-[100px]">Request Tenure</p>
 				<p class="small-text text-[#8A9099] w-full">{{ data.beneficiary_duration }} Month(s)</p>
 			</div>
 			<div class="flex  items-start gap-3">
@@ -23,7 +23,7 @@
 				<p class="small-text text-[#8A9099] w-full">{{ data.beneficiaryDetails[0].studentClass }}</p>
 			</div>
 			<div class="flex items-start gap-3">
-				<p class="small-text font-medium text-[#3F434A] min-w-[100px]">Loan Status</p>
+				<p class="small-text font-medium text-[#3F434A] min-w-[100px]">Request Status</p>
 				<p class="small-text font-bold w-full" :class="[data?.status == 'completed' ? 'text-success' : data?.status == 'declined' ? 'text-error' : 'text-[#F9AC3B]']">{{ data.status }}</p>
 			</div>
 		</div>
