@@ -103,5 +103,7 @@ export const useUtils  = () => {
 	return { getSize, eightPercentCongrats, checkInactivity, saveLoginCredToCookies, formatNumber, formatDate }
 }
 
-
+export const formatNaira = (amount:number) => {
+	return amount.toLocaleString("en-NG", { style: "currency", currency: "NGN" });
+}
 

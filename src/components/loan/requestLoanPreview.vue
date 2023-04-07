@@ -2,7 +2,7 @@
 	<div class="flex flex-col gap-4" v-if="rate">
 		<div class="flex flex-col gap-1">
 			<p class="small-text">Amount</p>
-			<div class="h-[40px] border border-lightGray rounded-lg p-2">NGN {{ formatNumber(amount) }}</div>
+			<div class="h-[40px] border border-lightGray rounded-lg p-2">{{ formatNaira(Number(amount)) }}</div>
 		</div>
 
 		<div class="flex flex-col gap-1">
@@ -12,12 +12,13 @@
 
 		<div class="flex flex-col gap-1">
 			<p class="small-text">Installment Amount</p>
-			<div class="h-[40px] border border-lightGray rounded-lg p-2">NGN {{ Number((Number(amount)/Number(duration)).toFixed(2)) + Number(amount) * rate }}</div>
+			<div class="h-[40px] border border-lightGray rounded-lg p-2">{{ formatNaira(Number((Number(amount)/Number(duration)).toFixed(2)) + Number(amount) * rate) }}</div>
 		</div>
 
+		
 		<div class="flex flex-col gap-1">
 			<p class="small-text">Total Payable</p>
-			<div class="h-[40px] border border-lightGray rounded-lg p-2">NGN {{ formatNumber(String(Number(amount) + (Number(amount) * rate * Number(duration)))) }}</div>
+			<div class="h-[40px] border border-lightGray rounded-lg p-2">{{ formatNaira(Number(Number(amount) + (Number(amount) * rate * Number(duration)))) }}</div>
 		</div>
 		
 		<div class="flex flex-col gap-2">
@@ -35,7 +36,7 @@
 	import { onMounted } from 'vue';
 	import { useInterest, rate } from '../../composables/Interest'
 	import { useLoan } from '../../composables/LoanController';
-	import {useUtils} from '../../composables/Utils'
+	import {useUtils, formatNaira} from '../../composables/Utils'
 	import spinner from '../utils/spinner.vue';
 
 	const { formatNumber } = useUtils()
