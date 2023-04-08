@@ -34,9 +34,9 @@ export const useBankStatement = () => {
 		makeFetchWithFormData('POST', 'auth/bank/bank-statement', formData)
 			.then(res => res.json())
 			.then( (data) => {
-				// console.log(data)
+				console.log(data)
 				closeSubLoader()
-				if (data.status = 'valid') {
+				if (data.status == 'valid') {
 					bankStatementSuccessful.value = true
 					Swal.fire({ title: 'Success!', text: 'Bank Statement was added successfully', icon: 'success' })
 					// await getUser()
