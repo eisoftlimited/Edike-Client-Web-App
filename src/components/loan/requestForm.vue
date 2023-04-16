@@ -1,7 +1,7 @@
 <template>
 	<form class=" flex flex-col gap-[50px] w-full max-w-[400px] mx-auto lg:mx-0" @submit.prevent="previewLoan">
 		<div class="flex flex-col gap-2">
-			<h5 class="heading5">Request Loan</h5>
+			<h5 class="heading5">School fees request</h5>
 			<p class="small-text text-[#404040]">Please fill out the form below to request for your school fees financing.</p>
 		</div>
 

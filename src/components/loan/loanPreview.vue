@@ -6,7 +6,7 @@
 		</div>
 		
 		<div class="flex flex-col gap-3 mx-auto w-full ">
-			<p class="normal-text font-bold">Loan Details</p>
+			<p class="normal-text font-bold">Details</p>
 			<dataBox key-data="Request Status" :key-value="`${data?.status}`" :color="data?.status == 'completed' ? 'text-success' : data?.status == 'declined' ? 'text-error' : 'text-[#F9AC3B]'" />
 			<dataBox key-data="Fees Amount" :key-value="`N ${formatNumber(String(data?.beneficiary_amount))}`" />
 			<dataBox key-data="Request Duration" :key-value="`${data?.beneficiary_duration} Month(s)`" />
@@ -15,7 +15,7 @@
 		</div>
 
 		<div class="flex flex-col gap-3 mx-auto w-full " v-if="data?.status == 'ongoing' || data?.status == 'completed'">
-			<p class="normal-text font-bold">Loan Payback</p>
+			<p class="normal-text font-bold">School fees Payback</p>
 			<dataBox key-data="Total Payback" :key-value="data?.totalPayback!" />
 			<!-- <dataBox key-data="Payment Balance" :key-value="`coming`" /> -->
 			<dataBox key-data="Payment Date" :key-value="`${formatDate(data?.paymentDate!)}`" />

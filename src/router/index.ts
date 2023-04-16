@@ -119,7 +119,7 @@ const routes = [
             },
 			{
                 path: 'loan',
-				name: 'Transactions',
+				name: 'School fees request',
                 component: () => import('../views/dashboard/loan.vue')
             },
 		]
