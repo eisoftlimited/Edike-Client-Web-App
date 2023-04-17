@@ -16,7 +16,7 @@
 				</tr>
 				<template >
 					<tr v-for="item, index in transactions" class="small-text font-medium h-[40px]" :class="[index%2 != 1 ? 'bg-[#F8F8F8]' : '']">
-						<td>{{ item.amount == '5000' ? 'Card Tokenization' : 'Loan Repayment' }}</td>
+						<td>{{ item.amount == '5000' ? 'Card Tokenization' : 'School fees Repayment' }}</td>
 						<td class="text-error">Debit</td>
 						<td>NGN {{ Number(item.amount)/100 }}</td>
 						<td>{{ formatDate(item.paid_at) }}</td>
