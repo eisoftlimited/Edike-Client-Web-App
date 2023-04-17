@@ -9,9 +9,6 @@
 						To proceed, kindly activate your account with the six digit verification code sent to {{ email ?? 'your email' }}</p>
 				</div>
 				<OTP type="verify"/>
-				<p class="small-text text-darkGray text-center">Remember you login details?
-					<router-link to="/signin" class="text-secondary">Sign In</router-link>
-				</p>
 			</FormCard>
 		</div>
 	</auth-layout>
